@@ -1,0 +1,119 @@
+@import "_variables.scss";
+@import "_functions.scss";
+
+
+html {
+	@include removeScrollBar;
+	box-sizing: border-box;
+	font-size: 10px;
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	width: 100%;
+	height: fit-content;
+	min-height: 100vh;
+	background-color: $homeOutlineColor;
+}
+
+.upper-pane {
+	@include makeFullWidthBlock;
+	height: max-content;
+	background-color: $darkAccentColor;
+	position: relative;
+	@include makeRowFlex;
+	justify-content: space-evenly;
+	align-items: center;
+
+	.logo-div {
+		height: 3rem;
+		width: 3rem;
+		@include makeColFlexCenter;
+		margin-right: auto;
+		margin-left: 1rem;
+
+		svg {
+			height: 80%;
+		}
+	}
+
+	.search-box {
+		width: 10rem;
+		border-bottom: .1rem solid $oddColor;
+		position: relative;
+		@include makeRowFlex;
+		justify-content: space-between;
+		padding-right: 1rem;
+
+		span {
+			height: 2rem;
+
+			svg {
+				height: 80%;
+				scale: .9;
+
+				path {
+					fill: $lessBrightColor;
+				}
+			}
+
+			margin-right: .3rem;
+		}
+
+		input {
+			padding: 0 1rem;
+			width: 75%;
+			all: unset;
+			caret-color: $homeGoldLikeColor;
+			overflow: hidden;
+
+			&::-webkit-search-cancel-button {
+				-webkit-appearance: none;
+			}
+
+			&:focus~.search-cancel {
+				display: block;
+				@include makeAbsoluteTopRightDiv;
+				right: -10%;
+				height: 100%;
+				width: 2rem;
+
+				svg {
+					width: 100%;
+					transform: scale(.6);
+				}
+			}
+		}
+
+
+		.search-cancel {
+			display: none;
+		}
+	}
+
+	.nav-tab-toggler {
+		margin-right: 1rem;
+		transform: scale(.8);
+	}
+
+	.announce-div {
+		@include makeAbsoluteBottomDiv;
+		@include makeFullWidthBlock;
+		padding: 1rem;
+
+		height: max-content;
+		bottom: -110%;
+		background-color: $darkAccentColor;
+		.announce-text{
+			color: $homeGoldLikeColor;
+		}
+	}
+
+}
+
+.wrapper {
+	@include makeFullWidthBlock;
+	margin-top: 5rem;
+	background-color: $accentColor;
+}
