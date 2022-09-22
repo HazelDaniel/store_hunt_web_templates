@@ -1,5 +1,6 @@
 @import "_variables.scss";
 @import "_functions.scss";
+@import "_typography.scss";
 
 
 html {
@@ -25,6 +26,7 @@ body {
 	@include makeRowFlex;
 	justify-content: space-evenly;
 	align-items: center;
+	padding: .5rem;
 
 	.logo-div {
 		height: 3rem;
@@ -103,9 +105,10 @@ body {
 		padding: 1rem;
 
 		height: max-content;
-		bottom: -110%;
+		bottom: -90%;
 		background-color: $darkAccentColor;
-		.announce-text{
+
+		.announce-text {
 			color: $homeGoldLikeColor;
 		}
 	}
@@ -114,6 +117,194 @@ body {
 
 .wrapper {
 	@include makeFullWidthBlock;
-	margin-top: 5rem;
+	margin-top: 4rem;
 	background-color: $accentColor;
+	@include makeColFlexStart;
+	height: max-content;
+	min-height: 100vh;
+	overflow: hidden;
+
+	.slider {
+		$numOfParts: 4;
+		$animTime: 1s;
+		$stagger: 0.08s;
+		$sliderReadyTrans: all $animTime/2 $animTime;
+		$maxLettersStagger: 6;
+		$letterStagger: 0.1s;
+
+		background-color: $lessBrightColor;
+		@include makeRowFlexStart;
+
+		@mixin slideActive {
+			.slider__slide.s--active & {
+				@content;
+			}
+		}
+
+		@mixin sliderReady {
+			.slider.s--ready & {
+				@content;
+			}
+		}
+
+		@mixin slidePrev {
+			.slider__slide.s--prev & {
+				@content;
+			}
+		}
+
+
+		&__slide {
+
+			&-content {
+				z-index: $numOfParts + 2;
+				position: relative;
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				flex-direction: column;
+				height: fit-content;
+				min-height: 50%;
+				width: 30rem;
+				text-transform: uppercase;
+				line-height: 1;
+				justify-self: flex-start;
+				margin-left: 3rem;
+				transform: translateY(60%);
+				*{
+					color: $darkAccentColor;
+				}
+
+			}
+
+			@mixin subTextsActiveSlide {
+				opacity: 1; //remember to return the opacity to zero for the transition to work
+				transition: $animTime/2;
+
+				@include slideActive {
+					transition-delay: $animTime*0.65;
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			&-subheading {
+				margin-bottom: 20px;
+				font-size: 1.3rem;
+				letter-spacing: 2px;
+				transform: translateY(20px);
+				text-align: start;
+				@include makeFullWidthBlock;
+				color: $accentColor;
+				@include subTextsActiveSlide;
+			}
+
+			&-heading {
+				$fontSize: 2rem;
+
+				display: flex;
+				margin-bottom: 20px;
+				font-size: $fontSize * 1.2;
+				letter-spacing: 12px;
+				font-family: nunito;
+				font-weight: 400;
+
+
+				span {
+					display: block;
+					opacity: 1; //remember to return the opacity to zero for the transition to work
+					transform: translateY($fontSize*-1);
+					transition: all $animTime/3;
+					text-align: start;
+
+					@include slidePrev {
+						transform: translateY($fontSize)
+					}
+
+					@include slideActive {
+						opacity: 1;
+						transform: translateY(0);
+					}
+
+					@for $i from 1 through $maxLettersStagger {
+						&:nth-child(#{$i}) {
+							$delay: $letterStagger * ($i - 1);
+
+							transition-delay: $delay;
+
+							@include slideActive {
+								transition-delay: $delay + $animTime/3;
+							}
+						}
+					}
+
+					&:nth-child(n+#{$maxLettersStagger + 1}) {
+						$delay: $letterStagger * $maxLettersStagger;
+
+						transition-delay: $delay;
+
+						@include slideActive {
+							transition-delay: $delay + $animTime/3;
+						}
+					}
+				}
+			}
+
+			&-readmore {
+				border: .1rem solid $darkAccentColor;
+				@include makeColFlexCenter;
+				margin-right: auto;
+				margin-top: 1rem;
+				position: relative;
+				backface-visibility: hidden;
+				height: 2.2rem;
+				width: 8rem;
+				border-radius: .4rem;
+				color: $darkAccentColor;
+				text-transform: uppercase;
+				font-size: .8rem;
+				font-weight: 700;
+
+				cursor: pointer;
+
+				&::before{
+					all: unset;
+				}
+				span{
+					@include makeAbsoluteTopRightDiv;
+					transform: scale(3);
+					top: 18%;
+					right: -10%;
+				}
+
+			}
+		}
+		.slider-hero-image-div{
+			z-index: 2;
+			width: 50%;
+			max-width: 30rem;
+			justify-self: flex-end;
+			margin-left: auto;
+			margin-top: auto;
+			position: relative;
+			@include makeColFlexCenter;
+			.slider-hero-image-circle{
+				@include makeAbsoluteTopDiv;
+				background-color: $homeBodyColor;
+				height: 25rem;
+				width: 25rem;
+				border-radius: 50%;
+				z-index: 0;
+				top: -20%;
+				left: -20%;
+
+
+			}
+			.slider-hero-image{
+				position: relative;
+				@include makeFullSizeBlock;
+			}
+		}
+	}
+
 }
