@@ -9,6 +9,10 @@
 }
 @mixin debug{
 	border: .1rem solid red;
+	background-color: #0000ff44;
+}
+@mixin hide {
+	visibility: hidden;
 }
 
 @mixin makeFlexCenter {

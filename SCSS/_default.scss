@@ -4,7 +4,7 @@
 
 
 html {
-	@include removeScrollBar;
+	// @include removeScrollBar;
 	box-sizing: border-box;
 	font-size: 10px;
 	height: 100%;
@@ -15,18 +15,25 @@ body {
 	width: 100%;
 	height: fit-content;
 	min-height: 100vh;
-	background-color: $homeOutlineColor;
+	background-color: $lessBrightColor;
+	overflow-x: hidden;
+	position: relative;
+	@include makeColFlexCenter;
 }
 
 .upper-pane {
 	@include makeFullWidthBlock;
 	height: max-content;
 	background-color: $darkAccentColor;
-	position: relative;
 	@include makeRowFlex;
 	justify-content: space-evenly;
 	align-items: center;
 	padding: .5rem;
+	z-index: inherit;
+	position: absolute;
+	top: 0;
+	z-index: 6;
+	// display: none;
 
 	.logo-div {
 		height: 3rem;
@@ -102,10 +109,11 @@ body {
 	.announce-div {
 		@include makeAbsoluteBottomDiv;
 		@include makeFullWidthBlock;
-		padding: 1rem;
+		padding: .5rem 1rem;
+		z-index: 4;
 
 		height: max-content;
-		bottom: -90%;
+		bottom: -50%;
 		background-color: $darkAccentColor;
 
 		.announce-text {
@@ -117,12 +125,15 @@ body {
 
 .wrapper {
 	@include makeFullWidthBlock;
-	margin-top: 4rem;
-	background-color: $accentColor;
+	overflow-x: hidden;
+	margin-top: 6rem;
+	background-color: $homeBodyColor;
 	@include makeColFlexStart;
-	height: max-content;
-	min-height: 100vh;
-	overflow: hidden;
+	height: max-content !important;
+	min-height: max-content;
+	@include removeScrollBar;
+	position: relative;
+	padding-bottom: 2rem;
 
 	.slider {
 		$numOfParts: 4;
@@ -131,9 +142,10 @@ body {
 		$sliderReadyTrans: all $animTime/2 $animTime;
 		$maxLettersStagger: 6;
 		$letterStagger: 0.1s;
-
-		background-color: $lessBrightColor;
+		@include makeFullWidthBlock;
 		@include makeRowFlexStart;
+		background-color: $lessBrightColor;
+		// display: none;
 
 		@mixin slideActive {
 			.slider__slide.s--active & {
@@ -155,7 +167,6 @@ body {
 
 
 		&__slide {
-
 			&-content {
 				z-index: $numOfParts + 2;
 				position: relative;
@@ -171,7 +182,9 @@ body {
 				justify-self: flex-start;
 				margin-left: 3rem;
 				transform: translateY(60%);
-				*{
+				z-index: 3;
+
+				* {
 					color: $darkAccentColor;
 				}
 
@@ -192,7 +205,7 @@ body {
 				margin-bottom: 20px;
 				font-size: 1.3rem;
 				letter-spacing: 2px;
-				transform: translateY(20px);
+				transform: translateY(-2rem);
 				text-align: start;
 				@include makeFullWidthBlock;
 				color: $accentColor;
@@ -267,10 +280,11 @@ body {
 
 				cursor: pointer;
 
-				&::before{
+				&::before {
 					all: unset;
 				}
-				span{
+
+				span {
 					@include makeAbsoluteTopRightDiv;
 					transform: scale(3);
 					top: 18%;
@@ -279,32 +293,142 @@ body {
 
 			}
 		}
-		.slider-hero-image-div{
+
+		.slider-hero-image-div {
 			z-index: 2;
 			width: 50%;
 			max-width: 30rem;
 			justify-self: flex-end;
-			margin-left: auto;
-			margin-top: auto;
-			position: relative;
 			@include makeColFlexCenter;
-			.slider-hero-image-circle{
+			@include makeAbsoluteBottomRightDiv;
+			right: 10%;
+
+			.slider-hero-image-circle {
 				@include makeAbsoluteTopDiv;
 				background-color: $homeBodyColor;
-				height: 25rem;
-				width: 25rem;
+				height: 15rem;
+				width: 15rem;
 				border-radius: 50%;
 				z-index: 0;
-				top: -20%;
+				top: -25%;
 				left: -20%;
-
-
+				left: 0;
 			}
-			.slider-hero-image{
+
+			.slider-hero-image {
 				position: relative;
 				@include makeFullSizeBlock;
+				margin-top: auto;
 			}
 		}
 	}
 
+	.home-directory {
+		margin-top: 1rem;
+		@include makeFullWidthBlock;
+		padding: 2rem;
+		height: max-content;
+		background-color: $lessBrightColor;
+
+
+		.directories {
+			@include makeColFlexCenter;
+			justify-content: space-evenly;
+			align-items: center;
+			overflow: hidden;
+			width: 70vw;
+			margin: auto;
+			height: max-content;
+			position: relative;
+
+			.directory {
+				max-width: 50rem;
+				@include makeColFlexCenter;
+				overflow: hidden;
+				position: relative;
+				width: 25rem;
+				height: 15rem;
+				margin: 2rem 0;
+
+				&::before {
+					@include makeAbsoluteTopLeftDiv;
+					@include makeFullSizeBlock;
+					background-color: $DirectoryBlurColorDark;
+					z-index: 1;
+				}
+
+				img {
+					@include makeAbsoluteTopLeftDiv;
+					@include makeFullSizeBlock;
+					object-fit: cover;
+					aspect-ratio: 1/1;
+					z-index: 0;
+				}
+
+				.directory-tag-div {
+					z-index: 2;
+					position: relative;
+					width: max-content;
+					height: max-content;
+					@include makeColFlexCenter;
+					background-color: $darkAccentColor;
+					color: $lessBrightColor;
+					padding: .5rem;
+
+					.directory-title {
+						font-family: openSansCondensedLight;
+						font-size: 1.2rem;
+						width: 8rem;
+						text-align: start;
+					}
+
+					.directory-cta {
+						background-color: transparent;
+						border: none;
+						width: 6rem;
+						height: 3rem;
+						color: inherit;
+						cursor: pointer;
+						position: relative;
+
+						&:hover::before {
+							height: 0;
+							width: 0;
+						}
+
+						&::before {
+							@include makeAbsoluteTopRightDiv;
+							height: 110%;
+							width: 3rem;
+							right: -1rem;
+							top: -.5rem;
+							z-index: -1;
+							background-color: inherit;
+							backdrop-filter: blur(.2rem);
+							background-color: $darkAccentColor;
+							transition: all .3s ease-in-out;
+							transition-delay: .05s;
+						}
+
+						&::after {
+							@include makeAbsoluteTopLeftDiv;
+							@include makeFullSizeBlock;
+							transform: scale(1.09);
+							z-index: -2;
+							border: .1rem solid $lessBrightColor;
+						}
+					}
+				}
+			}
+		}
+	}
+	.page-line-break{
+		@include makeFullWidthBlock;
+		background-color: $lessBrightColor;
+		height: 1rem;
+		svg{
+			@include makeFullWidthBlock;
+
+		}
+	}
 }

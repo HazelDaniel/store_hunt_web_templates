@@ -19,34 +19,41 @@
 @font-face {
   font-family: nunito;
   src: url("../FONTS/Nunito-Medium.ttf"); }
+@font-face {
+  font-family: openSansCondensedLight;
+  src: url("../FONTS/open-sans-condensed/OpenSans-CondLight.ttf"); }
 html {
-  /* Hide scrollbar for IE, Edge and Firefox */
-  -ms-overflow-style: none;
-  scrollbar-width: none;
   box-sizing: border-box;
   font-size: 10px;
   height: 100%;
   width: 100%; }
-  html::-webkit-scrollbar {
-    display: none; }
 
 body {
   width: 100%;
   height: fit-content;
   min-height: 100vh;
-  background-color: var(--homeOutlineColor); }
+  background-color: var(--lessBrightColor);
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center; }
 
 .upper-pane {
   display: block;
   width: 100%;
   height: max-content;
   background-color: var(--darkAccentColor);
-  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  padding: .5rem; }
+  padding: .5rem;
+  z-index: inherit;
+  position: absolute;
+  top: 0;
+  z-index: 6; }
   .upper-pane .logo-div {
     height: 3rem;
     width: 3rem;
@@ -105,9 +112,10 @@ body {
     bottom: 0;
     display: block;
     width: 100%;
-    padding: 1rem;
+    padding: .5rem 1rem;
+    z-index: 4;
     height: max-content;
-    bottom: -90%;
+    bottom: -50%;
     background-color: var(--darkAccentColor); }
     .upper-pane .announce-div .announce-text {
       color: var(--homeGoldLikeColor); }
@@ -115,21 +123,30 @@ body {
 .wrapper {
   display: block;
   width: 100%;
-  margin-top: 4rem;
-  background-color: var(--accentColor);
+  overflow-x: hidden;
+  margin-top: 6rem;
+  background-color: var(--homeBodyColor);
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
-  height: max-content;
-  min-height: 100vh;
-  overflow: hidden; }
+  height: max-content !important;
+  min-height: max-content;
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  position: relative;
+  padding-bottom: 2rem; }
+  .wrapper::-webkit-scrollbar {
+    display: none; }
   .wrapper .slider {
-    background-color: var(--lessBrightColor);
+    display: block;
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: row;
-    justify-content: flex-start; }
+    justify-content: flex-start;
+    background-color: var(--lessBrightColor); }
     .wrapper .slider__slide-content {
       z-index: 6;
       position: relative;
@@ -144,14 +161,15 @@ body {
       line-height: 1;
       justify-self: flex-start;
       margin-left: 3rem;
-      transform: translateY(60%); }
+      transform: translateY(60%);
+      z-index: 3; }
       .wrapper .slider__slide-content * {
         color: var(--darkAccentColor); }
     .wrapper .slider__slide-subheading {
       margin-bottom: 20px;
       font-size: 1.3rem;
       letter-spacing: 2px;
-      transform: translateY(20px);
+      transform: translateY(-2rem);
       text-align: start;
       display: block;
       width: 100%;
@@ -241,29 +259,149 @@ body {
       width: 50%;
       max-width: 30rem;
       justify-self: flex-end;
-      margin-left: auto;
-      margin-top: auto;
-      position: relative;
       display: flex;
       align-items: center;
       flex-direction: column;
-      justify-content: center; }
+      justify-content: center;
+      position: absolute;
+      content: "";
+      bottom: 0;
+      right: 0;
+      right: 10%; }
       .wrapper .slider .slider-hero-image-div .slider-hero-image-circle {
         position: absolute;
         content: "";
         top: 0;
         background-color: var(--homeBodyColor);
-        height: 25rem;
-        width: 25rem;
+        height: 15rem;
+        width: 15rem;
         border-radius: 50%;
         z-index: 0;
-        top: -20%;
-        left: -20%; }
+        top: -25%;
+        left: -20%;
+        left: 0; }
       .wrapper .slider .slider-hero-image-div .slider-hero-image {
         position: relative;
         display: block;
         height: 100%;
         display: block;
-        width: 100%; }
+        width: 100%;
+        margin-top: auto; }
+  .wrapper .home-directory {
+    margin-top: 1rem;
+    display: block;
+    width: 100%;
+    padding: 2rem;
+    height: max-content;
+    background-color: var(--lessBrightColor); }
+    .wrapper .home-directory .directories {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      justify-content: space-evenly;
+      align-items: center;
+      overflow: hidden;
+      width: 70vw;
+      margin: auto;
+      height: max-content;
+      position: relative; }
+      .wrapper .home-directory .directories .directory {
+        max-width: 50rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+        width: 25rem;
+        height: 15rem;
+        margin: 2rem 0; }
+        .wrapper .home-directory .directories .directory::before {
+          position: absolute;
+          content: "";
+          top: 0;
+          left: 0;
+          display: block;
+          height: 100%;
+          display: block;
+          width: 100%;
+          background-color: var(--DirectoryBlurColorDark);
+          z-index: 1; }
+        .wrapper .home-directory .directories .directory img {
+          position: absolute;
+          content: "";
+          top: 0;
+          left: 0;
+          display: block;
+          height: 100%;
+          display: block;
+          width: 100%;
+          object-fit: cover;
+          aspect-ratio: 1/1;
+          z-index: 0; }
+        .wrapper .home-directory .directories .directory .directory-tag-div {
+          z-index: 2;
+          position: relative;
+          width: max-content;
+          height: max-content;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: center;
+          background-color: var(--darkAccentColor);
+          color: var(--lessBrightColor);
+          padding: .5rem; }
+          .wrapper .home-directory .directories .directory .directory-tag-div .directory-title {
+            font-family: openSansCondensedLight;
+            font-size: 1.2rem;
+            width: 8rem;
+            text-align: start; }
+          .wrapper .home-directory .directories .directory .directory-tag-div .directory-cta {
+            background-color: transparent;
+            border: none;
+            width: 6rem;
+            height: 3rem;
+            color: inherit;
+            cursor: pointer;
+            position: relative; }
+            .wrapper .home-directory .directories .directory .directory-tag-div .directory-cta:hover::before {
+              height: 0;
+              width: 0; }
+            .wrapper .home-directory .directories .directory .directory-tag-div .directory-cta::before {
+              position: absolute;
+              content: "";
+              top: 0;
+              right: 0;
+              height: 110%;
+              width: 3rem;
+              right: -1rem;
+              top: -.5rem;
+              z-index: -1;
+              background-color: inherit;
+              backdrop-filter: blur(0.2rem);
+              background-color: var(--darkAccentColor);
+              transition: all .3s ease-in-out;
+              transition-delay: .05s; }
+            .wrapper .home-directory .directories .directory .directory-tag-div .directory-cta::after {
+              position: absolute;
+              content: "";
+              top: 0;
+              left: 0;
+              display: block;
+              height: 100%;
+              display: block;
+              width: 100%;
+              transform: scale(1.09);
+              z-index: -2;
+              border: 0.1rem solid var(--lessBrightColor); }
+  .wrapper .page-line-break {
+    display: block;
+    width: 100%;
+    background-color: var(--lessBrightColor);
+    height: 1rem; }
+    .wrapper .page-line-break svg {
+      display: block;
+      width: 100%; }
 
 /*# sourceMappingURL=home-page.css.map */
