@@ -14,7 +14,8 @@
   --accentColor: #BB9D88;
   --brightColor: #FFFFFF;
   --lessBrightColor: #F3F3EE;
-  --darkAccentColor: #08090A; }
+  --darkAccentColor: #08090A;
+  --lightestShadowColor: #00000018; }
 
 @font-face {
   font-family: nunito;
@@ -22,16 +23,36 @@
 @font-face {
   font-family: openSansCondensedLight;
   src: url("../FONTS/open-sans-condensed/OpenSans-CondLight.ttf"); }
+@font-face {
+  font-family: openSansLight;
+  src: url("../FONTS/Open_Sans/static/OpenSans/OpenSans-Light.ttf"); }
+@font-face {
+  font-family: openSansMedium;
+  src: url("../FONTS/Open_Sans/static/OpenSans/OpenSans-Medium.ttf"); }
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  font-family: openSansMedium; }
+
 html {
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   box-sizing: border-box;
   font-size: 10px;
   height: 100%;
-  width: 100%; }
+  width: 100%;
+  min-height: 100vh; }
+  html::-webkit-scrollbar {
+    display: none; }
 
 body {
   width: 100%;
   height: fit-content;
-  min-height: 100vh;
   background-color: var(--lessBrightColor);
   overflow-x: hidden;
   position: relative;
@@ -146,10 +167,9 @@ body {
     align-items: center;
     flex-direction: row;
     justify-content: flex-start;
-    background-color: var(--lessBrightColor); }
+    position: relative; }
     .wrapper .slider__slide-content {
-      z-index: 6;
-      position: relative;
+      position: absolute;
       display: flex;
       justify-content: flex-start;
       align-items: center;
@@ -162,7 +182,7 @@ body {
       justify-self: flex-start;
       margin-left: 3rem;
       transform: translateY(60%);
-      z-index: 3; }
+      z-index: 4 !important; }
       .wrapper .slider__slide-content * {
         color: var(--darkAccentColor); }
     .wrapper .slider__slide-subheading {
@@ -186,7 +206,8 @@ body {
       font-size: 2.4rem;
       letter-spacing: 12px;
       font-family: nunito;
-      font-weight: 400; }
+      font-weight: 400;
+      text-transform: capitalize; }
       .wrapper .slider__slide-heading span {
         display: block;
         opacity: 1;
@@ -226,7 +247,7 @@ body {
           transition-delay: 0.6s; }
           .slider__slide.s--active .wrapper .slider__slide-heading span:nth-child(n+7) {
             transition-delay: 0.9333333333s; }
-    .wrapper .slider__slide-readmore {
+    .wrapper .slider__slide-shop-now-cta {
       border: 0.1rem solid var(--darkAccentColor);
       display: flex;
       align-items: center;
@@ -243,10 +264,11 @@ body {
       text-transform: uppercase;
       font-size: .8rem;
       font-weight: 700;
+      cursor: pointer;
       cursor: pointer; }
-      .wrapper .slider__slide-readmore::before {
+      .wrapper .slider__slide-shop-now-cta::before {
         all: unset; }
-      .wrapper .slider__slide-readmore span {
+      .wrapper .slider__slide-shop-now-cta span {
         position: absolute;
         content: "";
         top: 0;
@@ -326,7 +348,7 @@ body {
           height: 100%;
           display: block;
           width: 100%;
-          background-color: var(--DirectoryBlurColorDark);
+          background-color: var(--lightestShadowColor);
           z-index: 1; }
         .wrapper .home-directory .directories .directory img {
           position: absolute;
@@ -403,5 +425,159 @@ body {
     .wrapper .page-line-break svg {
       display: block;
       width: 100%; }
+  .wrapper .deal-of-the-week-div {
+    padding: 4rem 0;
+    margin-top: 0;
+    display: block;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: var(--lessBrightColor);
+    height: fit-content;
+    position: relative;
+    padding-bottom: 10rem; }
+    .wrapper .deal-of-the-week-div .DOW-side-tab {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      height: 15rem;
+      width: 10rem;
+      margin-top: 6rem;
+      border-top-right-radius: .8rem;
+      border-bottom-right-radius: .8rem;
+      background-color: var(--brightColor);
+      color: var(--homeOutlineColor);
+      box-shadow: 0.3rem 0.15rem 0.5rem var(--lightestShadowColor); }
+      .wrapper .deal-of-the-week-div .DOW-side-tab .DOW-tab-lists {
+        list-style-type: none;
+        transform: translateX(5rem);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: flex-start;
+        justify-content: space-evenly;
+        align-items: flex-start; }
+        .wrapper .deal-of-the-week-div .DOW-side-tab .DOW-tab-lists .DOW-tab-list {
+          text-align: start;
+          width: max-content;
+          margin: .5rem 0; }
+          .wrapper .deal-of-the-week-div .DOW-side-tab .DOW-tab-lists .DOW-tab-list span {
+            visibility: hidden; }
+          .wrapper .deal-of-the-week-div .DOW-side-tab .DOW-tab-lists .DOW-tab-list.active-dow-tab-list {
+            color: var(--darkAccentColor);
+            font-weight: 500;
+            transform: translateX(0.5rem); }
+            .wrapper .deal-of-the-week-div .DOW-side-tab .DOW-tab-lists .DOW-tab-list.active-dow-tab-list span {
+              visibility: visible;
+              display: inline-block; }
+    .wrapper .deal-of-the-week-div .DOW-item-div {
+      width: 18rem;
+      height: 15rem;
+      margin: 6rem auto 0 25%;
+      position: relative; }
+      .wrapper .deal-of-the-week-div .DOW-item-div .DOW-item {
+        display: block;
+        height: 100%;
+        display: block;
+        width: 100%;
+        object-fit: cover;
+        aspect-ratio: 1/1; }
+      .wrapper .deal-of-the-week-div .DOW-item-div .DOW-item-tag {
+        position: absolute;
+        content: "";
+        top: 0;
+        right: 0;
+        height: 6rem;
+        width: 6rem;
+        border-radius: 50%;
+        background-color: var(--darkAccentColor);
+        top: -1.5rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center; }
+        .wrapper .deal-of-the-week-div .DOW-item-div .DOW-item-tag p:first-of-type {
+          font-family: openSansLight; }
+    .wrapper .deal-of-the-week-div .float-and-black, .wrapper .deal-of-the-week-div .DOW-title, .wrapper .deal-of-the-week-div .DOW-product-title {
+      position: absolute;
+      content: "";
+      top: 0;
+      right: 0;
+      color: var(--darkAccentColor); }
+    .wrapper .deal-of-the-week-div .DOW-title {
+      color: var(--accentColor);
+      left: 15vw;
+      top: 3rem;
+      text-transform: uppercase;
+      width: max-content;
+      max-width: 20rem; }
+      .wrapper .deal-of-the-week-div .DOW-title span {
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        display: inline-flex;
+        justify-self: flex-end;
+        transform: translateY(0.5rem); }
+        .wrapper .deal-of-the-week-div .DOW-title span svg {
+          height: 100%; }
+    .wrapper .deal-of-the-week-div .DOW-product-title {
+      left: 22vw;
+      top: 6rem;
+      font-size: 1.5rem;
+      font-family: nunito; }
+    .wrapper .deal-of-the-week-div .DOW-time-div {
+      position: absolute;
+      content: "";
+      bottom: 0;
+      left: 0;
+      color: var(--darkAccentColor);
+      bottom: 4rem;
+      left: 6rem; }
+      .wrapper .deal-of-the-week-div .DOW-time-div .DOW-time-count-div {
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
+        justify-content: space-evenly;
+        width: 14rem; }
+      .wrapper .deal-of-the-week-div .DOW-time-div .DOW-time-count-label-div {
+        width: 14rem;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
+        justify-content: flex-end;
+        font-size: .8rem; }
+        .wrapper .deal-of-the-week-div .DOW-time-div .DOW-time-count-label-div span {
+          margin-right: 1rem; }
+          .wrapper .deal-of-the-week-div .DOW-time-div .DOW-time-count-label-div span:last-of-type {
+            margin-right: 0; }
+    .wrapper .deal-of-the-week-div .DOW-cta {
+      all: unset;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      position: absolute;
+      content: "";
+      bottom: 0;
+      left: 0;
+      right: auto;
+      left: 25%;
+      bottom: -4rem;
+      width: 10rem;
+      height: 2.5rem;
+      background-color: var(--darkAccentColor);
+      color: var(--brightColor);
+      font-weight: lighter;
+      font-family: openSansLight;
+      font-size: .8rem; }
 
 /*# sourceMappingURL=home-page.css.map */

@@ -2,19 +2,29 @@
 @import "_functions.scss";
 @import "_typography.scss";
 
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
+	font-family: openSansMedium;
+	// overflow: hidden;
+}
 
 html {
-	// @include removeScrollBar;
+	@include removeScrollBar;
 	box-sizing: border-box;
 	font-size: 10px;
 	height: 100%;
 	width: 100%;
+	min-height: 100vh;
 }
 
 body {
 	width: 100%;
 	height: fit-content;
-	min-height: 100vh;
 	background-color: $lessBrightColor;
 	overflow-x: hidden;
 	position: relative;
@@ -144,8 +154,7 @@ body {
 		$letterStagger: 0.1s;
 		@include makeFullWidthBlock;
 		@include makeRowFlexStart;
-		background-color: $lessBrightColor;
-		// display: none;
+		position: relative;
 
 		@mixin slideActive {
 			.slider__slide.s--active & {
@@ -168,8 +177,7 @@ body {
 
 		&__slide {
 			&-content {
-				z-index: $numOfParts + 2;
-				position: relative;
+				position: absolute;
 				display: flex;
 				justify-content: flex-start;
 				align-items: center;
@@ -182,7 +190,7 @@ body {
 				justify-self: flex-start;
 				margin-left: 3rem;
 				transform: translateY(60%);
-				z-index: 3;
+				z-index: 4 !important;
 
 				* {
 					color: $darkAccentColor;
@@ -221,6 +229,7 @@ body {
 				letter-spacing: 12px;
 				font-family: nunito;
 				font-weight: 400;
+				text-transform: capitalize;
 
 
 				span {
@@ -263,7 +272,7 @@ body {
 				}
 			}
 
-			&-readmore {
+			&-shop-now-cta {
 				border: .1rem solid $darkAccentColor;
 				@include makeColFlexCenter;
 				margin-right: auto;
@@ -277,6 +286,7 @@ body {
 				text-transform: uppercase;
 				font-size: .8rem;
 				font-weight: 700;
+				cursor: pointer;
 
 				cursor: pointer;
 
@@ -353,7 +363,7 @@ body {
 				&::before {
 					@include makeAbsoluteTopLeftDiv;
 					@include makeFullSizeBlock;
-					background-color: $DirectoryBlurColorDark;
+					background-color: $lightestShadowColor;
 					z-index: 1;
 				}
 
@@ -422,13 +432,183 @@ body {
 			}
 		}
 	}
-	.page-line-break{
+
+	.page-line-break {
 		@include makeFullWidthBlock;
 		background-color: $lessBrightColor;
 		height: 1rem;
-		svg{
+
+		svg {
 			@include makeFullWidthBlock;
 
+		}
+	}
+
+	.deal-of-the-week-div {
+		padding: 4rem 0;
+		margin-top: 0;
+		@include makeFullWidthBlock;
+		@include makeRowFlexStart;
+		background-color: $lessBrightColor;
+		height: fit-content;
+		position: relative;
+		padding-bottom: 10rem;
+
+		// min-height: 60vh;
+		.DOW-side-tab {
+			@include makeColFlexCenter;
+			height: 15rem;
+			width: 10rem;
+			margin-top: 6rem;
+			border-top-right-radius: .8rem;
+			border-bottom-right-radius: .8rem;
+			background-color: $brightColor;
+			color: $homeOutlineColor;
+			box-shadow: .3rem .15rem .5rem $lightestShadowColor;
+
+			.DOW-tab-lists {
+				list-style-type: none;
+				transform: translateX(5rem);
+				@include makeColFlexStart;
+				justify-content: space-evenly;
+				align-items: flex-start;
+
+				.DOW-tab-list {
+					text-align: start;
+					width: max-content;
+					margin: .5rem 0;
+
+					span {
+						visibility: hidden;
+					}
+
+					&.active-dow-tab-list {
+						color: $darkAccentColor;
+						font-weight: 500;
+						transform: translateX(.5rem);
+
+						span {
+							visibility: visible;
+							display: inline-block;
+						}
+					}
+				}
+
+			}
+		}
+
+		.DOW-item-div {
+			width: 18rem;
+			height: 15rem;
+			margin: 6rem auto 0 25%;
+			position: relative;
+
+			.DOW-item {
+				@include makeFullSizeBlock;
+				object-fit: cover;
+				aspect-ratio: 1/1;
+			}
+
+			.DOW-item-tag {
+				@include makeAbsoluteTopRightDiv;
+				height: 6rem;
+				width: 6rem;
+				border-radius: 50%;
+				background-color: $darkAccentColor;
+				top: -1.5rem;
+				@include makeColFlexCenter;
+
+				p:first-of-type {
+					font-family: openSansLight;
+				}
+			}
+
+		}
+
+		.float-and-black {
+			@include makeAbsoluteTopRightDiv;
+			color: $darkAccentColor;
+		}
+
+		.DOW-title {
+			@extend .float-and-black;
+			color: $accentColor;
+			left: 15vw;
+			top: 3rem;
+			text-transform: uppercase;
+			width: max-content;
+			max-width: 20rem;
+
+			span {
+				width: 2rem;
+				height: 2rem;
+				@include makeColFlexCenter;
+				display: inline-flex;
+				justify-self: flex-end;
+				transform: translateY(.5rem);
+
+				svg {
+					height: 100%;
+				}
+			}
+		}
+
+		.DOW-product-title {
+			@extend .float-and-black;
+			left: 22vw;
+			top: 6rem;
+			font-size: 1.5rem;
+			font-family: nunito;
+		}
+
+		.DOW-time-div {
+			@include makeAbsoluteBottomLeftDiv;
+			color: $darkAccentColor;
+			bottom: 4rem;
+			left: 6rem;
+
+			.DOW-time-count-div {
+				font-size: 1.4rem;
+				// @include debug;
+				@include makeRowFlexCenter;
+				justify-content: space-evenly;
+				width: 14rem;
+
+
+			}
+
+			.DOW-time-count-label-div {
+				width: 14rem;
+				// @include debug;
+				@include makeRowFlexCenter;
+				justify-content: flex-end;
+				font-size: .8rem;
+				span{
+					margin-right: 1rem;
+					&:last-of-type{
+						margin-right: 0;
+					}
+				}
+
+			}
+
+			
+		}
+		.DOW-cta{
+			all: unset;
+			@include makeColFlexCenter;
+			@include makeAbsoluteBottomLeftDiv;
+			right: auto;
+			left: 25%;
+			bottom: -4rem;
+			width: 10rem;
+			height: 2.5rem;
+			background-color: $darkAccentColor;
+			color: $brightColor;
+			font-weight: lighter;
+			font-family: openSansLight;
+			font-size: .8rem;
+			
 		}
 	}
 }
