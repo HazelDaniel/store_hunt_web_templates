@@ -34,6 +34,7 @@ body {
 	background-color: $lessBrightColor;
 	position: relative;
 	overflow: auto !important;
+	width: 100vw;
 
 
 
@@ -128,6 +129,10 @@ body {
 	.nav-tab-toggler {
 		margin-right: 1rem;
 		transform: scale(.8);
+
+		span {
+			z-index: -1;
+		}
 	}
 
 	.announce-div {
@@ -137,7 +142,8 @@ body {
 		padding: .5rem 1rem;
 		z-index: 9;
 		top: 5.05rem;
-		&::before{
+
+		&::before {
 			@include makeAbsoluteTopLeftDiv;
 			@include makeFullWidthBlock;
 			position: fixed;
@@ -158,15 +164,175 @@ body {
 
 }
 
-.wrapper {
+@mixin makeMainContainer() {
 	margin-top: 5rem;
-	padding-top: 2.5rem;
 	@include makeFullWidthBlock;
 
 	@include makeColFlexStart;
 	height: max-content;
 	position: relative;
 	min-height: 100vh;
+
+}
+
+.modal-overlay {
+	background-color: $DirectoryBlurColorDark;
+	backdrop-filter: blur(2px);
+	display: none;
+	@include makeMainContainer;
+	@include makeAbsoluteTopLeftDiv;
+	position: fixed;
+	@include makeFullSizeBlock;
+	height: calc(100vh - 5rem);
+	width: 100%;
+	@include makeRowFlexEnd;
+	z-index: -6 !important;
+
+	&-opened {
+		z-index: 6 !important;
+
+	}
+
+	.side-tab {
+		border: unset;
+		background-color: $darkAccentColor;
+		@include makeFullHeightBlock;
+		@include makeColFlexStart;
+		width: 65%;
+		transform: translateX(100%);
+		transition: transform .3s ease-in-out;
+		padding: 1rem;
+		position: relative;
+		padding-bottom: 5rem;
+		overflow: auto !important;
+		@include removeScrollBar;
+
+		&>div,
+		ul {
+			@include makeFullWidthBlock;
+			margin-bottom: 2rem;
+			height: max-content;
+		}
+
+		&>div {
+			@include makeRowFlexStart;
+			justify-content: space-between;
+		}
+
+		&-opened {
+			transform: translateX(0);
+		}
+
+		svg {
+			@include makeFullHeightBlock;
+		}
+
+		.nav-theme-icon-div {
+			@include makeAbsoluteTopDiv;
+			height: 3rem;
+			@include makeRowFlexCenter;
+			align-items: center;
+
+			svg {
+				height: 80%;
+			}
+		}
+
+		.ST-navs {
+			height: max-content;
+			min-height: 85%;
+			margin-top: 3rem;
+			@include makeColFlexStart;
+			overflow: auto !important;
+			@include removeScrollBar;
+
+			.ST-title-link-div {
+				@include makeFullWidthBlock;
+				@include makeRowFlexStart;
+				justify-content: space-between;
+				min-height: 3rem;
+				margin-bottom: 1.5rem;
+				align-items: center;
+
+				svg {
+					width: 2rem !important;
+					fill: $lessBrightColor;
+					// @include debug;
+
+					path {
+						fill: $lessBrightColor;
+					}
+				}
+
+
+
+				p {
+					width: max-content;
+					text-align: start;
+					cursor: pointer;
+					color: $homeGoldLikeColor;
+					font-family: openSansMedium;
+					font-weight: 300;
+					margin-left: 1rem;
+
+					&.disabled {
+						color: $homeOutlineColorTrans;
+					}
+
+				}
+
+				&.secluded {
+					p {
+						color: $lessBrightColor;
+					}
+				}
+			}
+
+			.ST-links {
+				height: max-content;
+				@include makeColFlexCenter;
+				min-height: 10rem;
+				justify-content: space-evenly;
+				position: relative;
+				padding: 0 3rem;
+
+				.ST-link {
+					font-family: openSansLight;
+					font-weight: lighter !important;
+					border-bottom: .05rem solid $homeOutlineColor;
+					@include makeFullWidthBlock;
+					border-bottom-width: 120%;
+					text-align: center;
+					padding-bottom: .3rem;
+				}
+			}
+		}
+
+	}
+
+
+}
+.desktop-side-tab {
+	position: fixed;
+	right: 0;
+	width: 3rem;
+	height: 65vh;
+	top: 25%;
+	bottom: 25%;
+	@include debug;
+	z-index: 6;
+	@include makeColFlexStart;
+	border-top-left-radius: 1.5rem;
+	border-bottom-left-radius: 1.5rem;
+	align-items: center;
+	padding: 2rem 0.5rem;
+
+	display: none;
+}
+
+.wrapper {
+	@include makeMainContainer;
+	padding-top: 2.5rem;
 }
 
 footer {
@@ -180,6 +346,7 @@ footer {
 	p {
 		font-family: openSansLight;
 	}
+
 	.title-text {
 		font-weight: 400;
 		font-size: .8rem;
@@ -322,44 +489,51 @@ footer {
 		height: 1px;
 		background-image: linear-gradient(to right, $darkAccentColor, $lessBrightColor, $darkAccentColor);
 	}
-	.footer-bottom{
+
+	.footer-bottom {
 		height: 12rem;
 		width: 80%;
 		@include makeColFlexStart;
 		margin-top: 4rem;
-		.FB-container{
+
+		.FB-container {
 			// min-width: 80%;
 			text-align: center;
 			width: max-content;
 		}
-		.copyright{
+
+		.copyright {
 			@extend .FB-container;
 			font-size: 70%;
 			color: $homeGoldLikeColor;
 			margin-bottom: 1rem;
 		}
-		.footer-credit-div{
+
+		.footer-credit-div {
 			@extend .FB-container;
 			@include makeColFlexCenter;
 			width: fit-content;
 			align-items: flex-start;
-			p{
+
+			p {
 				@extend .title-text;
 				@include makeRowFlexStart;
 				justify-content: space-evenly;
 				width: max-content;
 				text-align: start;
-				span>a{
+
+				span>a {
 					font-family: openSansLight;
 					font-weight: 300;
 					font-size: .7rem;
 				}
 
-				span:first-of-type{
+				span:first-of-type {
 					margin-left: 2rem;
 					margin-left: 1rem;
 				}
-				span:nth-of-type(n+1){
+
+				span:nth-of-type(n+1) {
 					margin-left: 1rem;
 				}
 
