@@ -10,26 +10,41 @@
 	box-sizing: border-box;
 	-webkit-tap-highlight-color: transparent;
 	font-family: openSansMedium;
-	// overflow: hidden;
 }
 
+
+
 html {
-	@include removeScrollBar;
 	box-sizing: border-box;
 	font-size: 10px;
+	@include removeScrollBar;
 	height: 100%;
 	width: 100%;
-	min-height: 100vh;
+
+	* {
+		overflow: hidden;
+	}
 }
 
 body {
-	width: 100%;
-	height: fit-content;
+	@include makeFullWidthBlock;
+	@include makeColFlexStart;
+	height: max-content !important;
+	min-height: 100vh;
 	background-color: $lessBrightColor;
-	overflow-x: hidden;
 	position: relative;
-	@include makeColFlexCenter;
+	overflow: auto !important;
+
+
+
+	$numOfParts: 4;
+	$animTime: 1s;
+	$stagger: 0.08s;
+	$sliderReadyTrans: all $animTime/2 $animTime;
+	$maxLettersStagger: 6;
+	$letterStagger: 0.1s;
 }
+
 
 .upper-pane {
 	@include makeFullWidthBlock;
@@ -39,11 +54,9 @@ body {
 	justify-content: space-evenly;
 	align-items: center;
 	padding: .5rem;
-	z-index: inherit;
-	position: absolute;
-	top: 0;
 	z-index: 6;
-	// display: none;
+	position: fixed;
+	min-height: 5rem;
 
 	.logo-div {
 		height: 3rem;
@@ -67,6 +80,7 @@ body {
 
 		span {
 			height: 2rem;
+			overflow: visible;
 
 			svg {
 				height: 80%;
@@ -117,13 +131,14 @@ body {
 	}
 
 	.announce-div {
-		@include makeAbsoluteBottomDiv;
+		position: fixed;
+		left: 0;
 		@include makeFullWidthBlock;
 		padding: .5rem 1rem;
-		z-index: 4;
+		z-index: 9;
+		top: 5.05rem;
 
-		height: max-content;
-		bottom: -50%;
+		height: 2.5rem;
 		background-color: $darkAccentColor;
 
 		.announce-text {
@@ -134,481 +149,212 @@ body {
 }
 
 .wrapper {
+	margin-top: 5rem;
+	padding-top: 2.5rem;
 	@include makeFullWidthBlock;
-	overflow-x: hidden;
-	margin-top: 6rem;
-	background-color: $homeBodyColor;
+
 	@include makeColFlexStart;
-	height: max-content !important;
-	min-height: max-content;
-	@include removeScrollBar;
+	height: max-content;
 	position: relative;
-	padding-bottom: 2rem;
+	min-height: 100vh;
+}
 
-	.slider {
-		$numOfParts: 4;
-		$animTime: 1s;
-		$stagger: 0.08s;
-		$sliderReadyTrans: all $animTime/2 $animTime;
-		$maxLettersStagger: 6;
-		$letterStagger: 0.1s;
+footer {
+	@include makeFullWidthBlock;
+	@include makeColFlexStart;
+	height: fit-content;
+	min-height: 45vmax;
+	padding: 2rem;
+	background-color: $darkAccentColor;
+
+	p {
+		font-family: openSansLight;
+	}
+	.title-text {
+		font-weight: 400;
+		font-size: .8rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.footer-top {
 		@include makeFullWidthBlock;
+		min-height: 15rem;
+		height: max-content;
 		@include makeRowFlexStart;
-		position: relative;
+		justify-content: space-evenly;
+		align-items: flex-start;
+		padding-bottom: 4rem;
 
-		@mixin slideActive {
-			.slider__slide.s--active & {
-				@content;
-			}
-		}
-
-		@mixin sliderReady {
-			.slider.s--ready & {
-				@content;
-			}
-		}
-
-		@mixin slidePrev {
-			.slider__slide.s--prev & {
-				@content;
-			}
+		.ft-part {
+			width: max-content;
+			min-width: 33%;
+			@include makeFullHeightBlock;
+			@include makeColFlexStart;
 		}
 
 
-		&__slide {
-			&-content {
-				position: absolute;
-				display: flex;
-				justify-content: flex-start;
-				align-items: center;
-				flex-direction: column;
-				height: fit-content;
-				min-height: 50%;
-				width: 30rem;
-				text-transform: uppercase;
-				line-height: 1;
-				justify-self: flex-start;
-				margin-left: 3rem;
-				transform: translateY(60%);
-				z-index: 4 !important;
+		.FT-left {
+			@extend .ft-part;
+			margin-right: auto;
+			align-items: flex-start;
 
-				* {
-					color: $darkAccentColor;
+			.footer-logo-div {
+				height: 2rem;
+				width: 2rem;
+				margin-bottom: 1.5rem;
+				transform: scale(.9);
+			}
+
+			.footer-moto {
+				width: 30vw;
+				font-weight: 300;
+				font-size: .6rem;
+				margin-bottom: 2rem;
+			}
+
+			.footer-payment-client-div {
+				p:first-of-type {
+					@extend .title-text;
 				}
 
+				&-image {
+					width: 100%;
+					max-width: 8rem;
+				}
 			}
+		}
 
-			@mixin subTextsActiveSlide {
-				opacity: 1; //remember to return the opacity to zero for the transition to work
-				transition: $animTime/2;
+		.footer-section-title {
+			@extend .title-text;
+		}
 
-				@include slideActive {
-					transition-delay: $animTime*0.65;
-					opacity: 1;
-					transform: translateY(0);
+		.FT-middle {
+			@extend .ft-part;
+			margin: auto;
+			align-items: center;
+			text-align: center;
+			margin-top: 0;
+
+
+			.footer-section-lists {
+				@include makeFullSizeBlock;
+
+				li {
+					font-size: .7rem;
+					font-family: openSansLight;
+					height: 2rem;
+					cursor: pointer;
 				}
 			}
 
-			&-subheading {
-				margin-bottom: 20px;
-				font-size: 1.3rem;
-				letter-spacing: 2px;
-				transform: translateY(-2rem);
+
+		}
+
+		.FT-right {
+			@extend .ft-part;
+			height: max-content;
+
+			.FTR-sub-text {
+				font-weight: 300;
+				font-size: .7rem;
 				text-align: start;
 				@include makeFullWidthBlock;
-				color: $accentColor;
-				@include subTextsActiveSlide;
+				margin-bottom: .6rem;
+				width: max-content;
 			}
 
-			&-heading {
-				$fontSize: 2rem;
-
-				display: flex;
-				margin-bottom: 20px;
-				font-size: $fontSize * 1.2;
-				letter-spacing: 12px;
-				font-family: nunito;
-				font-weight: 400;
-				text-transform: capitalize;
-
-
-				span {
-					display: block;
-					opacity: 1; //remember to return the opacity to zero for the transition to work
-					transform: translateY($fontSize*-1);
-					transition: all $animTime/3;
-					text-align: start;
-
-					@include slidePrev {
-						transform: translateY($fontSize)
-					}
-
-					@include slideActive {
-						opacity: 1;
-						transform: translateY(0);
-					}
-
-					@for $i from 1 through $maxLettersStagger {
-						&:nth-child(#{$i}) {
-							$delay: $letterStagger * ($i - 1);
-
-							transition-delay: $delay;
-
-							@include slideActive {
-								transition-delay: $delay + $animTime/3;
-							}
-						}
-					}
-
-					&:nth-child(n+#{$maxLettersStagger + 1}) {
-						$delay: $letterStagger * $maxLettersStagger;
-
-						transition-delay: $delay;
-
-						@include slideActive {
-							transition-delay: $delay + $animTime/3;
-						}
-					}
-				}
+			.footer-contact-title {
+				font-family: openSansLight;
+				@extend .title-text;
 			}
 
-			&-shop-now-cta {
-				border: .1rem solid $darkAccentColor;
-				@include makeColFlexCenter;
-				margin-right: auto;
-				margin-top: 1rem;
-				position: relative;
-				backface-visibility: hidden;
-				height: 2.2rem;
+			p {
+				@extend .FTR-sub-text;
+			}
+
+			.footer-contact-icons {
 				width: 8rem;
-				border-radius: .4rem;
-				color: $darkAccentColor;
-				text-transform: uppercase;
-				font-size: .8rem;
-				font-weight: 700;
-				cursor: pointer;
-
-				cursor: pointer;
-
-				&::before {
-					all: unset;
-				}
-
-				span {
-					@include makeAbsoluteTopRightDiv;
-					transform: scale(3);
-					top: 18%;
-					right: -10%;
-				}
-
-			}
-		}
-
-		.slider-hero-image-div {
-			z-index: 2;
-			width: 50%;
-			max-width: 30rem;
-			justify-self: flex-end;
-			@include makeColFlexCenter;
-			@include makeAbsoluteBottomRightDiv;
-			right: 10%;
-
-			.slider-hero-image-circle {
-				@include makeAbsoluteTopDiv;
-				background-color: $homeBodyColor;
-				height: 15rem;
-				width: 15rem;
-				border-radius: 50%;
-				z-index: 0;
-				top: -25%;
-				left: -20%;
-				left: 0;
-			}
-
-			.slider-hero-image {
-				position: relative;
-				@include makeFullSizeBlock;
-				margin-top: auto;
-			}
-		}
-	}
-
-	.home-directory {
-		margin-top: 1rem;
-		@include makeFullWidthBlock;
-		padding: 2rem;
-		height: max-content;
-		background-color: $lessBrightColor;
-
-
-		.directories {
-			@include makeColFlexCenter;
-			justify-content: space-evenly;
-			align-items: center;
-			overflow: hidden;
-			width: 70vw;
-			margin: auto;
-			height: max-content;
-			position: relative;
-
-			.directory {
-				max-width: 50rem;
-				@include makeColFlexCenter;
-				overflow: hidden;
-				position: relative;
-				width: 25rem;
-				height: 15rem;
-				margin: 2rem 0;
-
-				&::before {
-					@include makeAbsoluteTopLeftDiv;
-					@include makeFullSizeBlock;
-					background-color: $lightestShadowColor;
-					z-index: 1;
-				}
-
-				img {
-					@include makeAbsoluteTopLeftDiv;
-					@include makeFullSizeBlock;
-					object-fit: cover;
-					aspect-ratio: 1/1;
-					z-index: 0;
-				}
-
-				.directory-tag-div {
-					z-index: 2;
-					position: relative;
-					width: max-content;
-					height: max-content;
-					@include makeColFlexCenter;
-					background-color: $darkAccentColor;
-					color: $lessBrightColor;
-					padding: .5rem;
-
-					.directory-title {
-						font-family: openSansCondensedLight;
-						font-size: 1.2rem;
-						width: 8rem;
-						text-align: start;
-					}
-
-					.directory-cta {
-						background-color: transparent;
-						border: none;
-						width: 6rem;
-						height: 3rem;
-						color: inherit;
-						cursor: pointer;
-						position: relative;
-
-						&:hover::before {
-							height: 0;
-							width: 0;
-						}
-
-						&::before {
-							@include makeAbsoluteTopRightDiv;
-							height: 110%;
-							width: 3rem;
-							right: -1rem;
-							top: -.5rem;
-							z-index: -1;
-							background-color: inherit;
-							backdrop-filter: blur(.2rem);
-							background-color: $darkAccentColor;
-							transition: all .3s ease-in-out;
-							transition-delay: .05s;
-						}
-
-						&::after {
-							@include makeAbsoluteTopLeftDiv;
-							@include makeFullSizeBlock;
-							transform: scale(1.09);
-							z-index: -2;
-							border: .1rem solid $lessBrightColor;
-						}
-					}
-				}
-			}
-		}
-	}
-
-	.page-line-break {
-		@include makeFullWidthBlock;
-		background-color: $lessBrightColor;
-		height: 1rem;
-
-		svg {
-			@include makeFullWidthBlock;
-
-		}
-	}
-
-	.deal-of-the-week-div {
-		padding: 4rem 0;
-		margin-top: 0;
-		@include makeFullWidthBlock;
-		@include makeRowFlexStart;
-		background-color: $lessBrightColor;
-		height: fit-content;
-		position: relative;
-		padding-bottom: 10rem;
-
-		// min-height: 60vh;
-		.DOW-side-tab {
-			@include makeColFlexCenter;
-			height: 15rem;
-			width: 10rem;
-			margin-top: 6rem;
-			border-top-right-radius: .8rem;
-			border-bottom-right-radius: .8rem;
-			background-color: $brightColor;
-			color: $homeOutlineColor;
-			box-shadow: .3rem .15rem .5rem $lightestShadowColor;
-
-			.DOW-tab-lists {
-				list-style-type: none;
-				transform: translateX(5rem);
-				@include makeColFlexStart;
-				justify-content: space-evenly;
-				align-items: flex-start;
-
-				.DOW-tab-list {
-					text-align: start;
-					width: max-content;
-					margin: .5rem 0;
-
-					span {
-						visibility: hidden;
-					}
-
-					&.active-dow-tab-list {
-						color: $darkAccentColor;
-						font-weight: 500;
-						transform: translateX(.5rem);
-
-						span {
-							visibility: visible;
-							display: inline-block;
-						}
-					}
-				}
-
-			}
-		}
-
-		.DOW-item-div {
-			width: 18rem;
-			height: 15rem;
-			margin: 6rem auto 0 25%;
-			position: relative;
-
-			.DOW-item {
-				@include makeFullSizeBlock;
-				object-fit: cover;
-				aspect-ratio: 1/1;
-			}
-
-			.DOW-item-tag {
-				@include makeAbsoluteTopRightDiv;
-				height: 6rem;
-				width: 6rem;
-				border-radius: 50%;
-				background-color: $darkAccentColor;
-				top: -1.5rem;
-				@include makeColFlexCenter;
-
-				p:first-of-type {
-					font-family: openSansLight;
-				}
-			}
-
-		}
-
-		.float-and-black {
-			@include makeAbsoluteTopRightDiv;
-			color: $darkAccentColor;
-		}
-
-		.DOW-title {
-			@extend .float-and-black;
-			color: $accentColor;
-			left: 15vw;
-			top: 3rem;
-			text-transform: uppercase;
-			width: max-content;
-			max-width: 20rem;
-
-			span {
-				width: 2rem;
 				height: 2rem;
-				@include makeColFlexCenter;
-				display: inline-flex;
-				justify-self: flex-end;
-				transform: translateY(.5rem);
-
-				svg {
-					height: 100%;
-				}
-			}
-		}
-
-		.DOW-product-title {
-			@extend .float-and-black;
-			left: 22vw;
-			top: 6rem;
-			font-size: 1.5rem;
-			font-family: nunito;
-		}
-
-		.DOW-time-div {
-			@include makeAbsoluteBottomLeftDiv;
-			color: $darkAccentColor;
-			bottom: 4rem;
-			left: 6rem;
-
-			.DOW-time-count-div {
-				font-size: 1.4rem;
-				// @include debug;
-				@include makeRowFlexCenter;
+				@include makeRowFlexStart;
 				justify-content: space-evenly;
-				width: 14rem;
+				align-items: center;
 
+				.FCI {
+					@include makeFullHeightBlock;
+					@include makeColFlexCenter;
 
-			}
-
-			.DOW-time-count-label-div {
-				width: 14rem;
-				// @include debug;
-				@include makeRowFlexCenter;
-				justify-content: flex-end;
-				font-size: .8rem;
-				span{
-					margin-right: 1rem;
-					&:last-of-type{
-						margin-right: 0;
+					svg {
+						@include makeFullHeightBlock;
+						height: 50% !important;
+						cursor: pointer;
 					}
+
+					&:nth-child(n) {
+						path {
+							fill: $homeGoldLikeColor;
+						}
+					}
+
+					&:nth-child(2n) {
+						path {
+							fill: $lessBrightColor;
+						}
+					}
+
+				}
+			}
+		}
+	}
+
+	hr.style-two {
+		@include makeFullWidthBlock;
+		border: 0;
+		height: 1px;
+		background-image: linear-gradient(to right, $darkAccentColor, $lessBrightColor, $darkAccentColor);
+	}
+	.footer-bottom{
+		height: 12rem;
+		width: 80%;
+		@include makeColFlexStart;
+		margin-top: 4rem;
+		.FB-container{
+			// min-width: 80%;
+			text-align: center;
+			width: max-content;
+		}
+		.copyright{
+			@extend .FB-container;
+			font-size: 70%;
+			color: $homeGoldLikeColor;
+			margin-bottom: 1rem;
+		}
+		.footer-credit-div{
+			@extend .FB-container;
+			@include makeColFlexCenter;
+			width: fit-content;
+			align-items: flex-start;
+			p{
+				@extend .title-text;
+				@include makeRowFlexStart;
+				justify-content: space-evenly;
+				width: max-content;
+				text-align: start;
+				span>a{
+					font-family: openSansLight;
+					font-weight: 300;
+					font-size: .7rem;
+				}
+
+				span:first-of-type{
+					margin-left: 2rem;
+					margin-left: 1rem;
+				}
+				span:nth-of-type(n+1){
+					margin-left: 1rem;
 				}
 
 			}
+		}
 
-			
-		}
-		.DOW-cta{
-			all: unset;
-			@include makeColFlexCenter;
-			@include makeAbsoluteBottomLeftDiv;
-			right: auto;
-			left: 25%;
-			bottom: -4rem;
-			width: 10rem;
-			height: 2.5rem;
-			background-color: $darkAccentColor;
-			color: $brightColor;
-			font-weight: lighter;
-			font-family: openSansLight;
-			font-size: .8rem;
-			
-		}
 	}
 }
