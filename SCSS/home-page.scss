@@ -263,7 +263,7 @@
 		height: max-content;
 		min-height: 90vh;
 		background-color: $lessBrightColor;
-		
+
 		.directories {
 			@include makeColFlexStart;
 			justify-content: space-evenly;
@@ -272,7 +272,7 @@
 			margin: auto;
 			height: max-content;
 			min-height: max-content;
-			
+
 			.directory {
 				max-width: 50rem;
 				@include makeColFlexCenter;
@@ -282,22 +282,24 @@
 				height: 15rem;
 				margin: 2rem 0;
 				align-items: flex-end;
-				
+
 				&::before {
 					@include makeAbsoluteTopLeftDiv;
 					@include makeFullSizeBlock;
 					background-color: $lightestShadowColor;
 					z-index: 1;
+					backdrop-filter: blur(2px);
 				}
-				
+
 				img {
 					@include makeAbsoluteTopLeftDiv;
 					@include makeFullSizeBlock;
 					object-fit: cover;
 					aspect-ratio: 1/1;
 					z-index: 0;
+					filter: grayscale(.5);
 				}
-				
+
 				.directory-tag-div {
 					position: absolute;
 					right: 10%;
@@ -315,7 +317,7 @@
 						width: 8rem;
 						text-align: start;
 					}
-					
+
 					.directory-cta {
 						background-color: transparent;
 						border: none;
@@ -325,11 +327,12 @@
 						cursor: pointer;
 						position: relative;
 						overflow: visible;
+
 						&:hover::before {
 							height: 0;
 							width: 0;
 						}
-						
+
 						&::before {
 							@include makeAbsoluteTopRightDiv;
 							height: 110%;
@@ -535,6 +538,166 @@
 			font-weight: lighter;
 			font-family: openSansLight;
 			font-size: .8rem;
+
+		}
+	}
+
+	.news-letter-div {
+		@include makeFullWidthBlock;
+		height: max-content;
+		background-color: $lessBrightColor;
+		@include makeColFlexStart;
+		overflow: visible;
+		color: $darkAccentColor;
+		position: relative;
+
+		.NLD-section-title {
+			@include makeRowFlexCenter;
+			@include makeFullWidthBlock;
+			border-bottom-left-radius: 5rem;
+			background-color: $darkAccentColor;
+			height: 2rem;
+			align-items: center !important;
+			overflow: visible;
+			margin-bottom: 1rem;
+
+			p {
+				width: max-content;
+				margin: auto;
+				position: relative;
+				overflow: visible;
+				color: $homeGoldLikeColor;
+				font-family: openSansLight;
+				font-weight: 300;
+
+				@include makeFullHeightBlock;
+				@include makeColFlexCenter;
+
+				&::before {
+					@include makeAbsoluteTopLeftDiv;
+					@include makeFullSizeBlock;
+					transform: scale(1.5);
+					border: .1rem solid $darkAccentColor;
+				}
+			}
+
+		}
+
+		.NLD-title {
+			width: 70%;
+			height: max-content;
+			color: $accentColor;
+			font-size: 1.2rem;
+			text-transform: capitalize;
+			margin-top: 4rem;
+			font-weight: 600;
+			text-align: center;
+		}
+
+		form {
+			width: max-content;
+			margin: 3rem auto;
+			position: relative;
+			height: max-content;
+			@include makeRowFlexStart;
+
+			input {
+				all: unset;
+				height: 2rem;
+				padding-bottom: 1rem;
+				background-color: $brightColor;
+				caret-color: $homeGoldLikeColor;
+				padding-left: .5rem;
+				margin-left: .5rem;
+
+				&:last-of-type {
+					position: relative;
+				}
+
+				&::placeholder {
+					font-size: .8rem;
+					color: $homeOutlineColor;
+					padding-left: .5rem;
+				}
+
+				&:focus {
+					box-shadow: .1rem .2rem 1rem $lightestShadowColor;
+				}
+			}
+
+			.send-news-letter-cta {
+				width: 3.5rem;
+				@include makeColFlexCenter;
+				display: inline-flex;
+				height: 3rem;
+				transform-origin: bottom;
+				background-color: $darkAccentColor;
+
+				svg {
+					@include makeFullHeightBlock;
+
+					path {
+						fill: $brightColor;
+					}
+				}
+
+			}
+		}
+
+		.newsletter-contact-div {
+			width: 75%;
+			height: fit-content;
+			max-height: 6rem;
+			margin: 0 auto;
+			margin-bottom: 4rem;
+			@include makeRowFlexStart;
+			flex-wrap: wrap;
+			flex-basis: 7rem;
+
+			div {
+				margin-right: 2.5rem;
+				width: max-content;
+				@include makeRowFlexStart;
+				color: $homeFadingTextColor;
+				text-transform: capitalize;
+				font-family: nunito;
+
+				p {
+					margin-right: 1rem;
+					font-weight: bolder;
+				}
+
+				span {
+					width: max-content;
+				}
+			}
+		}
+
+		@mixin floater {
+			width: 15vmax;
+			height: 15vmax;
+			border-radius: 50%;
+			box-shadow: .1rem .1rem 2rem $lightestShadowColor;
+			z-index: 0;
+			background-position: fixed;
+		}
+
+		&::before {
+			@include makeAbsoluteTopRightDiv;
+			right: 15%;
+			top: 10%;
+			@include floater;
+		}
+
+		&::after {
+			@include makeAbsoluteBottomLeftDiv;
+			bottom: 15%;
+			left: 15%;
+			@include floater;
+			transform: scale(1.5);
+			@media screen and (max-width: 800px) {
+				display: none;
+			}
 
 		}
 	}
