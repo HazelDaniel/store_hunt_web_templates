@@ -237,15 +237,17 @@
 			overflow: visible;
 
 			.slider-hero-image-circle {
-				@include makeAbsoluteTopDiv;
+				@include makeAbsoluteBottomLeftDiv;
 				background-color: $homeBodyColor;
-				height: 15rem;
-				width: 15rem;
+				height: 35vw;
+				width: 35vw;
+				max-width: 30rem;
+				max-height: 30rem;
 				border-radius: 50%;
 				z-index: 0;
-				top: -25%;
-				left: -20%;
-				left: 0;
+				bottom: 20%;
+				left: -10%;
+				// left: 0;
 			}
 
 			.slider-hero-image {
@@ -257,7 +259,7 @@
 	}
 
 	.home-directory {
-		margin-top: 1rem;
+		// margin-top: 1rem;
 		@include makeFullWidthBlock;
 		@include makeColFlexStart;
 		height: max-content;
@@ -265,43 +267,21 @@
 		background-color: $lessBrightColor;
 
 		.directories {
-			@include makeColFlexStart;
-			justify-content: space-evenly;
-			align-items: center;
-			width: 80%;
-			margin: auto;
-			height: max-content;
-			min-height: max-content;
+			max-width: 1800px;
+			padding: 3rem 0;
 
 			.directory {
-				max-width: 50rem;
-				@include makeColFlexCenter;
-				position: relative;
-				width: 25rem;
-				max-width: 80%;
-				height: 15rem;
-				margin: 2rem 0;
-				align-items: flex-end;
-
 				&::before {
 					@include makeAbsoluteTopLeftDiv;
 					@include makeFullSizeBlock;
-					background-color: $lightestShadowColor;
+					background-color: #03030246;
 					z-index: 1;
 					backdrop-filter: blur(2px);
 				}
 
-				img {
-					@include makeAbsoluteTopLeftDiv;
-					@include makeFullSizeBlock;
-					object-fit: cover;
-					aspect-ratio: 1/1;
-					z-index: 0;
-					filter: grayscale(.5);
-				}
-
 				.directory-tag-div {
 					position: absolute;
+					top: 10%;
 					right: 10%;
 					width: max-content;
 					height: max-content;
@@ -358,6 +338,7 @@
 				}
 			}
 		}
+
 	}
 
 	.page-line-break {
@@ -560,7 +541,7 @@
 			align-items: center !important;
 			overflow: visible;
 			margin-bottom: 1rem;
-			
+
 
 			p {
 				width: max-content;
@@ -696,10 +677,157 @@
 			left: 15%;
 			@include floater;
 			transform: scale(1.5);
+
 			@media screen and (max-width: 800px) {
 				display: none;
 			}
 
+		}
+	}
+}
+
+@media screen and (min-width:641px) {
+
+	.directories {
+		// larger screens
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+		grid-auto-flow: row;
+		grid-gap: .1rem;
+		// @include debug;
+		width: 95vw;
+		height: max-content;
+		margin: auto;
+
+		.directory {
+			// larger-screens
+			position: relative;
+			height: 20rem;
+			background: url("../IMAGES/e-commerce-entry-bg-2.jpg") no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+			transition: background .3s ease-in-out;
+			&>img{
+				display: none;
+			}
+			&:hover{
+				background: $darkAccentColor;
+			}
+
+			&::before{
+				backdrop-filter: blur(5px);
+			}
+
+			&.no-content {
+				@mixin imageAdjust {
+					background-repeat: no-repeat;
+					background-size: cover;
+					padding: 2rem;
+
+					&::before {
+						display: none;
+					}
+				}
+
+				&:nth-of-type(1) {
+					background: url("../IMAGES/diagonal-stoke-bg-bottom.svg");
+					@include imageAdjust;
+					background-position: 100% 100%;
+
+				}
+
+				&:last-of-type {
+					background: url("../IMAGES/diagonal-stoke-bg-top.svg");
+					@include imageAdjust;
+				}
+
+			}
+		}
+	}
+}
+
+@media screen and (max-width:640px) {
+	.directories {
+		@include makeColFlexStart;
+		justify-content: space-evenly;
+		align-items: center;
+		width: 80%;
+		margin: auto;
+		height: max-content;
+		min-height: max-content;
+		position: relative;
+
+
+
+
+		.directory {
+			max-width: 50rem;
+			@include makeColFlexCenter;
+			position: relative;
+			width: 25rem;
+			max-width: 80%;
+			height: 15rem;
+			margin: 2rem 0;
+			align-items: flex-end;
+
+			&.no-content {
+				display: none;
+			}
+
+			&::before {
+				@include makeAbsoluteTopLeftDiv;
+				@include makeFullSizeBlock;
+				background-color: $lightestShadowColor;
+				z-index: 1;
+				backdrop-filter: blur(2px);
+			}
+
+			img {
+				@include makeAbsoluteTopLeftDiv;
+				@include makeFullSizeBlock;
+				object-fit: cover;
+				aspect-ratio: 1/1;
+				z-index: 0;
+				filter: grayscale(.2);
+				background: url("../IMAGES/amsterdam-big.jpg") !important;
+			}
+
+
+		}
+	}
+}
+
+@media screen and (min-width: 1353px) and (max-width: 1690px) {
+	.directory {
+		&:nth-of-type(7) {
+			order: 8;
+		}
+
+		&.no-content {
+			&:last-of-type {
+				order: 7;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 676px) and (max-width: 1013px) {
+	.directory {
+		&:nth-of-type(7) {
+			order: 8;
+		}
+
+		&.no-content {
+			&:last-of-type {
+				order: 7;
+			}
+		}
+	}
+}
+@media screen and (min-width: 641px) and (max-width: 676px) {
+	.directory {
+		&.no-content {
+			display: none;
 		}
 	}
 }

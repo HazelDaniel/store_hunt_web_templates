@@ -78,6 +78,7 @@ body {
 		@include makeRowFlex;
 		justify-content: space-between;
 		padding-right: 1rem;
+		overflow: visible;
 
 		span {
 			height: 2rem;
@@ -132,6 +133,28 @@ body {
 
 		span {
 			z-index: -1;
+		}
+	}
+	.desktop-nav-tab{
+		border: unset;
+		margin-right: 5vw;
+		background-color: unset;
+		width: fit-content;
+		max-width: 30%;
+		margin-left: auto;
+		height: 80%;
+		.desktop-nav-links{
+			@include makeFullSizeBlock;
+			@include makeRowFlexCenter;
+			justify-content: space-evenly;
+			.desktop-nav-link{
+				width: 10rem;
+				a{
+					font-family: openSansLight;
+						font-weight: 300;
+						color: $lessBrightColor;
+				}
+			}
 		}
 	}
 
@@ -313,21 +336,39 @@ body {
 
 }
 .desktop-side-tab {
+	@include makeColFlexStart;
 	position: fixed;
 	right: 0;
 	width: 3rem;
-	height: 65vh;
-	top: 25%;
-	bottom: 25%;
-	@include debug;
+	height: 70vh;
+	top: 15%;
+	bottom: 15%;
 	z-index: 6;
-	@include makeColFlexStart;
 	border-top-left-radius: 1.5rem;
 	border-bottom-left-radius: 1.5rem;
 	align-items: center;
 	padding: 2rem 0.5rem;
+	background-color: $brightColor;
+	box-shadow: -.05rem -.1rem .5rem $DirectoryBlurColorDark;
+	
+	&>div{
+		@include makeFullWidthBlock;
+		@include makeColFlexCenter;
+		align-items: center;
+		margin: auto;
+		svg{
+			@include makeFullWidthBlock;
+			fill: $accentColor;
+			transform: scale(.9);
+			cursor: pointer;
+			path{
+				fill: $accentColor;
+			}
+		}
 
-	display: none;
+
+	}
+
 }
 
 .wrapper {
@@ -540,5 +581,24 @@ footer {
 			}
 		}
 
+	}
+}
+
+@media screen and (min-width:641px) {
+	.modal-overlay{
+		display: none !important;
+	}
+	.upper-pane{
+		.nav-tab-toggler{
+			display: none !important;
+		}
+	}
+}
+@media screen and (max-width:640px) {
+	.desktop-side-tab{
+		display: none !important;
+	}
+	.desktop-nav-tab{
+		display: none !important;
 	}
 }
