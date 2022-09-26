@@ -87,6 +87,15 @@ body {
     justify-content: center;
     margin-right: auto;
     margin-left: 1rem; }
+    .upper-pane .logo-div a {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      display: block;
+      height: 100%;
+      display: block;
+      width: 100%; }
     .upper-pane .logo-div svg {
       height: 80%; }
   .upper-pane .search-box {

@@ -65,6 +65,12 @@ body {
 		@include makeColFlexCenter;
 		margin-right: auto;
 		margin-left: 1rem;
+		position: relative;
+		a{
+			@include makeAbsoluteTopLeftDiv;
+			@include makeFullSizeBlock;
+
+		}
 
 		svg {
 			height: 80%;

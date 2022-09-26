@@ -1,0 +1,236 @@
+@import "_default.scss";
+
+.shop-wrapper {
+	background-color: $lessBrightColor;
+	
+	* {
+			overflow: visible;
+		}
+
+	.shop-top-pane {
+		@include makeFullWidthBlock;
+		min-height: 15vh;
+		background-color: $brightColor;
+		height: 10rem;
+		@include makeRowFlexStart;
+		justify-content: space-between;
+		color: $darkAccentColor;
+		padding: 0 1rem;
+		// padding-top: 30%;
+		position: relative;
+		overflow: hidden !important;
+
+		&::before {
+			@include makeAbsoluteTopLeftDiv;
+			@include makeFullWidthBlock;
+			height: 30%;
+			background-color: $lessBrightColor;
+		}
+
+		&>div {
+			margin-top: 2rem;
+		}
+
+		.shop-nav-label {
+			margin-left: 1rem;
+			width: max-content;
+			min-width: 8rem;
+			@include makeColFlexStart;
+			align-items: flex-start;
+
+			.shop-nav-label-title {
+				font-family: nunito;
+				font-size: 1.5rem;
+				text-transform: capitalize;
+				margin-bottom: .5rem;
+			}
+
+			.shop-nav-label-links-div {
+				width: max-content;
+
+				span {
+					font-family: openSansLight;
+					font-size: .9rem;
+				}
+
+				.shop-nav-label-divide {
+					height: .7rem;
+					overflow: hidden;
+					@include makeRowFlexCenter;
+					align-items: center;
+					display: inline-flex;
+
+					svg {
+						height: 100%;
+					}
+				}
+
+				.shop-nav-label-link {
+					font-weight: 500;
+					font-weight: bolder !important;
+				}
+
+			}
+		}
+
+		.shop-cart-total-div {
+			margin-right: 4vw;
+			@include makeRowFlexStart;
+
+			.shop-bag-icon-div {
+				height: 2rem;
+				@include makeColFlexCenter;
+				align-items: center;
+				position: relative;
+
+				svg {
+					height: 80%;
+				}
+
+				span {
+					@include makeAbsoluteTopDiv;
+					top: 35%;
+					font-size: 50%;
+					text-align: center;
+
+				}
+			}
+
+			.shop-cart-total-price {
+				font-size: .8rem;
+				margin: auto;
+				text-align: center;
+			}
+		}
+
+	}
+
+	.shop-top-div {
+		@include makeFullWidthBlock;
+		background-color: $brightColor;
+		color: $darkAccentColor;
+		padding: 0 1rem;
+		@include makeRowFlexStart;
+		justify-content: space-between;
+		align-items: flex-end;
+		height: max-content;
+		padding-bottom: .5rem;
+
+		* {
+			font-family: latoMedium !important;
+		}
+
+		.shop-results-count-text {
+			margin-left: 1rem;
+			width: max-content;
+			min-width: 40%;
+			text-align: start;
+		}
+
+		.shop-filter-div {
+			min-width: 40%;
+			@include makeRowFlexEnd;
+			overflow-y: visible !important;
+			align-items: flex-end;
+
+			span {
+				margin-right: 1rem;
+				padding-bottom: .2rem;
+			}
+
+
+
+		}
+	}
+
+	.shop-body {
+		*{
+			color: $shopSideTabListColor;
+		}
+		
+		.shop-side-pane-mobile{
+			display: none;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+						.custom-select {
+							margin-right: 3.5vw;
+							position: relative;
+							font-family: Arial;
+							// width: max-content;
+							width: 25vw;
+							max-width: 20rem;
+							select {
+								display: none;
+							}
+							@include makeColFlexCenter;
+						}
+						.select-selected {
+							@include makeFullWidthBlock;
+							position: relative;
+							max-height: 2rem !important;
+							padding-right: 2rem;
+							text-align: center;
+							color: $darkAccentColor !important;
+							@include makeRowFlexCenter;
+						}
+						/* Style the arrow inside the select element: */
+						.select-selected:after {
+							@include makeAbsoluteTopRightDiv;
+							top: 25%;
+							right: 2%;
+							width: 0;
+							height: 0;
+							border: 6px solid transparent;
+							border-color: $accentColor transparent transparent transparent;
+						}
+						
+						/* Point the arrow upwards when the select box is open (active): */
+						.select-selected.select-arrow-active:after {
+							border-color: transparent transparent $accentColor transparent;
+							transform: translateY(-1);
+							transform-origin: top;
+						}
+			
+						/* style the items (options), including the selected item: */
+						.select-items div,
+						.select-selected {
+							text-align: start;
+							border: 1px solid transparent;
+							border-color: transparent transparent $accentColor transparent;
+							cursor: pointer;
+						}
+			
+						/* Style items (options): */
+						.select-items {
+							position: absolute;
+							background-color: $accentColor;
+							top: 110%;
+							left: 0;
+							right: 0;
+							z-index: 5;
+							div{
+								text-align: center;
+								padding: .5rem;
+							}
+						}
+			
+						/* Hide the items when the select box is closed: */
+						.select-hide {
+							display: none;
+
+						}
+			
+						.select-items div:hover,
+						.same-as-selected {
+							background-color: #0000001a;
+						}
