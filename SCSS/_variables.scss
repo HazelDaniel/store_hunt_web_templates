@@ -17,11 +17,14 @@
 	--lessBrightColor: #F3F3EE;
 	--darkAccentColor: #08090A;
 	--lightestShadowColor: #00000018;
+	--accentColorTrans: #bb9d8838;
 
 
 	// SHOP PAGE
 	--shopSideTabListColor: #626262;
+	--shopSideTabTitleColor: #000000a2;
 	--redTextColor: #FC2222;
+	--shopSizeChipColor: #967E6D;
 
 
 	// SINGLE PRODUCTS PAGE
@@ -63,6 +66,9 @@ $homeOutlineColorTrans: var(--homeOutlineColorTrans);
 $lightestShadowColor: var(--lightestShadowColor);
 $shopSideTabListColor: var(--shopSideTabListColor);
 $redTextColor: var(--redTextColor);
+$shopSideTabTitleColor: var(--shopSideTabTitleColor);
+$shopSizeChipColor: var(--shopSizeChipColor);
+$accentColorTrans: var(--accentColorTrans);
 
 
 // HATS PAGE

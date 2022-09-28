@@ -116,7 +116,6 @@
 		align-items: flex-end;
 		height: max-content;
 		padding-bottom: .5rem;
-		@include debug;
 
 		* {
 			font-family: latoMedium !important;
@@ -213,7 +212,7 @@
 							height: 1.3rem;
 							text-align: center;
 							font-size: .8rem;
-							font-family: manjariRegular;
+							font-family: manjariMedium;
 							transform: translateY(25%);
 							color: $redTextColor;
 						}
@@ -437,13 +436,286 @@
 
 
 
-		
+
 	}
+
 	.shop-side-pane-mobile {
 		@include makeAbsoluteTopLeftDiv;
 		@include makeFullHeightBlock;
-		@include debug;
+		@include makeColFlexCenter;
+		align-items: center;
+		z-index: 4;
+		background-color: $lessBrightColor;
 		width: 40%;
+		max-width: 25rem !important;
+		min-width: 20rem;
+		padding: 1.5rem 1rem 1rem 0;
+		box-shadow: .75rem 0 .8rem $homeOutlineColor;
+		overflow: visible;
+
+		.SSPM-toggler {
+			@include makeColFlexCenter;
+			@include makeAbsoluteTopRightDiv;
+			width: 2rem;
+			height: 8rem;
+			right: -10%;
+			top: 35%;
+			background-color: $brightColor;
+			border-top-right-radius: .5rem;
+			border-bottom-right-radius: .5rem;
+			box-shadow: .1rem .2rem .8rem $homeOutlineColor;
+
+			svg {
+				transform: scaleY(.8);
+
+				path {
+					fill: $darkAccentColor;
+				}
+			}
+		}
+
+
+		.SSPM-container {
+			@include makeFullSizeBlock;
+			@include makeColFlexStart;
+			align-items: flex-start;
+			border: .2rem solid $brightColor;
+			border-left: none;
+			padding: 2rem;
+			padding-right: 1rem;
+			position: relative;
+			overflow: scroll;
+			@include removeScrollBar;
+			overflow-x: visible;
+
+
+
+			.search-box {
+				@include makeFullWidthBlock;
+				@include makeColFlexStart;
+				align-items: center;
+				max-height: 3rem !important;
+				overflow: hidden;
+				position: relative;
+				justify-content: space-between;
+				padding: .5rem;
+				padding-right: 1rem;
+				overflow: visible;
+				background-color: $brightColor;
+				box-shadow: .1rem .2rem .3rem $homeOutlineColor;
+
+				span {
+					@include makeAbsoluteTopRightDiv;
+					height: 2rem;
+					overflow: visible;
+					top: 25%;
+					right: 3%;
+					margin-right: .3rem;
+
+					svg {
+						height: 1.2rem;
+						transform: scaleX(-1);
+
+						path {
+							fill: $accentColor;
+						}
+					}
+
+				}
+
+				input {
+					padding: 0 1rem;
+					width: 75%;
+					all: unset;
+					caret-color: $homeGoldLikeColor;
+					overflow: hidden;
+
+					&::placeholder {
+						transform: scale(.8);
+						font-size: .7;
+						height: max-content;
+						text-align: start;
+						color: $homeOutlineColor;
+					}
+
+					&::-webkit-search-cancel-button {
+						-webkit-appearance: none;
+					}
+				}
+
+			}
+
+			.SSPM-section {
+				position: relative;
+				@include makeFullWidthBlock;
+				@include makeColFlexStart;
+				align-items: flex-start;
+				height: fit-content;
+				margin-bottom: 2rem;
+
+				// @include debug;
+				ul {
+					list-style-type: none;
+					@include makeFullWidthBlock;
+					@include makeColFlexStart;
+					align-items: flex-start;
+					position: relative;
+					padding-bottom: 1rem;
+					margin-top: 1rem;
+
+					li {
+						cursor: pointer;
+					}
+
+					&::after {
+						@include makeAbsoluteBottomDiv;
+						background-color: $homeOutlineColor;
+						transform: translateX(50%);
+						width: 80%;
+						height: .1rem;
+						right: 50%;
+					}
+				}
+
+				&.first {
+					margin-top: 3rem;
+				}
+
+				&:last-of-type {
+					ul {
+						&::after {
+							display: none;
+						}
+					}
+				}
+
+				.SSPM-accordion {
+					height: 2.5rem;
+					@include makeFullWidthBlock;
+					@include makeRowFlexStart;
+					justify-content: space-between;
+					overflow: hidden;
+
+					.SSPM-section-title {
+						color: $shopSideTabTitleColor;
+						font-family: openSansMedium;
+						font-weight: 600;
+					}
+
+					.SSPM-section-toggle {
+						@include makeFullHeightBlock;
+						@include makeColFlexCenter;
+
+						svg {
+							height: 80%;
+							margin: auto 0;
+							transform: scale(.8) rotateZ(90deg);
+
+							path {
+								fill: $shopSideTabTitleColor;
+							}
+						}
+					}
+
+				}
+
+				.SSPM-section-list {
+					@mixin makeVisualList {
+						@include makeRowFlexStart;
+						flex-wrap: row;
+						flex-basis: 2rem;
+
+					}
+
+					li {
+						margin: .5rem 0;
+						font-size: .8rem;
+						@include makeFullWidthBlock;
+					}
+
+					&.size-list {
+						@include makeVisualList;
+
+						li {
+							width: max-content;
+							min-width: 3rem;
+							height: 2rem;
+							@include makeRowFlexCenter;
+							display: inline-flex !important;
+							margin: 0 .5rem;
+							border: .1rem solid $shopSizeChipColor;
+							color: $shopSizeChipColor;
+							transition: all .3s ease-in-out;
+
+							&:first-of-type {
+								margin-right: 0;
+							}
+
+							&:hover {
+								background-color: $darkAccentColor;
+								color: $brightColor;
+							}
+
+							&.active {
+								background-color: $darkAccentColor;
+								color: $brightColor;
+								border: none;
+
+							}
+						}
+					}
+
+
+					&.colors-list {
+						@include makeVisualList;
+
+						li {
+							margin: 0 1rem;
+							width: 2rem;
+							height: 2rem;
+							border-radius: 50%;
+							border: .1rem solid $homeOutlineColor;
+
+							&#C-2BCBD6 {
+								background-color: #2BCBD6;
+							}
+
+							&#C-4878FC {
+								background-color: #4878FC;
+							}
+
+							&#C-CD1613 {
+								background-color: #CD1613;
+							}
+							&#C-000000 {
+								background-color: #000000;
+							}
+						}
+					}
+
+					&.tags-list{
+						all: unset;
+						@include makeFullWidthBlock;
+						overflow: hidden;
+						height: max-content;
+						flex: row wrap;
+						li{
+							
+							width: 40%;
+							min-width: 5rem;
+							height: 1.5rem;
+							margin: .5rem;
+							@include makeColFlexCenter;
+							display: inline-flex;
+							background-color: $accentColorTrans;
+							color: $brightColor;
+							border-radius: .3rem;
+						}
+					}
+				}
+			}
+		}
+
 	}
 }
 
