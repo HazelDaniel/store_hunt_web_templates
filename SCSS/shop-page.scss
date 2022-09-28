@@ -8,103 +8,7 @@
 		overflow: visible;
 	}
 
-	.shop-top-pane {
-		@include makeFullWidthBlock;
-		min-height: 15vh;
-		background-color: $brightColor;
-		height: 10rem;
-		@include makeRowFlexStart;
-		justify-content: space-between;
-		color: $darkAccentColor;
-		padding: 0 1rem;
-		// padding-top: 30%;
-		position: relative;
-		overflow: hidden !important;
-
-		&::before {
-			@include makeAbsoluteTopLeftDiv;
-			@include makeFullWidthBlock;
-			height: 30%;
-			background-color: $lessBrightColor;
-		}
-
-		&>div {
-			margin-top: 2rem;
-		}
-
-		.shop-nav-label {
-			margin-left: 1rem;
-			width: max-content;
-			min-width: 8rem;
-			@include makeColFlexStart;
-			align-items: flex-start;
-
-			.shop-nav-label-title {
-				font-family: nunito;
-				font-size: 1.5rem;
-				text-transform: capitalize;
-				margin-bottom: .5rem;
-			}
-
-			.shop-nav-label-links-div {
-				width: max-content;
-
-				span {
-					font-family: openSansLight;
-					font-size: .9rem;
-				}
-
-				.shop-nav-label-divide {
-					height: .7rem;
-					overflow: hidden;
-					@include makeRowFlexCenter;
-					align-items: center;
-					display: inline-flex;
-
-					svg {
-						height: 100%;
-					}
-				}
-
-				.shop-nav-label-link {
-					font-weight: 500;
-					font-weight: bolder !important;
-				}
-
-			}
-		}
-
-		.shop-cart-total-div {
-			margin-right: 4vw;
-			@include makeRowFlexStart;
-
-			.shop-bag-icon-div {
-				height: 2rem;
-				@include makeColFlexCenter;
-				align-items: center;
-				position: relative;
-
-				svg {
-					height: 80%;
-				}
-
-				span {
-					@include makeAbsoluteTopDiv;
-					top: 35%;
-					font-size: 50%;
-					text-align: center;
-
-				}
-			}
-
-			.shop-cart-total-price {
-				font-size: .8rem;
-				margin: auto;
-				text-align: center;
-			}
-		}
-
-	}
+	
 
 	.shop-top-div {
 		@include makeFullWidthBlock;
@@ -704,7 +608,8 @@
 						svg {
 							height: 80%;
 							margin: auto 0;
-							transform: scale(.8) rotateZ(90deg);
+							transform: scale(.6) rotateZ(90deg);
+							cursor: pointer;
 
 							path {
 								fill: $shopSideTabTitleColor;
@@ -813,7 +718,6 @@
 		}
 
 	}
-
 }
 
 

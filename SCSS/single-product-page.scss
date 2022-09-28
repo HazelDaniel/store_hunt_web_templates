@@ -1,0 +1,117 @@
+@import "_default.scss";
+
+.single-product-wrapper {
+	* {
+		overflow: hidden;
+	}
+}
+
+.product-main-container {
+	@include makeFullWidthBlock;
+	@include makeColFlexStart;
+	height: max-content;
+	min-height: 100vh;
+
+	.product-top-wrapper {
+		@include makeFullWidthBlock;
+		@include makeColFlexCenter;
+
+		@media screen and (min-width: 641px) {
+			@include makeRowFlexCenter;
+		}
+
+		height: max-content;
+		background-color: $lessBrightColor;
+		position: relative;
+		height: 55rem;
+		padding-bottom: 20%;
+
+		.product-wrapper-decorator {
+			@include makeAbsoluteTopDiv;
+			width: 0;
+			height: 0;
+			border-bottom: 55rem solid $darkAccentColor;
+			border-right: 101vw solid transparent;
+
+		}
+
+		.product-previews-div {
+			order: 2;
+			width: 78%;
+			position: inherit;
+			@include makeRowFlexStart;
+			align-items: center;
+			overflow: auto !important;
+			@include removeScrollBar;
+
+			@media screen and (min-width: 641px) {
+				padding-top: 10%;
+				padding-bottom: 10%;
+				width: 30%;
+				max-width: 8rem;
+				height: 80%;
+				@include makeColFlexStart;
+				order: 0;
+				margin-left: auto;
+			}
+
+			.product-preview-div {
+				width: 25%;
+				height: 10rem;
+				margin: 0 .5rem;
+				min-width: 8rem;
+				border-radius: .2rem;
+				cursor: pointer;
+				@media screen and (min-width: 641px) {
+					@include makeFullWidthBlock;
+					margin: 1rem 0;
+					min-height: 10rem !important;
+				}
+				img {
+					height: 100%;
+					@include makeFullSizeBlock;
+					object-fit: cover;
+					aspect-ratio: 1 / 1;
+					box-shadow: inset .2rem .3rem .5rem $homeOutlineColor;
+				}
+				
+
+				
+			}
+
+
+		}
+
+		.product-view-div {
+			@include makeFullWidthBlock;
+
+			@media screen and (min-width: 641px) {
+				width: 70%;
+			}
+
+			position: inherit;
+			height: 70%;
+			margin: auto;
+			@include makeColFlexEnd;
+			align-items: center;
+
+			img {
+				filter: drop-shadow(.2rem .2rem .5rem $darkAccentColor);
+				height: 80%;
+			}
+
+		}
+	}
+
+	.product-bottom-wrapper {
+		@include makeFullWidthBlock;
+		@include makeColFlexStart;
+		align-items: center;
+		height: max-content;
+		min-height: 70vh;
+		background-color: $darkAccentColor;
+		z-index: 3;
+
+
+	}
+}

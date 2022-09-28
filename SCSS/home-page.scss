@@ -265,6 +265,7 @@
 		height: max-content;
 		min-height: 90vh;
 		background-color: $lessBrightColor;
+		overflow: hidden !important;
 
 		.directories {
 			max-width: 1800px;

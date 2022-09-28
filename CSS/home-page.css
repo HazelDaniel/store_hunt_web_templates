@@ -15,7 +15,12 @@
   --brightColor: #FFFFFF;
   --lessBrightColor: #F3F3EE;
   --darkAccentColor: #08090A;
-  --lightestShadowColor: #00000018; }
+  --lightestShadowColor: #00000018;
+  --accentColorTrans: #bb9d8838;
+  --shopSideTabListColor: #626262;
+  --shopSideTabTitleColor: #000000a2;
+  --redTextColor: #FC2222;
+  --shopSizeChipColor: #967E6D; }
 
 @font-face {
   font-family: nunito;
@@ -29,6 +34,18 @@
 @font-face {
   font-family: openSansMedium;
   src: url("../FONTS/Open_Sans/static/OpenSans/OpenSans-Medium.ttf"); }
+@font-face {
+  font-family: latoMedium;
+  src: url("../FONTS/LATO/Lato-Regular.ttf"); }
+@font-face {
+  font-family: latoLight;
+  src: url("../FONTS/LATO/Lato-Light.ttf"); }
+@font-face {
+  font-family: manjariMedium;
+  src: url("../FONTS/Manjari/Manjari-Regular.ttf"); }
+@font-face {
+  font-family: robotoMedium;
+  src: url("../FONTS/Roboto/Roboto-Regular.ttf"); }
 *,
 *::before,
 *::after {
@@ -86,7 +103,8 @@ body {
     flex-direction: column;
     justify-content: center;
     margin-right: auto;
-    margin-left: 1rem; }
+    margin-left: 1rem;
+    position: relative; }
     .upper-pane .logo-div a {
       position: absolute;
       content: "";
@@ -550,6 +568,93 @@ footer {
 
   .desktop-nav-tab {
     display: none !important; } }
+.shop-top-pane {
+  display: block;
+  width: 100%;
+  min-height: 15vh;
+  background-color: var(--brightColor);
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  justify-content: space-between;
+  color: var(--darkAccentColor);
+  padding: 0 1rem;
+  position: relative;
+  overflow: hidden !important; }
+  .shop-top-pane::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 30%;
+    background-color: var(--lessBrightColor); }
+  .shop-top-pane > div {
+    margin-top: 2rem; }
+  .shop-top-pane .shop-nav-label {
+    margin-left: 1rem;
+    width: max-content;
+    min-width: 8rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start; }
+    .shop-top-pane .shop-nav-label .shop-nav-label-title {
+      font-family: nunito;
+      font-size: 1.5rem;
+      text-transform: capitalize;
+      margin-bottom: .5rem; }
+    .shop-top-pane .shop-nav-label .shop-nav-label-links-div {
+      width: max-content; }
+      .shop-top-pane .shop-nav-label .shop-nav-label-links-div span {
+        font-family: openSansLight;
+        font-size: .9rem; }
+      .shop-top-pane .shop-nav-label .shop-nav-label-links-div .shop-nav-label-divide {
+        height: .7rem;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        display: inline-flex; }
+        .shop-top-pane .shop-nav-label .shop-nav-label-links-div .shop-nav-label-divide svg {
+          height: 100%; }
+      .shop-top-pane .shop-nav-label .shop-nav-label-links-div .shop-nav-label-link {
+        font-weight: 500;
+        font-weight: bolder !important; }
+  .shop-top-pane .shop-cart-total-div {
+    margin-right: 4vw;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start; }
+    .shop-top-pane .shop-cart-total-div .shop-bag-icon-div {
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative; }
+      .shop-top-pane .shop-cart-total-div .shop-bag-icon-div svg {
+        height: 80%; }
+      .shop-top-pane .shop-cart-total-div .shop-bag-icon-div span {
+        position: absolute;
+        content: "";
+        top: 0;
+        top: 35%;
+        font-size: 50%;
+        text-align: center; }
+    .shop-top-pane .shop-cart-total-div .shop-cart-total-price {
+      font-size: .8rem;
+      margin: auto;
+      text-align: center; }
+
 .home-wrapper {
   background-color: var(--homeBodyColor);
   height: max-content; }
@@ -743,7 +848,8 @@ footer {
     justify-content: flex-start;
     height: max-content;
     min-height: 90vh;
-    background-color: var(--lessBrightColor); }
+    background-color: var(--lessBrightColor);
+    overflow: hidden !important; }
     .home-wrapper .home-directory .directories {
       max-width: 1800px;
       padding: 3rem 0; }
