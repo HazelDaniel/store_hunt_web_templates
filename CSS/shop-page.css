@@ -691,6 +691,66 @@ footer {
       .shop-wrapper .shop-top-div .shop-filter-div span {
         margin-right: 1rem;
         padding-bottom: .2rem; }
+    .shop-wrapper .shop-top-div .custom-select {
+      margin-right: 3.5vw;
+      position: relative;
+      font-family: Arial;
+      width: 25vw;
+      max-width: 15rem;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center; }
+      .shop-wrapper .shop-top-div .custom-select select {
+        display: none; }
+      .shop-wrapper .shop-top-div .custom-select .select-items {
+        position: absolute;
+        background-color: var(--accentColor);
+        top: 110%;
+        left: 0;
+        right: 0;
+        z-index: 5; }
+        .shop-wrapper .shop-top-div .custom-select .select-items div {
+          text-align: center;
+          padding: .5rem;
+          border: 1px solid transparent;
+          border-color: transparent transparent var(--accentColor) transparent;
+          cursor: pointer; }
+    .shop-wrapper .shop-top-div .select-selected {
+      display: block;
+      width: 100%;
+      position: relative;
+      max-height: 2rem !important;
+      padding-right: 2rem;
+      text-align: center;
+      color: var(--darkAccentColor) !important;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: center;
+      border: 1px solid transparent;
+      border-color: transparent transparent var(--accentColor) transparent;
+      cursor: pointer; }
+      .shop-wrapper .shop-top-div .select-selected::after {
+        position: absolute;
+        content: "";
+        top: 0;
+        right: 0;
+        top: 25%;
+        right: 2%;
+        width: 0;
+        height: 0;
+        border: 6px solid transparent;
+        border-color: var(--accentColor) transparent transparent transparent; }
+      .shop-wrapper .shop-top-div .select-selected.select-arrow-active::after {
+        border-color: transparent transparent var(--accentColor) transparent;
+        transform: translateY(-1);
+        transform-origin: top; }
+    .shop-wrapper .shop-top-div .select-hide {
+      display: none; }
+    .shop-wrapper .shop-top-div .select-items div:hover,
+    .shop-wrapper .shop-top-div .same-as-selected {
+      background-color: #0000001a; }
   .shop-wrapper .shop-body {
     display: block;
     width: 100%;
@@ -969,7 +1029,18 @@ footer {
     min-width: 20rem;
     padding: 1.5rem 1rem 1rem 0;
     box-shadow: 0.75rem 0 0.8rem var(--homeOutlineColor);
-    overflow: visible; }
+    overflow: visible;
+    transition: all .3s ease-in-out; }
+    .shop-wrapper .shop-side-pane-mobile.SSPM-closed {
+      left: -100vw;
+      box-shadow: unset; }
+      .shop-wrapper .shop-side-pane-mobile.SSPM-closed .SSPM-toggler {
+        position: fixed;
+        left: 0% !important;
+        z-index: 9;
+        top: 45vh !important; }
+        .shop-wrapper .shop-side-pane-mobile.SSPM-closed .SSPM-toggler svg {
+          transform: scale(-1, 0.8); }
     .shop-wrapper .shop-side-pane-mobile .SSPM-toggler {
       display: flex;
       align-items: center;
@@ -987,6 +1058,12 @@ footer {
       border-top-right-radius: .5rem;
       border-bottom-right-radius: .5rem;
       box-shadow: 0.1rem 0.2rem 0.8rem var(--homeOutlineColor); }
+      @media screen and (min-width: 815px) and (max-width: 899px) {
+        .shop-wrapper .shop-side-pane-mobile .SSPM-toggler {
+          right: -9% !important; } }
+      @media screen and (min-width: 900px) {
+        .shop-wrapper .shop-side-pane-mobile .SSPM-toggler {
+          right: -8% !important; } }
       .shop-wrapper .shop-side-pane-mobile .SSPM-toggler svg {
         transform: scaleY(0.8); }
         .shop-wrapper .shop-side-pane-mobile .SSPM-toggler svg path {
@@ -1200,77 +1277,37 @@ footer {
             color: var(--brightColor);
             border-radius: .3rem; }
 
-.custom-select {
-  margin-right: 3.5vw;
-  position: relative;
-  font-family: Arial;
-  width: 25vw;
-  max-width: 20rem;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center; }
-  .custom-select select {
-    display: none; }
+@media screen and (min-width: 804px) and (max-width: 830) {
+  .SSPM-closed {
+    border: .1rem solid red;
+    background-color: #0000ff44;
+    display: none !important; }
+    .SSPM-closed .SSPM-toggler svg {
+      transform: scale(-1, 0.8); } }
+@media screen and (min-width: 830px) and (max-width: 1094) {
+  .SSPM-closed .SSPM-toggler {
+    right: 0;
+    transform: translateX(-25%); }
+    .SSPM-closed .SSPM-toggler svg {
+      transform: scale(-1, 0.8); } }
+@media screen and (min-width: 1095px) {
+  .SSPM-toggler {
+    display: none !important; }
 
-.select-selected {
-  display: block;
-  width: 100%;
-  position: relative;
-  max-height: 2rem !important;
-  padding-right: 2rem;
-  text-align: center;
-  color: var(--darkAccentColor) !important;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: center; }
+  .shop-top-div {
+    margin-left: auto;
+    width: calc(100% - 25rem) !important; }
+    .shop-top-div .shop-results-count-text {
+      min-width: max-content !important; }
 
-/* Style the arrow inside the select element: */
-.select-selected:after {
-  position: absolute;
-  content: "";
-  top: 0;
-  right: 0;
-  top: 25%;
-  right: 2%;
-  width: 0;
-  height: 0;
-  border: 6px solid transparent;
-  border-color: var(--accentColor) transparent transparent transparent; }
+  .shop-body .shop-products-wrapper {
+    width: unset !important;
+    width: calc(100vw - 25rem) !important;
+    margin-left: auto; }
 
-/* Point the arrow upwards when the select box is open (active): */
-.select-selected.select-arrow-active:after {
-  border-color: transparent transparent var(--accentColor) transparent;
-  transform: translateY(-1);
-  transform-origin: top; }
-
-/* style the items (options), including the selected item: */
-.select-items div,
-.select-selected {
-  text-align: start;
-  border: 1px solid transparent;
-  border-color: transparent transparent var(--accentColor) transparent;
-  cursor: pointer; }
-
-/* Style items (options): */
-.select-items {
-  position: absolute;
-  background-color: var(--accentColor);
-  top: 110%;
-  left: 0;
-  right: 0;
-  z-index: 5; }
-  .select-items div {
-    text-align: center;
-    padding: .5rem; }
-
-/* Hide the items when the select box is closed: */
-.select-hide {
-  display: none; }
-
-.select-items div:hover,
-.same-as-selected {
-  background-color: #0000001a; }
+  .shop-side-pane-mobile {
+    top: -2rem !important;
+    height: calc(100% + 2rem) !important;
+    box-shadow: unset !important; } }
 
 /*# sourceMappingURL=shop-page.css.map */
