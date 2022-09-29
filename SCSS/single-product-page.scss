@@ -18,13 +18,13 @@
 
 		@media screen and (min-width: 641px) {
 			@include makeRowFlexCenter;
+			padding-bottom: 10%;
 		}
 
-		height: max-content;
 		background-color: $lessBrightColor;
 		position: relative;
 		height: 55rem;
-		padding-bottom: 20%;
+		padding-bottom: 30%;
 
 		.product-wrapper-decorator {
 			@include makeAbsoluteTopDiv;
@@ -46,13 +46,12 @@
 
 			@media screen and (min-width: 641px) {
 				padding-top: 10%;
-				padding-bottom: 10%;
 				width: 30%;
 				max-width: 8rem;
-				height: 80%;
 				@include makeColFlexStart;
 				order: 0;
 				margin-left: auto;
+				height: 100%;
 			}
 
 			.product-preview-div {
@@ -62,11 +61,13 @@
 				min-width: 8rem;
 				border-radius: .2rem;
 				cursor: pointer;
+
 				@media screen and (min-width: 641px) {
 					@include makeFullWidthBlock;
 					margin: 1rem 0;
 					min-height: 10rem !important;
 				}
+
 				img {
 					height: 100%;
 					@include makeFullSizeBlock;
@@ -74,9 +75,9 @@
 					aspect-ratio: 1 / 1;
 					box-shadow: inset .2rem .3rem .5rem $homeOutlineColor;
 				}
-				
 
-				
+
+
 			}
 
 
@@ -104,6 +105,7 @@
 	}
 
 	.product-bottom-wrapper {
+		overflow: visible;
 		@include makeFullWidthBlock;
 		@include makeColFlexStart;
 		align-items: center;
@@ -111,7 +113,282 @@
 		min-height: 70vh;
 		background-color: $darkAccentColor;
 		z-index: 3;
+		color: $singleProductMainTextColor;
+		padding-bottom: 15%;
+
+		.product-visual-description-wrapper {
+			overflow: visible;
+			@include makeColFlexStart;
+			@include makeFullWidthBlock;
+			height: max-content;
+			align-items: center;
+			padding-bottom: 8rem;
+
+			.product-name {
+				@include makeFullWidthBlock;
+				text-align: center;
+				height: max-content;
+				min-height: 1.5rem;
+				padding: .2rem;
+				font-size: 1.5rem;
+				font-family: manjariLight;
+				margin-top: -3rem;
+				margin-bottom: 3rem;
+				color: $singleProductMainTextColor;
+				font-weight: lighter !important;
+
+			}
+
+			@mixin makeCenteredDivSize {
+				width: 15rem;
+				margin: 0 auto;
+				@include makeRowFlexStart;
+				overflow: hidden;
+				min-height: 2rem;
+				height: max-content;
+
+			}
+
+			.product-ratings-div {
+				@include makeCenteredDivSize;
+
+				span {
+					font-size: 1.2rem;
+					font-family: nunitoLight;
+					color: $singleProductMainTextColor;
+					width: 45%;
+				}
+
+				.products-ratings-icons {
+					width: 55%;
+					height: 2rem;
+					@include makeRowFlexStart;
+
+					svg {
+						height: 80%;
+
+						&>path {
+
+							// a toggle between these two fills to none will give us the rating effect we need
+							&:first-of-type {
+								fill: $accentColor;
+							}
+
+							&:last-of-type {
+								fill: $accentColor;
+							}
+						}
+
+						&:nth-of-type(n+3) {
+							&>path {
+
+								// a toggle between these two fills to none will give us the rating effect we need
+								&:first-of-type {
+									fill: none;
+								}
+
+								&:last-of-type {
+									fill: $accentColor;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.product-price-div {
+				@include makeCenteredDivSize;
+				justify-content: space-evenly;
+
+				* {
+					font-family: openSansLight;
+				}
+
+				.product-price {
+					width: max-content;
+				}
+
+				.cancelled-price {
+					width: max-content;
+					text-align: center;
+					color: $redTextColor;
+					min-width: 50%;
+
+				}
+			}
+
+			.product-brief-details {
+				height: max-content;
+				@include makeCenteredDivSize;
+				width: 25rem;
+				text-align: center;
+				font-size: .8rem;
+				font-family: latoMedium;
+				margin: .5rem auto;
+			}
+
+			.productCenteredFlex {
+				&>div {
+					height: 2.5rem;
+					@include makeRowFlexStart;
+
+					&>span {
+						width: max-content;
+						margin-right: .5rem;
+						font-family: nunitoLight;
+						font-weight: bolder;
+					}
+					&>ul {
+						width: max-content;
+						@include makeRowFlexStart;
+						align-items: center;
+						
+						li {
+							width: max-content;
+							font-family: nunitoLight;
+							margin: 0 .5rem;
+						}
+					}
+				}
+			}
+
+			@mixin makeProductCenteredGrid{
+				margin: 2rem auto;
+					width: 60%;
+					max-width: 100%;
+					display: grid;
+					grid-template-columns: repeat(auto-fit, minmax(15rem, max-content));
+					grid-gap: .5rem;
+					justify-content: center;
+					place-items: center;
+					*{
+						&::selection{
+							background-color: transparent;
+						}
+					}
+			}
+			.product-visual-details-divs {
+				@include makeProductCenteredGrid;
+				@extend .productCenteredFlex;
 
 
+				li {
+						@mixin makeInlineList {
+							@include makeRowFlexCenter;
+							display: inline-flex !important;
+							margin: 0 .5rem;
+							transform: scale(.8);
+						}
+				
+						&.product-size-list {
+							@include makeInlineList;
+							width: max-content;
+							min-width: 3rem;
+							height: 2rem;
+							color: $shopSizeChipColor;
+							border: .1rem solid $shopSizeChipColor;
+							transition: all .3s ease-in-out;
+				
+						}
+				
+						&.product-color-list {
+							@include makeInlineList;
+							width: 2rem;
+							height: 2rem;
+							border-radius: 50%;
+				
+							&:first-of-type {
+								background-color: $accentColor;
+								border: .1rem solid $homeOutlineColor;
+								justify-self: flex-start;
+				
+							}
+				
+							&:last-of-type {
+								background-color: $darkAccentColor;
+								border: .1rem solid $homeOutlineColor;
+							}
+				
+						}
+				
+					}
+			}
+
+			.product-text-details-divs {
+				@extend .productCenteredFlex;
+				@include makeProductCenteredGrid;
+
+			}
+			.product-cta-buttons{
+				height: 5rem;
+				@include makeRowFlexCenter;
+				align-items: flex-start;
+				.product-cta-button{
+					height: 2.5rem;
+					min-width: 8rem;
+					width: max-content;
+					margin: 0 1rem;
+					padding: .5rem 1rem;
+					outline: none;
+					cursor: pointer;
+					border: .1rem solid $brightColor;
+					transition: transform .3s ease-in-out;
+					&:hover{
+						transform: scale(.95);
+					}
+					&.secondary{
+						background-color: transparent;
+						border-radius: .2rem;
+						color: $lessBrightColor;
+					}
+					&.primary{
+						color: $darkAccentColor;
+						background-color: $lessBrightColor;
+					}
+				}
+			}
+
+		}
+
+		.product-text-description-wrapper {
+			@include makeFullWidthBlock;
+			padding: 0 10vw;
+			height: max-content;
+			color: $singleProductMainTextColor;
+			font-family: manjariLight;
+			.PTD-title{
+				width: max-content;
+				margin: 0 auto;
+				text-align: center;
+				margin-bottom: 2rem;
+				font-family: manjariLight;
+				position: relative;
+				overflow: visible;
+				height: max-content;
+				padding: .5rem 0;
+				&::after{
+					@include makeAbsoluteBottomRightDiv;
+					bottom: -10%;
+					width: 60%;
+					height: .2rem;
+					background-color: $accentColor;
+					border-radius: .1rem;
+				}
+
+			}
+			.PTD-text{
+				text-align: justify;
+				font-size: .8rem;
+			}
+		}
 	}
+}
+.related-product-container{
+	@include makeFullWidthBlock;
+	height: 30rem;
+	overflow: hidden;
+	background-color: $lessBrightColor;
+	color: $darkAccentColor;
+	@include debug;
+	padding: 3rem;
 }
