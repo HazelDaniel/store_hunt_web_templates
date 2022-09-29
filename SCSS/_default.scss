@@ -66,7 +66,8 @@ body {
 		margin-right: auto;
 		margin-left: 1rem;
 		position: relative;
-		a{
+
+		a {
 			@include makeAbsoluteTopLeftDiv;
 			@include makeFullSizeBlock;
 
@@ -141,7 +142,8 @@ body {
 			z-index: -1;
 		}
 	}
-	.desktop-nav-tab{
+
+	.desktop-nav-tab {
 		border: unset;
 		margin-right: 5vw;
 		background-color: unset;
@@ -149,16 +151,19 @@ body {
 		max-width: 30%;
 		margin-left: auto;
 		height: 80%;
-		.desktop-nav-links{
+
+		.desktop-nav-links {
 			@include makeFullSizeBlock;
 			@include makeRowFlexCenter;
 			justify-content: space-evenly;
-			.desktop-nav-link{
+
+			.desktop-nav-link {
 				width: 10rem;
-				a{
+
+				a {
 					font-family: openSansLight;
-						font-weight: 300;
-						color: $lessBrightColor;
+					font-weight: 300;
+					color: $lessBrightColor;
 				}
 			}
 		}
@@ -341,6 +346,7 @@ body {
 
 
 }
+
 .desktop-side-tab {
 	@include makeColFlexStart;
 	position: fixed;
@@ -356,18 +362,20 @@ body {
 	padding: 2rem 0.5rem;
 	background-color: $brightColor;
 	box-shadow: -.05rem -.1rem .5rem $DirectoryBlurColorDark;
-	
-	&>div{
+
+	&>div {
 		@include makeFullWidthBlock;
 		@include makeColFlexCenter;
 		align-items: center;
 		margin: auto;
-		svg{
+
+		svg {
 			@include makeFullWidthBlock;
 			fill: $accentColor;
 			transform: scale(.9);
 			cursor: pointer;
-			path{
+
+			path {
 				fill: $accentColor;
 			}
 		}
@@ -591,20 +599,23 @@ footer {
 }
 
 @media screen and (min-width:641px) {
-	.modal-overlay{
+	.modal-overlay {
 		display: none !important;
 	}
-	.upper-pane{
-		.nav-tab-toggler{
+
+	.upper-pane {
+		.nav-tab-toggler {
 			display: none !important;
 		}
 	}
 }
+
 @media screen and (max-width:640px) {
-	.desktop-side-tab{
+	.desktop-side-tab {
 		display: none !important;
 	}
-	.desktop-nav-tab{
+
+	.desktop-nav-tab {
 		display: none !important;
 	}
 }
@@ -709,4 +720,206 @@ footer {
 		}
 	}
 
+}
+
+.product-div {
+	@include makeColFlexStart;
+	align-items: center;
+	overflow: hidden;
+	margin: 10%;
+	@include makeUnSelectableTextDiv;
+
+	* {
+		overflow: inherit;
+	}
+
+	&>div {
+		@include makeFullWidthBlock;
+	}
+
+	.SPD-top {
+		@include makeColFlexCenter;
+		position: relative;
+		height: 65%;
+
+		.product-state-tag {
+			@include makeAbsoluteTopLeftDiv;
+			width: 45%;
+			top: 15%;
+			transform: rotateZ(-40deg);
+			left: -25%;
+			z-index: 2;
+			@include makeRowFlexCenter;
+			align-items: center;
+			padding: 0 1rem;
+			width: 80%;
+			background-color: $brightColor;
+			box-shadow: .1rem .2rem .4rem $lightestShadowColor;
+
+			p {
+				@include makeFullWidthBlock;
+				height: 1.3rem;
+				text-align: center;
+				font-size: .8rem;
+				font-family: manjariMedium;
+				transform: translateY(25%);
+				color: $redTextColor;
+			}
+		}
+
+		.SPD-image-div {
+			@include makeFullSizeBlock;
+			position: relative;
+
+			img {
+				@include makeFullSizeBlock;
+				object-fit: cover;
+				aspect-ratio: 3/2;
+			}
+
+			.SPD-top-cta-div {
+				@include makeAbsoluteTopRightDiv;
+				@include makeFullHeightBlock;
+				width: 15%;
+				@include makeColFlexStart;
+				align-items: center;
+				padding: 1rem 0;
+				background: linear-gradient($lessBrightColor 0%, $homeOutlineColor 100%);
+				opacity: 0;
+				transition: opacity .3s ease-in-out;
+
+
+				div {
+					@include makeColFlexCenter;
+					width: 1.5rem;
+					height: 1.7rem;
+					border-radius: .2rem;
+					background-color: $lessBrightColor;
+				}
+
+				svg {
+					@include makeFullHeightBlock;
+					cursor: pointer;
+				}
+			}
+		}
+
+		&:hover {
+			.SPD-top-cta-div {
+				opacity: 1;
+			}
+		}
+	}
+
+	.SPD-content {
+		@include makeFullWidthBlock;
+		@include makeColFlexCenter;
+		align-items: flex-end;
+		position: relative;
+		height: 35%;
+
+		* {
+			color: $darkAccentColor;
+		}
+
+		@mixin TAlignText {
+			height: 2rem;
+			top: .5rem;
+			font-family: latoLight !important;
+			font-weight: 600;
+		}
+
+		.SPD-content-cta-div {
+			@include makeAbsoluteTopLeftDiv;
+			@include makeFullWidthBlock;
+			@include makeRowFlexEnd;
+			cursor: pointer;
+			justify-content: space-between;
+			@include TAlignText;
+			cursor: pointer;
+			display: none;
+			z-index: 3;
+
+			.SPD-content-colors-div {
+				width: 40%;
+				@include makeFullHeightBlock;
+				@include makeRowFlexCenter;
+
+				span {
+					height: .6rem;
+					width: .6rem;
+					border-radius: 50%;
+					margin: 0 .3rem;
+					border: .1rem solid $homeOutlineColor;
+					transform: scale(1.1);
+
+					&#C-2BCBD6 {
+						background-color: #2BCBD6;
+					}
+
+					&#C-4878FC {
+						background-color: #4878FC;
+					}
+
+					&#C-CD1613 {
+						background-color: #CD1613;
+					}
+
+				}
+
+			}
+		}
+
+		.SPDC-rating-div {
+			// @include debug;
+			margin-right: .5rem;
+			width: 30%;
+			@include makeRowFlexEnd;
+			height: 1rem;
+
+			svg {
+				height: 80%;
+
+				&>path {
+
+					// a toggle between these two fills to none will give us the rating effect we need
+					&:first-of-type {
+						fill: $accentColor;
+					}
+
+					&:last-of-type {
+						fill: $accentColor;
+					}
+				}
+
+				&:nth-of-type(n+3) {
+					&>path {
+
+						// a toggle between these two fills to none will give us the rating effect we need
+						&:first-of-type {
+							fill: none;
+						}
+
+						&:last-of-type {
+							fill: $accentColor;
+						}
+					}
+				}
+			}
+		}
+
+		.SPDC-name {
+			@include makeAbsoluteTopLeftDiv;
+			@include TAlignText;
+			@include makeFullWidthBlock;
+		}
+
+		.SPDC-price {
+			@include makeAbsoluteBottomLeftDiv;
+			@include makeFullWidthBlock;
+			bottom: 5%;
+		}
+
+
+	}
 }
