@@ -398,10 +398,10 @@
 	@include makeUnSelectableTextDiv;
 	@include makeFullWidthBlock;
 	height: 30rem;
-	overflow: hidden;
-	background-color: $lessBrightColor;
+	background-color: $brightColor;
 	color: $darkAccentColor;
 	padding: 3rem;
+	position: relative;
 
 	.related-products-title {
 
@@ -430,17 +430,57 @@
 		@include makeFullWidthBlock;
 		@include makeRowFlexStart;
 		justify-content: flex-start;
-		// @include debug;
+		position: relative;
 		.shop-product-div {
 			@extend .product-div;
 			min-width: 15rem;
-			width: 15rem;
+			width: 12rem;
 			height: 15rem;
-			margin: 2.5rem .5rem;
-			// @include debug;
+			margin: 2.5rem 2vw;
 			overflow: hidden;
+			&:first-of-type{
+				margin-left: 0;
+			}
 
-			transform: scale(.8);
+			// transform: scale(.8);
+		}
+	}
+	.RPW-carousel-control {
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 50%;
+		background-color: $lessBrightColor;
+		box-shadow: .3rem .3rem 1.5rem $lightestShadowColor;
+		position: absolute;
+		top: 15rem;
+		z-index: 3;
+		transition: transform .2s ease-in;
+		cursor: pointer;
+		svg{
+			@include makeFullHeightBlock;
+			transform: scale(.6);
+			path{
+				fill: $darkAccentColor;
+			}
+		}
+		&.left{
+			left: 1.5rem;
+			@media screen and (min-width:641px){
+				left: 3rem;
+			}
+			&:hover{
+				transform: scale(.8);
+			}
+		}
+		&.right{
+			right: 1.5rem;
+			@media screen and (min-width:641px){
+				right: 3rem;
+			}
+			transform: scaleX(-1);
+			&:hover{
+				transform: scale(-.8,.8);
+			}
 		}
 	}
 }

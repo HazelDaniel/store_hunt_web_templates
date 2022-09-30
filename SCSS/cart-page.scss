@@ -1,0 +1,319 @@
+@import "_default.scss";
+
+button{
+	cursor: pointer;
+}
+
+.cart-container {
+	@include makeFullWidthBlock;
+	min-height: 100vh;
+	height: max-content;
+	font-family: latoMedium;
+	background-color: $lessBrightColor;
+	@include makeColFlexStart;
+	align-items: center;
+	padding: 3rem 0;
+
+	@media screen and (min-width: 910px) {
+		@include makeRowFlexStart;
+		justify-content: center;
+		padding: 3rem;
+		align-items: flex-start;
+	}
+
+	padding-bottom: 25vh;
+
+	button {
+		outline: unset;
+		border: unset;
+	}
+
+	.cart-total-price-wrapper {
+		@include makeColFlexCenter;
+		height: max-content;
+		padding: 1.5rem;
+		margin-bottom: 3rem;
+		width: max-content;
+		min-width: 25vw;
+		align-self: flex-end;
+		background-color: $accentColorTrans;
+		color: $darkAccentColor;
+		margin-right: 3rem;
+
+		@media screen and (min-width: 910px) {
+			order: 2;
+			justify-self: flex-end;
+			align-self: flex-start;
+		}
+
+		&>* {
+			@include makeFullWidthBlock;
+			@include makeColFlexCenter;
+			max-width: 15rem;
+			margin: .5rem 0;
+			min-height: 2.5rem;
+			text-transform: uppercase;
+			min-width: 15rem;
+
+
+		}
+
+		P {
+			text-align: center;
+			@include makeRowFlexCenter;
+
+			span {
+				margin-left: 10%;
+				font-weight: lighter;
+				font-family: latoLight;
+				font-weight: bolder;
+			}
+		}
+
+		button {
+			background-color: $darkAccentColor;
+			color: $lessBrightColor;
+			font-family: latoLight;
+		}
+	}
+
+	.cart-body {
+		position: relative;
+		@include makeFullWidthBlock;
+		align-self: flex-end;
+		height: max-content;
+		margin: 0 auto;
+
+		@media screen and (min-width: 910px) {
+			width: 80vw;
+			margin: 3rem;
+		}
+
+		.left-aligned {
+			left: 10%;
+
+		}
+
+		.center-aligned {
+			left: 45%;
+
+		}
+
+		.right-aligned {
+			left: 75%;
+
+		}
+
+		.left-aligned-div {
+			left: 10%;
+
+		}
+
+		.center-aligned-div {
+			left: 42.5%;
+
+		}
+
+		.right-aligned-div {
+			left: 72.5%;
+
+		}
+
+		.cart-heading-div {
+			width: 95%;
+			margin: 0 auto;
+			height: 3rem;
+			position: relative;
+			color: $darkAccentColor;
+			@include makeUnSelectableTextDiv;
+			font-size: .9rem;
+			overflow: visible;
+
+			&>* {
+				@include makeAbsoluteTopLeftDiv;
+				top: 50%;
+				transform: translateY(-50%);
+				text-align: center;
+			}
+
+			.product-title {
+				@extend .left-aligned;
+			}
+
+			.quantity-title {
+				@extend .center-aligned;
+			}
+
+			.total-title {
+				@extend .right-aligned;
+			}
+
+			&::after {
+				@include makeAbsoluteBottomLeftDiv;
+				@include makeFullWidthBlock;
+				bottom: -.15rem;
+				height: .3rem;
+				background-color: $accentColor;
+
+			}
+		}
+
+		.cart-items-div {
+			width: 95%;
+			margin: auto;
+			height: max-content;
+			min-height: 40vh;
+			@include makeColFlexStart;
+			align-items: center;
+			padding-bottom: 12rem;
+			border-bottom: .3rem solid $accentColor;
+
+			.cart-item-div {
+				@include makeFullWidthBlock;
+				height: 10rem;
+				margin-top: .5rem;
+				padding-bottom: 1rem;
+				border-bottom: .1rem solid $singleProductMainTextColor;
+				position: relative;
+
+				&>* {
+					@include makeAbsoluteTopLeftDiv;
+					top: 50%;
+					transform: translateY(-50%);
+				}
+
+				.cart-product-details-div {
+					height: 80%;
+					top: .5rem;
+					transform: unset;
+					width: max-content;
+					@include makeRowFlexStart;
+					font-size: .8rem;
+
+					.cart-image-div {
+						width: 6.5rem;
+						@include makeFullHeightBlock;
+
+						img {
+							@include makeFullSizeBlock;
+							object-fit: cover;
+							aspect-ratio: 1/1;
+						}
+					}
+
+					.cart-product-details {
+						margin-left: 1rem;
+						@include makeColFlexCenter;
+
+						p {
+							@include makeFullWidthBlock;
+						}
+
+						.cart-product-name {
+							color: $accentColor;
+						}
+
+						.cart-product-price {
+							color: $darkAccentColor;
+						}
+					}
+				}
+
+				.cart-quantity-details-div {
+					width: max-content;
+					min-width: 6rem;
+					@extend .center-aligned-div;
+					@include makeRowFlexCenter;
+
+					&>* {
+						width: 2rem;
+						height: 2rem;
+						color: $darkAccentColor;
+						@include makeRowFlexCenter;
+						align-items: center;
+						display: inline-flex;
+					}
+
+					.cart-cta {
+						border: .1rem solid $accentColor;
+						cursor: pointer;
+						transition: transform .2s ease-in;
+						font-weight: bolder;
+
+						&:hover {
+							transform: scale(.95);
+						}
+					}
+
+					.cart-cta-text {
+						font-size: .8rem;
+						width: max-content;
+						min-width: 2rem;
+					}
+				}
+
+				.cart-price-details-text {
+					@extend .right-aligned-div;
+					color: $darkAccentColor;
+				}
+
+				.cart-delete-div {
+					height: 1.5rem;
+					width: 1.5rem;
+					position: relative;
+					margin-left: auto;
+					@include makeRowFlexCenter;
+					align-items: center;
+					svg {
+						@include makeFullHeightBlock;
+
+						path {
+							fill: $accentColor;
+						}
+					}
+				}
+				&.modified{
+					background-color: $lightestShadowColor;
+				}
+			}
+		}
+
+		.cart-cta-div {
+			width: max-content;
+			min-width: 60vw;
+			margin: 4rem auto;
+			height: 3rem;
+			@include makeRowFlexCenter;
+			align-items: center;
+			button{
+				height: 80%;
+				border: .1rem solid $darkAccentColor;
+				padding: 0 1rem;
+				width: max-content !important;
+				min-width: 8rem;
+				font-family: latoLight;
+				font-size: .7rem;
+				transition: transform .1s ease-in-out;
+				&:first-of-type{
+					background-color: transparent;
+					margin-right: 3rem;
+					&:hover{
+						transform: scale(.95);
+					}
+				}
+				&:last-of-type{
+					background-color: $darkAccentColor;
+					color: $brightColor;
+				}
+			}
+		}
+
+		&::before {
+			@include makeAbsoluteTopLeftDiv;
+			@include makeFullWidthBlock;
+			height: 3rem;
+			background-color: $brightColor;
+			box-shadow: .2rem .2rem 3rem $lightestShadowColor;
+		}
+	}
+}
