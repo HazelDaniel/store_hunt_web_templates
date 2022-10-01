@@ -1,0 +1,169 @@
+@import "_default.scss";
+
+.checkout-super-container {
+	@include makeFullWidthBlock;
+	@include makeColFlexStart;
+	height: max-content;
+	min-height: 100vh;
+
+	.checkout-container {
+		@extend .checkout-cart-common-container;
+		font-family: latoMedium;
+
+		.checkout-discount-wrapper {
+			@extend .checkout-cart-common-top-wrapper;
+			align-items: flex-start;
+			background-color: transparent;
+
+			&>p {
+				@include makeFullWidthBlock;
+				margin-bottom: 1rem;
+				font-size: .8rem;
+				text-transform: uppercase;
+			}
+
+			&>div {
+				&.discount-code-box {
+					width: max-content;
+
+					overflow: visible;
+
+					form {
+						@include makeFullSizeBlock;
+						@include makeRowFlexEnd;
+						overflow: visible;
+						height: 2.5rem;
+
+						* {
+							font-family: latoLight;
+						}
+
+						&>* {
+							outline: none;
+							border: unset;
+						}
+
+						input {
+							@include makeFullHeightBlock;
+
+							&::selection {
+								background-color: $darkAccentColor;
+								color: $lessBrightColor;
+							}
+
+							padding-left: 10%;
+
+							&::placeholder {
+								color: $singleProductMainTextColor;
+							}
+
+							&:focus {
+								box-shadow: inset .1rem .2rem 1rem $lightestShadowColor, -.2rem 0 1rem $lightestShadowColor;
+							}
+						}
+
+						button {
+							width: 6rem;
+							@include makeFullHeightBlock;
+							background-color: $darkAccentColor;
+							color: $lessBrightColor;
+
+
+						}
+					}
+				}
+			}
+		}
+
+		.checkout-body {
+			@extend .checkout-cart-common-body;
+			@include makeColFlexStart;
+			min-height: 70vh;
+			background-color: $accentColorTrans;
+			padding: 2rem;
+			width: 90%;
+			color: $darkAccentColor;
+
+			span {
+				font-family: manjariMedium;
+			}
+
+			@media screen and (min-width: 910px) {
+				max-width: 25rem;
+			}
+
+			&>div {
+				@include makeFullWidthBlock;
+				height: max-content;
+				padding: 2rem .5rem;
+
+				&:first-of-type {
+					border-bottom: .1rem solid $lessBrightColor;
+				}
+
+				&:last-of-type {
+					margin-bottom: 10rem;
+				}
+			}
+
+			.uniformly-spaced-container {
+				@include makeFullWidthBlock;
+				@include makeRowFlexStart;
+				justify-content: space-between;
+
+			}
+			.CB-title{
+				@include makeFullWidthBlock;
+				text-align: center;
+				font-size: larger;
+				font-weight: 500;
+				margin-bottom: 3rem;
+				margin-top: 1rem;
+			}
+
+			.checkout-product-summary {
+
+				.checkout-summary-heading-div {
+					@extend .uniformly-spaced-container;
+					margin-bottom: 2rem;
+					p{
+						font-family: latoLight;
+						font-weight: 600;
+					}
+				}
+
+				.checkout-summary-details-div {
+					@include makeColFlexCenter;
+					align-items: center;
+					overflow: visible;
+
+					ol {
+						@include makeFullWidthBlock;
+						height: max-content;
+
+						li {
+							@extend .uniformly-spaced-container;
+							margin: .5rem 0;
+						}
+					}
+				}
+			}
+			.checkout-total-price-summary{
+				@include makeFullWidthBlock;
+				@include makeColFlexCenter;
+				align-items: center;
+				height: max-content;
+				text-transform: capitalize;
+				ul{
+					@include makeFullWidthBlock;
+					li{
+						@extend .uniformly-spaced-container;
+						span{
+							color: $redTextColor;
+						}
+					}
+				}
+			}
+		}
+	}
+}

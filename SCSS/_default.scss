@@ -722,6 +722,55 @@ footer {
 
 }
 
+.checkout-cart-common-container{
+	@include makeFullWidthBlock;
+		min-height: 100vh;
+		height: max-content;
+		font-family: latoMedium;
+		background-color: $lessBrightColor;
+		@include makeColFlexStart;
+		align-items: center;
+		padding: 3rem 0;
+	
+		@media screen and (min-width: 910px) {
+			@include makeRowFlexStart;
+			justify-content: center;
+			padding: 3rem;
+			align-items: flex-start;
+		}
+}
+.checkout-cart-common-top-wrapper{
+	@include makeColFlexCenter;
+		height: max-content;
+		padding: 1.5rem;
+		margin-bottom: 3rem;
+		width: max-content;
+		min-width: 25vw;
+		align-self: flex-end;
+		background-color: $accentColorTrans;
+		color: $darkAccentColor;
+		margin-right: 3rem;
+		@media screen and (min-width: 910px) {
+			order: 2;
+			justify-self: flex-end;
+			align-self: flex-start;
+		}
+}
+.checkout-cart-common-body{
+	position: relative;
+		@include makeFullWidthBlock;
+		align-self: flex-end;
+		height: max-content;
+		margin: 0 auto;
+
+		@media screen and (min-width: 910px) {
+			width: 80vw;
+			margin: 3rem;
+		}
+	
+		
+}
+
 .product-div {
 	@include makeColFlexStart;
 	align-items: center;
