@@ -21,7 +21,8 @@
   --shopSideTabTitleColor: #000000a2;
   --redTextColor: #FC2222;
   --shopSizeChipColor: #967E6D;
-  --singleProductMainTextColor: #C5C5C7; }
+  --singleProductMainTextColor: #C5C5C7;
+  --checkoutConnectorColor: #E3DBD2; }
 
 @font-face {
   font-family: nunito;
@@ -662,7 +663,7 @@ footer {
       margin: auto;
       text-align: center; }
 
-.checkout-cart-common-container, .checkout-super-container .checkout-container {
+.checkout-cart-common-container {
   display: block;
   width: 100%;
   min-height: 100vh;
@@ -676,7 +677,7 @@ footer {
   align-items: center;
   padding: 3rem 0; }
   @media screen and (min-width: 910px) {
-    .checkout-cart-common-container, .checkout-super-container .checkout-container {
+    .checkout-cart-common-container {
       display: flex;
       align-items: center;
       flex-direction: row;
@@ -685,7 +686,7 @@ footer {
       padding: 3rem;
       align-items: flex-start; } }
 
-.checkout-cart-common-top-wrapper, .checkout-super-container .checkout-container .checkout-discount-wrapper {
+.checkout-cart-common-top-wrapper {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -700,12 +701,12 @@ footer {
   color: var(--darkAccentColor);
   margin-right: 3rem; }
   @media screen and (min-width: 910px) {
-    .checkout-cart-common-top-wrapper, .checkout-super-container .checkout-container .checkout-discount-wrapper {
+    .checkout-cart-common-top-wrapper {
       order: 2;
       justify-self: flex-end;
       align-self: flex-start; } }
 
-.checkout-cart-common-body, .checkout-super-container .checkout-container .checkout-body {
+.checkout-cart-common-body {
   position: relative;
   display: block;
   width: 100%;
@@ -713,7 +714,7 @@ footer {
   height: max-content;
   margin: 0 auto; }
   @media screen and (min-width: 910px) {
-    .checkout-cart-common-body, .checkout-super-container .checkout-container .checkout-body {
+    .checkout-cart-common-body {
       width: 80vw;
       margin: 3rem; } }
 
@@ -912,17 +913,39 @@ footer {
   justify-content: flex-start;
   height: max-content;
   min-height: 100vh; }
+  @media screen and (min-width: 900px) {
+    .checkout-super-container {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: flex-start; } }
   .checkout-super-container .checkout-container {
-    font-family: latoMedium; }
+    font-family: latoMedium;
+    display: block;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: var(--lessBrightColor);
+    padding-bottom: 20%; }
+    @media screen and (min-width: 900px) {
+      .checkout-super-container .checkout-container {
+        order: 2; } }
     .checkout-super-container .checkout-container .checkout-discount-wrapper {
       align-items: flex-start;
-      background-color: transparent; }
+      background-color: transparent;
+      align-self: flex-end;
+      margin-bottom: 3rem;
+      margin-right: 2rem;
+      margin: 2rem 2rem 3rem 0; }
       .checkout-super-container .checkout-container .checkout-discount-wrapper > p {
         display: block;
         width: 100%;
         margin-bottom: 1rem;
         font-size: .8rem;
-        text-transform: uppercase; }
+        text-transform: uppercase;
+        color: var(--darkAccentColor); }
       .checkout-super-container .checkout-container .checkout-discount-wrapper > div.discount-code-box {
         width: max-content;
         overflow: visible; }
@@ -971,9 +994,11 @@ footer {
       color: var(--darkAccentColor); }
       .checkout-super-container .checkout-container .checkout-body span {
         font-family: manjariMedium; }
-      @media screen and (min-width: 910px) {
+      @media screen and (min-width: 850px) and (max-width: 899px) {
         .checkout-super-container .checkout-container .checkout-body {
-          max-width: 25rem; } }
+          max-width: 25rem;
+          align-self: flex-start;
+          margin-left: 10%; } }
       .checkout-super-container .checkout-container .checkout-body > div {
         display: block;
         width: 100%;
@@ -1032,5 +1057,217 @@ footer {
           width: 100%; }
           .checkout-super-container .checkout-container .checkout-body .checkout-total-price-summary ul li span {
             color: var(--redTextColor); }
+      .checkout-super-container .checkout-container .checkout-body > button {
+        outline: none;
+        border: unset;
+        width: 65%;
+        height: 2.5rem;
+        font-family: latoLight;
+        color: var(--brightColor);
+        background-color: var(--darkAccentColor);
+        cursor: pointer; }
+  .checkout-super-container .checkout-form-container {
+    display: block;
+    width: 100%;
+    align-self: flex-start;
+    min-height: 60vh;
+    height: max-content;
+    padding: 1.5rem;
+    padding-top: 3rem;
+    color: var(--darkAccentColor);
+    background-color: var(--lessBrightColor);
+    position: relative; }
+    @media screen and (min-width: 900px) {
+      .checkout-super-container .checkout-form-container {
+        min-width: 35rem; } }
+    .checkout-super-container .checkout-form-container .form-progress-indicators {
+      width: max-content;
+      min-width: 10rem;
+      height: max-content;
+      margin: auto;
+      margin-bottom: 3.5rem;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: flex-start; }
+      .checkout-super-container .checkout-form-container .form-progress-indicators .FPI {
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: .08rem;
+        background-color: var(--checkoutConnectorColor); }
+        .checkout-super-container .checkout-form-container .form-progress-indicators .FPI span {
+          display: block;
+          height: 100%;
+          display: block;
+          width: 100%;
+          cursor: pointer; }
+        .checkout-super-container .checkout-form-container .form-progress-indicators .FPI + .FPI-connector {
+          width: 4.5rem;
+          height: .2rem;
+          margin: 0 .3rem;
+          border-radius: 4rem;
+          background-color: var(--checkoutConnectorColor); }
+        .checkout-super-container .checkout-form-container .form-progress-indicators .FPI.FPI-active span {
+          border-radius: 50%;
+          background-color: var(--darkAccentColor);
+          transform: scale(0.9); }
+    .checkout-super-container .checkout-form-container .progress-back-cta {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      top: 5rem;
+      left: 3rem;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: flex-start;
+      width: max-content; }
+      .checkout-super-container .checkout-form-container .progress-back-cta span {
+        margin-right: .5rem;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 2rem; }
+        .checkout-super-container .checkout-form-container .progress-back-cta span svg {
+          display: block;
+          height: 100%; }
+          .checkout-super-container .checkout-form-container .progress-back-cta span svg path {
+            fill: var(--singleProductMainTextColor); }
+      .checkout-super-container .checkout-form-container .progress-back-cta button {
+        cursor: pointer;
+        outline: unset;
+        border: unset;
+        background-color: unset;
+        font-size: .8rem;
+        font-family: latoLight; }
+    .checkout-super-container .checkout-form-container .checkout-form-heading {
+      height: max-content;
+      padding-bottom: 1rem;
+      border-bottom: 0.1rem solid var(--singleProductMainTextColor);
+      margin-bottom: 1.5rem; }
+      .checkout-super-container .checkout-form-container .checkout-form-heading-text {
+        font-size: 1.2rem;
+        font-family: nunito; }
+    .checkout-super-container .checkout-form-container form {
+      font-family: latoMedium;
+      text-transform: capitalize;
+      padding: 0 .5rem;
+      display: block;
+      width: 100%;
+      height: max-content;
+      overflow: visible; }
+      .checkout-super-container .checkout-form-container form .inline-input-div {
+        overflow: visible;
+        display: block;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: flex-start;
+        position: relative;
+        height: max-content;
+        margin: 2rem 0;
+        margin-top: 2rem; }
+        .checkout-super-container .checkout-form-container form .inline-input-div input[type="tel"] {
+          margin-top: 2rem; }
+        .checkout-super-container .checkout-form-container form .inline-input-div:first-of-type .S {
+          margin-top: 2rem; }
+        .checkout-super-container .checkout-form-container form .inline-input-div:first-of-type label {
+          top: 0rem; }
+        .checkout-super-container .checkout-form-container form .inline-input-div .S {
+          margin-top: 4rem;
+          width: 45%; }
+          .checkout-super-container .checkout-form-container form .inline-input-div .S:first-of-type {
+            margin-right: 3rem; }
+        .checkout-super-container .checkout-form-container form .inline-input-div label {
+          position: absolute;
+          content: "";
+          top: 0;
+          left: 0;
+          top: 0; }
+          .checkout-super-container .checkout-form-container form .inline-input-div label:nth-of-type(n+2) {
+            left: calc(45% + 3rem); }
+      .checkout-super-container .checkout-form-container form input {
+        display: block;
+        width: 100%;
+        height: 2rem;
+        outline: unset;
+        padding-left: 1rem;
+        border-radius: .3rem;
+        background-color: transparent;
+        border: 0.1rem solid var(--singleProductMainTextColor);
+        color: var(--darkAccentColor); }
+        .checkout-super-container .checkout-form-container form input::placeholder {
+          color: var(--singleProductMainTextColor);
+          text-transform: capitalize;
+          font-family: latoLight; }
+        .checkout-super-container .checkout-form-container form input[type="email"]::placeholder {
+          text-transform: unset; }
+        .checkout-super-container .checkout-form-container form input.L ~ label {
+          margin-top: 2rem; }
+      .checkout-super-container .checkout-form-container form label {
+        display: block;
+        margin-bottom: 1.5rem; }
+      .checkout-super-container .checkout-form-container form .AHA-div {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: flex-start;
+        margin-top: 5rem; }
+        .checkout-super-container .checkout-form-container form .AHA-div input[type="checkbox"] {
+          accent-color: var(--darkAccentColor);
+          height: 1rem;
+          width: 1rem;
+          margin-right: .5rem; }
+          .checkout-super-container .checkout-form-container form .AHA-div input[type="checkbox"] + span {
+            display: inline;
+            font-size: .8rem; }
+      .checkout-super-container .checkout-form-container form .checkout-form-cta {
+        width: max-content;
+        padding: 0 2rem;
+        margin: 4rem 2rem 0 auto;
+        position: relative; }
+        .checkout-super-container .checkout-form-container form .checkout-form-cta input {
+          height: 2.5rem;
+          width: max-content;
+          border: none;
+          background-color: transparent; }
+          .checkout-super-container .checkout-form-container form .checkout-form-cta input ~ span {
+            position: absolute;
+            content: "";
+            bottom: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            top: 50%;
+            right: 5%;
+            transform: translateY(-50%);
+            height: 1.5rem;
+            width: 1.5rem; }
+            .checkout-super-container .checkout-form-container form .checkout-form-cta input ~ span svg {
+              display: block;
+              height: 100%;
+              transform: scale(0.9); }
+              .checkout-super-container .checkout-form-container form .checkout-form-cta input ~ span svg path {
+                fill: var(--darkAccentColor); }
+    .checkout-super-container .checkout-form-container .confirmation-section {
+      font-family: latoMedium;
+      text-transform: capitalize;
+      padding: 0 .5rem;
+      display: block;
+      width: 100%;
+      height: max-content; }
 
 /*# sourceMappingURL=checkout-page.css.map */
