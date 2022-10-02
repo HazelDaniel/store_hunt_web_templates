@@ -1,6 +1,6 @@
 :root {
   --homeFadingTextColor: #333436;
-  --homeGoldLikeColor: #AB893B;
+  --homeGoldLikeColor: #B99670;
   --homeDarkColor: #000000;
   --DirectoryCTATextColor: #272727;
   --DirectoryBlurColor: #d4d4d4a8;
@@ -139,7 +139,7 @@ body {
       margin-right: .3rem; }
       .upper-pane .search-box span svg {
         height: 80%;
-        scale: .9; }
+        scale: .7; }
         .upper-pane .search-box span svg path {
           fill: var(--lessBrightColor); }
     .upper-pane .search-box input {
@@ -300,7 +300,10 @@ body {
       justify-content: center;
       align-items: center; }
       .modal-overlay .side-tab .nav-theme-icon-div svg {
-        height: 80%; }
+        height: 80%;
+        cursor: pointer; }
+        .modal-overlay .side-tab .nav-theme-icon-div svg > g > circle {
+          fill: var(--homeGoldLikeColor); }
     .modal-overlay .side-tab .ST-navs {
       height: max-content;
       min-height: 85%;
@@ -1055,8 +1058,10 @@ footer {
         .checkout-super-container .checkout-container .checkout-body .checkout-total-price-summary ul {
           display: block;
           width: 100%; }
-          .checkout-super-container .checkout-container .checkout-body .checkout-total-price-summary ul li span {
-            color: var(--redTextColor); }
+          .checkout-super-container .checkout-container .checkout-body .checkout-total-price-summary ul li {
+            margin: .5rem 0; }
+            .checkout-super-container .checkout-container .checkout-body .checkout-total-price-summary ul li span {
+              color: var(--redTextColor); }
       .checkout-super-container .checkout-container .checkout-body > button {
         outline: none;
         border: unset;
@@ -1123,7 +1128,7 @@ footer {
       top: 0;
       left: 0;
       top: 5rem;
-      left: 3rem;
+      left: 2rem;
       display: flex;
       align-items: center;
       flex-direction: row;
@@ -1155,7 +1160,7 @@ footer {
       border-bottom: 0.1rem solid var(--singleProductMainTextColor);
       margin-bottom: 1.5rem; }
       .checkout-super-container .checkout-form-container .checkout-form-heading-text {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         font-family: nunito; }
     .checkout-super-container .checkout-form-container form {
       font-family: latoMedium;
@@ -1164,7 +1169,8 @@ footer {
       display: block;
       width: 100%;
       height: max-content;
-      overflow: visible; }
+      overflow: visible;
+      display: none; }
       .checkout-super-container .checkout-form-container form .inline-input-div {
         overflow: visible;
         display: block;
@@ -1268,6 +1274,76 @@ footer {
       padding: 0 .5rem;
       display: block;
       width: 100%;
-      height: max-content; }
+      height: max-content;
+      padding: 2rem 5rem 10rem .5rem; }
+      .checkout-super-container .checkout-form-container .confirmation-section * {
+        font-family: nunito;
+        font-weight: 500; }
+      .checkout-super-container .checkout-form-container .confirmation-section .greeting-text {
+        display: block;
+        width: 100%;
+        font-size: 1.1rem;
+        margin-bottom: 1rem; }
+      .checkout-super-container .checkout-form-container .confirmation-section .confirmation-text {
+        font-size: .9rem; }
+      .checkout-super-container .checkout-form-container .confirmation-section .confirmation-form {
+        display: block;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-top: 3rem;
+        position: relative; }
+        .checkout-super-container .checkout-form-container .confirmation-section .confirmation-form .agreement-check-div {
+          display: block;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          justify-content: flex-start;
+          margin-bottom: 3rem;
+          height: 6rem; }
+          .checkout-super-container .checkout-form-container .confirmation-section .confirmation-form .agreement-check-div input[type="checkbox"] {
+            accent-color: var(--darkAccentColor);
+            height: 1.5rem;
+            width: 1.5rem;
+            margin-right: .5rem; }
+          .checkout-super-container .checkout-form-container .confirmation-section .confirmation-form .agreement-check-div span {
+            font-size: .8rem;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            display: inline-flex; }
+            .checkout-super-container .checkout-form-container .confirmation-section .confirmation-form .agreement-check-div span label {
+              margin: 25% 0; }
+        .checkout-super-container .checkout-form-container .confirmation-section .confirmation-form textarea {
+          width: 25rem;
+          height: 5rem;
+          outline: none;
+          border: unset;
+          padding: .5rem 1rem;
+          color: var(--darkAccentColor); }
+          .checkout-super-container .checkout-form-container .confirmation-section .confirmation-form textarea::placeholder {
+            text-transform: capitalize;
+            font-family: nunitoLight;
+            color: var(--singleProductMainTextColor); }
+        .checkout-super-container .checkout-form-container .confirmation-section .confirmation-form > input {
+          width: max-content;
+          position: absolute;
+          content: "";
+          bottom: 0;
+          right: 0;
+          padding: 0 1rem;
+          border-radius: unset;
+          border: unset;
+          outline: unset;
+          color: var(--lessBrightColor);
+          background-color: var(--darkAccentColor);
+          font-family: latoLight;
+          bottom: -6rem;
+          right: 5%; }
 
 /*# sourceMappingURL=checkout-page.css.map */

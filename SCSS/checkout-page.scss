@@ -188,6 +188,7 @@
 
 					li {
 						@extend .uniformly-spaced-container;
+						margin: .5rem 0;
 
 						span {
 							color: $redTextColor;
@@ -267,7 +268,7 @@
 		.progress-back-cta{
 			@include makeAbsoluteTopLeftDiv;
 			top: 5rem;
-			left: 3rem;
+			left: 2rem;
 			@include makeRowFlexStart;
 			width: max-content;
 			span{
@@ -299,7 +300,7 @@
 			margin-bottom: 1.5rem;
 
 			&-text {
-				font-size: 1.2rem;
+				font-size: 1.4rem;
 				font-family: nunito;
 			}
 		}
@@ -312,7 +313,7 @@
 			height: max-content;
 
 			overflow: visible;
-			// display: none;
+			display: none;
 
 			.inline-input-div {
 				overflow: visible;
@@ -450,6 +451,76 @@
 			padding: 0 .5rem;
 			@include makeFullWidthBlock;
 			height: max-content;
+			padding: 2rem 5rem 10rem .5rem;
+			*{
+				font-family: nunito;
+				font-weight: 500;
+			}
+			.greeting-text{
+				@include makeFullWidthBlock;
+				font-size: 1.1rem;
+				margin-bottom: 1rem;
+			}
+			.confirmation-text{
+				font-size: .9rem;
+			}
+
+			.confirmation-form{
+				@include makeFullWidthBlock;
+				@include makeColFlexStart;
+				align-items: flex-start;
+				margin-top: 3rem;
+				position: relative;
+				.agreement-check-div{
+					@include makeFullWidthBlock;
+					@include makeRowFlexStart;
+					margin-bottom: 3rem;
+					height: 6rem;
+					input[type="checkbox"]{
+						accent-color: $darkAccentColor;
+						height: 1.5rem;
+						width: 1.5rem;
+						margin-right: .5rem;
+					}
+					span{
+						font-size: .8rem;
+						@include makeColFlexCenter;
+						display: inline-flex;
+						label{
+							margin: 25% 0;
+						}
+					}
+				}
+
+				textarea{
+					width: 25rem;
+					height: 5rem;
+					outline: none;
+					border: unset;
+					padding: .5rem 1rem;
+					&::placeholder{
+						text-transform: capitalize;
+						font-family: nunitoLight;
+						color: $singleProductMainTextColor;
+					}
+					color: $darkAccentColor;
+				}
+				&>input{
+					width: max-content;
+					@include makeAbsoluteBottomRightDiv;
+					padding: 0 1rem;
+					border-radius: unset;
+					border: unset;
+					outline: unset;
+					color: $lessBrightColor;
+					background-color: $darkAccentColor;
+					font-family: latoLight;
+					bottom: -6rem;
+					right: 5%;
+
+				}
+
+			}
 
 		}
 
