@@ -46,6 +46,8 @@
 
 
 	// AUTH PAGE
+	--authInactiveTextColor: #B4B4B4;
+	--authFormColor: #4D4D4D;
 
 }
 
@@ -88,3 +90,5 @@ $checkoutConnectorColor: var(--checkoutConnectorColor);
 
 
 // AUTH PAGE
+$authInactiveTextColor: var(--authInactiveTextColor);
+$authFormColor: var(--authFormColor);

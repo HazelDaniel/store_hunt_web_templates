@@ -1,0 +1,208 @@
+@import "_default.scss";
+
+
+.auth-modal-overlay {
+	@extend .overlay;
+	overflow: auto;
+	z-index: 6;
+	@include makeColFlexCenter;
+	padding-bottom: 5rem;
+
+	.auth-body {
+		width: 75%;
+		height: max-content;
+		min-height: 80%;
+		margin: 3rem auto;
+		max-width: 35rem;
+
+		@media screen and (max-width: 640px) {
+			max-width: 100vw;
+			width: 100%;
+		}
+
+		min-width: 30rem;
+
+		@include makeColFlexStart;
+		align-items: center;
+		overflow: auto;
+		overflow-x: visible;
+		padding: 1rem;
+
+		transform: scaleX(.8);
+
+		&::-webkit-scrollbar {
+			width: .8rem;
+		}
+
+		/* Track */
+		&::-webkit-scrollbar-track {
+			background: $DirectoryBlurColorDark;
+			border-radius: .3rem;
+		}
+
+		/* Handle */
+		&::-webkit-scrollbar-thumb {
+			background: $authFormColor;
+			border-radius: .3rem;
+			transition: background-color .2s ease-in-out;
+		}
+
+		/* Handle on hover */
+		&::-webkit-scrollbar-thumb:hover {
+			background: $lessBrightColor;
+		}
+
+		.auth-tab {
+			@include makeFullWidthBlock;
+			@include makeRowFlexCenter;
+			margin-bottom: 1.5rem;
+			overflow: visible;
+
+			&>* {
+				position: relative;
+				overflow: visible;
+				cursor: pointer;
+				font-family: nunito;
+				color: $authInactiveTextColor;
+				transform: scale(.9);
+
+				&.active {
+					transform: scale(1);
+					color: $brightColor;
+
+					&::after {
+						@include makeAbsoluteBottomRightDiv;
+						width: 65%;
+						height: .25rem;
+						border-radius: 4rem;
+						background-color: $brightColor;
+						bottom: -.5rem;
+					}
+				}
+			}
+
+			justify-content: space-around;
+
+			.sign-up {
+				margin-left: 15%;
+			}
+
+			.sign-in {
+				margin-right: 15%;
+			}
+		}
+
+		form {
+			@include makeFullWidthBlock;
+			border-radius: .6rem;
+			background-color: $authFormColor;
+			box-shadow: .1rem .1rem .3rem $DirectoryBlurColorDark;
+
+			font-family: latoMedium;
+			text-transform: capitalize;
+			padding: 0 .5rem;
+			@include makeFullWidthBlock;
+			height: max-content;
+
+			overflow: visible;
+			padding: 2.5rem;
+			padding-top: 5rem;
+			font-size: .8rem;
+
+			.inline-input-div {
+				overflow: visible;
+				@include makeFullWidthBlock;
+				@include makeRowFlexStart;
+				position: relative;
+				height: max-content;
+				margin: 1.5rem 0;
+				margin-top: 1.5rem;
+
+				input[type="tel"] {
+					margin-top: 1.5rem;
+				}
+
+				&:first-of-type {
+					.S {
+						margin-top: 1.5rem;
+					}
+
+					label {
+						top: 0rem;
+					}
+				}
+
+				.S {
+					margin-top: 3.5rem;
+					width: 45%;
+
+					&:first-of-type {
+						margin-right: 3rem;
+					}
+				}
+
+				label {
+					@include makeAbsoluteTopLeftDiv;
+					top: 0;
+
+					&:nth-of-type(n+2) {
+						left: calc(45% + 3rem);
+					}
+				}
+
+			}
+
+			input {
+				@include makeFullWidthBlock;
+				height: 2rem;
+
+
+
+				outline: unset;
+				padding-left: 1rem;
+				border-radius: .3rem;
+				background-color: transparent;
+				border: .1rem solid $singleProductMainTextColor;
+				color: $darkAccentColor;
+
+				&::placeholder {
+					color: $singleProductMainTextColor;
+					text-transform: capitalize;
+					font-family: latoLight;
+				}
+
+				&[type="email"] {
+					&::placeholder {
+						text-transform: unset;
+					}
+				}
+
+				&.L {
+					~label {
+						margin-top: 1.5rem;
+					}
+				}
+			}
+
+			label {
+				display: block;
+				margin-bottom: 1rem;
+			}
+
+			input.confirm {
+				margin-bottom: 2.5rem;
+			}
+
+			input[type="submit"] {
+				border: unset;
+				outline: unset;
+				width: max-content;
+				padding: 0 3rem;
+				border-radius: 5rem;
+				height: 2rem;
+				margin: 0 auto;
+				background-color: $brightColor;
+			}
+		}
+	}
+}

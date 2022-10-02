@@ -209,7 +209,7 @@ body {
 
 }
 
-.modal-overlay {
+.overlay {
 	background-color: $DirectoryBlurColorDark;
 	backdrop-filter: blur(2px);
 	display: none;
@@ -219,6 +219,11 @@ body {
 	@include makeFullSizeBlock;
 	height: calc(100vh - 5rem);
 	width: 100%;
+
+}
+
+.modal-overlay {
+	@extend .overlay;
 	@include makeRowFlexEnd;
 	z-index: -6 !important;
 
@@ -270,8 +275,9 @@ body {
 			svg {
 				height: 80%;
 				cursor: pointer;
-				&>g{
-					&>circle{
+
+				&>g {
+					&>circle {
 						fill: $homeGoldLikeColor;
 					}
 				}
@@ -728,53 +734,56 @@ footer {
 
 }
 
-.checkout-cart-common-container{
+.checkout-cart-common-container {
 	@include makeFullWidthBlock;
-		min-height: 100vh;
-		height: max-content;
-		font-family: latoMedium;
-		background-color: $lessBrightColor;
-		@include makeColFlexStart;
-		align-items: center;
-		padding: 3rem 0;
-	
-		@media screen and (min-width: 910px) {
-			@include makeRowFlexStart;
-			justify-content: center;
-			padding: 3rem;
-			align-items: flex-start;
-		}
-}
-.checkout-cart-common-top-wrapper{
-	@include makeColFlexCenter;
-		height: max-content;
-		padding: 1.5rem;
-		margin-bottom: 3rem;
-		width: max-content;
-		min-width: 25vw;
-		align-self: flex-end;
-		background-color: $accentColorTrans;
-		color: $darkAccentColor;
-		margin-right: 3rem;
-		@media screen and (min-width: 910px) {
-			order: 2;
-			justify-self: flex-end;
-			align-self: flex-start;
-		}
-}
-.checkout-cart-common-body{
-	position: relative;
-		@include makeFullWidthBlock;
-		align-self: flex-end;
-		height: max-content;
-		margin: 0 auto;
+	min-height: 100vh;
+	height: max-content;
+	font-family: latoMedium;
+	background-color: $lessBrightColor;
+	@include makeColFlexStart;
+	align-items: center;
+	padding: 3rem 0;
 
-		@media screen and (min-width: 910px) {
-			width: 80vw;
-			margin: 3rem;
-		}
-	
-		
+	@media screen and (min-width: 910px) {
+		@include makeRowFlexStart;
+		justify-content: center;
+		padding: 3rem;
+		align-items: flex-start;
+	}
+}
+
+.checkout-cart-common-top-wrapper {
+	@include makeColFlexCenter;
+	height: max-content;
+	padding: 1.5rem;
+	margin-bottom: 3rem;
+	width: max-content;
+	min-width: 25vw;
+	align-self: flex-end;
+	background-color: $accentColorTrans;
+	color: $darkAccentColor;
+	margin-right: 3rem;
+
+	@media screen and (min-width: 910px) {
+		order: 2;
+		justify-self: flex-end;
+		align-self: flex-start;
+	}
+}
+
+.checkout-cart-common-body {
+	position: relative;
+	@include makeFullWidthBlock;
+	align-self: flex-end;
+	height: max-content;
+	margin: 0 auto;
+
+	@media screen and (min-width: 910px) {
+		width: 80vw;
+		margin: 3rem;
+	}
+
+
 }
 
 .product-div {
@@ -976,5 +985,95 @@ footer {
 		}
 
 
+	}
+}
+
+// CHECKOUT PAGE
+
+.custom-form {
+	font-family: latoMedium;
+	text-transform: capitalize;
+	padding: 0 .5rem;
+	@include makeFullWidthBlock;
+	height: max-content;
+
+	overflow: visible;
+	display: none;
+
+	.inline-input-div {
+		overflow: visible;
+		@include makeFullWidthBlock;
+		@include makeRowFlexStart;
+		position: relative;
+		height: max-content;
+		margin: 2rem 0;
+		margin-top: 2rem;
+
+		input[type="tel"] {
+			margin-top: 2rem;
+		}
+
+		&:first-of-type {
+			.S {
+				margin-top: 2rem;
+			}
+
+			label {
+				top: 0rem;
+			}
+		}
+
+		.S {
+			margin-top: 4rem;
+			width: 45%;
+
+			&:first-of-type {
+				margin-right: 3rem;
+			}
+		}
+
+		label {
+			@include makeAbsoluteTopLeftDiv;
+			top: 0;
+
+			&:nth-of-type(n+2) {
+				left: calc(45% + 3rem);
+			}
+		}
+
+	}
+
+	input {
+		@include makeFullWidthBlock;
+		height: 2rem;
+		outline: unset;
+		padding-left: 1rem;
+		border-radius: .3rem;
+		background-color: transparent;
+		border: .1rem solid $singleProductMainTextColor;
+		color: $darkAccentColor;
+
+		&::placeholder {
+			color: $singleProductMainTextColor;
+			text-transform: capitalize;
+			font-family: latoLight;
+		}
+
+		&[type="email"] {
+			&::placeholder {
+				text-transform: unset;
+			}
+		}
+
+		&.L {
+			~label {
+				margin-top: 2rem;
+			}
+		}
+	}
+
+	label {
+		display: block;
+		margin-bottom: 1.5rem;
 	}
 }
