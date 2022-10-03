@@ -221,7 +221,7 @@ body {
     .upper-pane .announce-div .announce-text {
       color: var(--homeGoldLikeColor); }
 
-.overlay, .modal-overlay, .auth-modal-overlay {
+.overlay, .modal-overlay {
   background-color: var(--DirectoryBlurColorDark);
   backdrop-filter: blur(2px);
   display: none;
@@ -911,7 +911,7 @@ footer {
       width: 100%;
       bottom: 5%; }
 
-.custom-form {
+.custom-form, .contact-container .contact-details-area .contact-form {
   font-family: latoMedium;
   text-transform: capitalize;
   padding: 0 .5rem;
@@ -920,7 +920,7 @@ footer {
   height: max-content;
   overflow: visible;
   display: none; }
-  .custom-form .inline-input-div {
+  .custom-form .inline-input-div, .contact-container .contact-details-area .contact-form .inline-input-div {
     overflow: visible;
     display: block;
     width: 100%;
@@ -932,26 +932,26 @@ footer {
     height: max-content;
     margin: 2rem 0;
     margin-top: 2rem; }
-    .custom-form .inline-input-div input[type="tel"] {
+    .custom-form .inline-input-div input[type="tel"], .contact-container .contact-details-area .contact-form .inline-input-div input[type="tel"] {
       margin-top: 2rem; }
-    .custom-form .inline-input-div:first-of-type .S {
+    .custom-form .inline-input-div:first-of-type .S, .contact-container .contact-details-area .contact-form .inline-input-div:first-of-type .S {
       margin-top: 2rem; }
-    .custom-form .inline-input-div:first-of-type label {
+    .custom-form .inline-input-div:first-of-type label, .contact-container .contact-details-area .contact-form .inline-input-div:first-of-type label {
       top: 0rem; }
-    .custom-form .inline-input-div .S {
+    .custom-form .inline-input-div .S, .contact-container .contact-details-area .contact-form .inline-input-div .S {
       margin-top: 4rem;
       width: 45%; }
-      .custom-form .inline-input-div .S:first-of-type {
+      .custom-form .inline-input-div .S:first-of-type, .contact-container .contact-details-area .contact-form .inline-input-div .S:first-of-type {
         margin-right: 3rem; }
-    .custom-form .inline-input-div label {
+    .custom-form .inline-input-div label, .contact-container .contact-details-area .contact-form .inline-input-div label {
       position: absolute;
       content: "";
       top: 0;
       left: 0;
       top: 0; }
-      .custom-form .inline-input-div label:nth-of-type(n+2) {
+      .custom-form .inline-input-div label:nth-of-type(n+2), .contact-container .contact-details-area .contact-form .inline-input-div label:nth-of-type(n+2) {
         left: calc(45% + 3rem); }
-  .custom-form input {
+  .custom-form input, .contact-container .contact-details-area .contact-form input {
     display: block;
     width: 100%;
     height: 2rem;
@@ -961,176 +961,87 @@ footer {
     background-color: transparent;
     border: 0.1rem solid var(--singleProductMainTextColor);
     color: var(--darkAccentColor); }
-    .custom-form input::placeholder {
+    .custom-form input::placeholder, .contact-container .contact-details-area .contact-form input::placeholder {
       color: var(--singleProductMainTextColor);
       text-transform: capitalize;
       font-family: latoLight; }
-    .custom-form input[type="email"]::placeholder {
+    .custom-form input[type="email"]::placeholder, .contact-container .contact-details-area .contact-form input[type="email"]::placeholder {
       text-transform: unset; }
-    .custom-form input.L ~ label {
+    .custom-form input.L ~ label, .contact-container .contact-details-area .contact-form input.L ~ label {
       margin-top: 2rem; }
-    .custom-form input:focus::placeholder {
+    .custom-form input:focus::placeholder, .contact-container .contact-details-area .contact-form input:focus::placeholder {
       transform: scale(0.8) translate(-1.5rem, -0.5rem);
       transition: transform .2s ease-in-out; }
-  .custom-form label {
+  .custom-form label, .contact-container .contact-details-area .contact-form label {
     display: block;
     margin-bottom: 1.5rem; }
 
-.auth-modal-overlay {
-  overflow: auto;
-  z-index: 6;
+.contact-container {
+  display: block;
+  width: 100%;
+  background-color: var(--lessBrightColor);
+  height: max-content;
+  min-height: 100vh;
+  color: var(--darkAccentColor);
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
-  padding-bottom: 5rem; }
-  .auth-modal-overlay .auth-body {
-    width: 75%;
+  justify-content: flex-start; }
+  .contact-container .contact-map-area {
+    display: block;
+    width: 100%;
+    height: 35vmax;
+    min-height: 15rem;
+    object-fit: cover;
+    aspect-ratio: 3/2;
+    cursor: zoom-in; }
+  .contact-container .contact-details-area {
+    display: block;
+    width: 100%;
     height: max-content;
-    min-height: 80%;
-    margin: 3rem auto;
-    max-width: 35rem;
-    min-width: 30rem;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    overflow: auto;
-    overflow-x: visible;
-    padding: 1rem;
-    transform: scaleX(0.8);
-    /* Track */
-    /* Handle */
-    /* Handle on hover */ }
-    @media screen and (max-width: 640px) {
-      .auth-modal-overlay .auth-body {
-        max-width: 100vw;
-        width: 100%; } }
-    .auth-modal-overlay .auth-body::-webkit-scrollbar {
-      width: .8rem; }
-    .auth-modal-overlay .auth-body::-webkit-scrollbar-track {
-      background: var(--DirectoryBlurColorDark);
-      border-radius: .3rem; }
-    .auth-modal-overlay .auth-body::-webkit-scrollbar-thumb {
-      background: var(--authFormColor);
-      border-radius: .3rem;
-      transition: background-color .2s ease-in-out; }
-    .auth-modal-overlay .auth-body::-webkit-scrollbar-thumb:hover {
-      background: var(--lessBrightColor); }
-    .auth-modal-overlay .auth-body .auth-tab {
-      display: block;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      flex-direction: row;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-      overflow: visible;
-      justify-content: space-around; }
-      .auth-modal-overlay .auth-body .auth-tab > * {
-        position: relative;
-        overflow: visible;
-        cursor: pointer;
-        font-family: nunito;
-        color: var(--authInactiveTextColor);
-        transform: scale(0.9); }
-        .auth-modal-overlay .auth-body .auth-tab > *.active {
-          transform: scale(1);
-          color: var(--brightColor); }
-          .auth-modal-overlay .auth-body .auth-tab > *.active::after {
-            position: absolute;
-            content: "";
-            bottom: 0;
-            right: 0;
-            width: 65%;
-            height: .25rem;
-            border-radius: 4rem;
-            background-color: var(--brightColor);
-            bottom: -.5rem; }
-      .auth-modal-overlay .auth-body .auth-tab .sign-up {
-        margin-left: 15%; }
-      .auth-modal-overlay .auth-body .auth-tab .sign-in {
-        margin-right: 15%; }
-    .auth-modal-overlay .auth-body form {
-      display: block;
-      width: 100%;
-      border-radius: .6rem;
-      background-color: var(--authFormColor);
-      box-shadow: 0.1rem 0.1rem 0.3rem var(--DirectoryBlurColorDark);
-      font-family: latoMedium;
+    padding: 5rem 2rem; }
+    .contact-container .contact-details-area .text, .contact-container .contact-details-area .larger-text, .contact-container .contact-details-area .contact-heading, .contact-container .contact-details-area .contact-sub-heading, .contact-container .contact-details-area .contact-text {
+      padding-right: 20vw; }
+    .contact-container .contact-details-area .larger-text, .contact-container .contact-details-area .contact-heading, .contact-container .contact-details-area .contact-sub-heading {
       text-transform: capitalize;
-      padding: 0 .5rem;
+      font-family: nunitoLight;
+      font-weight: 600;
+      margin-bottom: 2rem; }
+    .contact-container .contact-details-area .contact-heading {
+      font-size: 1.5rem; }
+    .contact-container .contact-details-area .contact-text {
+      font-family: nunitoLight;
+      line-height: 1rem;
+      margin-bottom: 3rem; }
+    .contact-container .contact-details-area .contact-sub-heading {
+      font-size: 1.2rem; }
+    .contact-container .contact-details-area .contact-form {
       display: block;
       width: 100%;
+      padding-right: 3rem;
       height: max-content;
-      overflow: visible;
-      padding: 2.5rem;
-      padding-top: 5rem;
       font-size: .8rem; }
-      .auth-modal-overlay .auth-body form .inline-input-div {
-        overflow: visible;
-        display: block;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        justify-content: flex-start;
-        position: relative;
-        height: max-content;
-        margin: 1.5rem 0;
-        margin-top: 1.5rem; }
-        .auth-modal-overlay .auth-body form .inline-input-div input[type="tel"] {
-          margin-top: 1.5rem; }
-        .auth-modal-overlay .auth-body form .inline-input-div:first-of-type .S {
-          margin-top: 1.5rem; }
-        .auth-modal-overlay .auth-body form .inline-input-div:first-of-type label {
-          top: 0rem; }
-        .auth-modal-overlay .auth-body form .inline-input-div .S {
-          margin-top: 3.5rem;
-          width: 45%; }
-          .auth-modal-overlay .auth-body form .inline-input-div .S:first-of-type {
-            margin-right: 3rem; }
-        .auth-modal-overlay .auth-body form .inline-input-div label {
-          position: absolute;
-          content: "";
-          top: 0;
-          left: 0;
-          top: 0; }
-          .auth-modal-overlay .auth-body form .inline-input-div label:nth-of-type(n+2) {
-            left: calc(45% + 3rem); }
-      .auth-modal-overlay .auth-body form input {
-        display: block;
-        width: 100%;
-        height: 2rem;
-        outline: unset;
-        padding-left: 1rem;
-        border-radius: .3rem;
-        background-color: transparent;
-        border: 0.1rem solid var(--singleProductMainTextColor);
-        color: var(--darkAccentColor); }
-        .auth-modal-overlay .auth-body form input::placeholder {
-          color: var(--singleProductMainTextColor);
-          text-transform: capitalize;
-          font-family: latoLight; }
-        .auth-modal-overlay .auth-body form input[type="email"]::placeholder {
-          text-transform: unset; }
-        .auth-modal-overlay .auth-body form input.L ~ label {
-          margin-top: 1.5rem; }
-      .auth-modal-overlay .auth-body form label {
-        display: block;
-        margin-bottom: 1rem; }
-      .auth-modal-overlay .auth-body form input.confirm {
-        margin-bottom: 2.5rem; }
-      .auth-modal-overlay .auth-body form input[type="submit"] {
-        border: unset;
-        outline: unset;
+      .contact-container .contact-details-area .contact-form input[type="submit"] {
+        align-self: flex-start;
         width: max-content;
-        padding: 0 3rem;
-        border-radius: 5rem;
-        height: 2rem;
-        margin: 0 auto;
-        background-color: var(--brightColor);
-        cursor: pointer; }
+        padding: 0 2rem;
+        border-radius: unset;
+        background-color: var(--darkAccentColor);
+        color: var(--lessBrightColor);
+        cursor: pointer;
+        outline: none;
+        border: none; }
+      .contact-container .contact-details-area .contact-form textarea {
+        width: 25rem;
+        height: 5rem;
+        outline: none;
+        border: unset;
+        padding: .5rem 1rem;
+        color: var(--darkAccentColor);
+        margin-bottom: 3rem; }
+        .contact-container .contact-details-area .contact-form textarea::placeholder {
+          text-transform: capitalize;
+          font-family: nunitoLight;
+          color: var(--singleProductMainTextColor); }
 
-/*# sourceMappingURL=auth-page.css.map */
+/*# sourceMappingURL=contact-page.css.map */

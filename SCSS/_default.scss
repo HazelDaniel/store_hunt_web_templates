@@ -1070,6 +1070,12 @@ footer {
 				margin-top: 2rem;
 			}
 		}
+		&:focus{
+			&::placeholder{
+				transform: scale(.8) translate(-1.5rem,-.5rem);
+				transition: transform .2s ease-in-out;
+			}
+		}
 	}
 
 	label {

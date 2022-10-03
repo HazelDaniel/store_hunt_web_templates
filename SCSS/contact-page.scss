@@ -1,0 +1,91 @@
+@import "_default.scss";
+
+.contact-container {
+	@include makeFullWidthBlock;
+	background-color: $lessBrightColor;
+	height: max-content;
+	min-height: 100vh;
+	color: $darkAccentColor;
+	@include makeColFlexStart;
+
+	.contact-map-area {
+		@include makeFullWidthBlock;
+		height: 35vmax;
+		min-height: 15rem;
+		object-fit: cover;
+		aspect-ratio: 3/2;
+		cursor:zoom-in;
+	}
+
+	.contact-details-area {
+		@include makeFullWidthBlock;
+		height: max-content;
+		padding: 5rem 2rem;
+
+		.text {
+			padding-right: 20vw;
+		}
+
+		.larger-text {
+			@extend .text;
+			text-transform: capitalize;
+			font-family: nunitoLight;
+			font-weight: 600;
+			margin-bottom: 2rem;
+		}
+
+		.contact-heading {
+			@extend .larger-text;
+			font-size: 1.5rem;
+		}
+
+		.contact-text {
+			@extend .text;
+			font-family: nunitoLight;
+			line-height: 1rem;
+			margin-bottom: 3rem;
+		}
+
+		.contact-sub-heading {
+			@extend .larger-text;
+			font-size: 1.2rem;
+		}
+
+		.contact-form {
+			@extend .custom-form;
+			@include makeFullWidthBlock;
+			padding-right: 3rem;
+			height: max-content;
+			font-size: .8rem;
+
+			input[type="submit"] {
+				align-self: flex-start;
+				width: max-content;
+				padding: 0 2rem;
+				border-radius: unset;
+				background-color: $darkAccentColor;
+				color: $lessBrightColor;
+				cursor: pointer;
+				outline: none;
+				border: none;
+			}
+
+			textarea {
+				width: 25rem;
+				height: 5rem;
+				outline: none;
+				border: unset;
+				padding: .5rem 1rem;
+				color: $darkAccentColor;
+				margin-bottom: 3rem;
+
+				&::placeholder {
+					text-transform: capitalize;
+					font-family: nunitoLight;
+					color: $singleProductMainTextColor;
+				}
+
+			}
+		}
+	}
+}
