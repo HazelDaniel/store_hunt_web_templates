@@ -9,11 +9,7 @@
 	@include makeColFlexStart;
 
 	.contact-map-area {
-		@include makeFullWidthBlock;
-		height: 35vmax;
-		min-height: 15rem;
-		object-fit: cover;
-		aspect-ratio: 3/2;
+		@extend .custom-hero;
 		cursor:zoom-in;
 	}
 

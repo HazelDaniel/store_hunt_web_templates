@@ -3,6 +3,10 @@
 .home-wrapper {
 	background-color: $homeBodyColor;
 	height: max-content;
+	button{
+		outline: none;
+		border: unset;
+	}
 
 	.slider {
 		@include makeFullWidthBlock;
@@ -272,6 +276,23 @@
 			padding: 3rem 0;
 
 			.directory {
+				@media screen and (max-width: 640px) {
+					height: 5rem;
+					overflow: visible;
+					border-radius: .3rem;
+					margin: 2rem 0;
+					&:nth-of-type(even){
+						transform: translateX(2rem);
+						margin-bottom: 0;
+					}
+					&:nth-of-type(odd){
+						transform: translateX(-2rem);
+					}
+					&::before{
+						border-radius: inherit;
+
+					}
+				}
 				&::before {
 					@include makeAbsoluteTopLeftDiv;
 					@include makeFullSizeBlock;
@@ -291,6 +312,10 @@
 					color: $lessBrightColor;
 					padding: .5rem;
 					z-index: 3;
+					@media screen and (max-width: 640px){
+						top: -5%;
+
+					}
 
 					.directory-title {
 						font-family: openSansCondensedLight;
@@ -335,6 +360,13 @@
 							z-index: -2;
 							border: .1rem solid $lessBrightColor;
 						}
+					}
+				}
+				img{
+					@media screen and (max-width: 640px){
+						width: 5rem;
+						border-radius: inherit;
+
 					}
 				}
 			}
@@ -707,7 +739,7 @@
 			background: url("../IMAGES/e-commerce-entry-bg-2.jpg") no-repeat;
 			background-attachment: fixed;
 			background-size: cover;
-			transition: background .3s ease-in-out;
+			transition: all .2s ease-in-out;
 			&>img{
 				display: none;
 			}
@@ -720,6 +752,10 @@
 			}
 
 			&.no-content {
+				&:hover {
+						background-color: unset;
+						transform: unset;
+					}
 				@mixin imageAdjust {
 					background-repeat: no-repeat;
 					background-size: cover;

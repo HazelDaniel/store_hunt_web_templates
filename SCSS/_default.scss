@@ -225,11 +225,14 @@ body {
 .modal-overlay {
 	@extend .overlay;
 	@include makeRowFlexEnd;
-	z-index: -6 !important;
+	transform: translateX(100vw);
+	z-index: 6 !important;
+	background-color: transparent;
 
 	&-opened {
+		transform: unset;
 		z-index: 6 !important;
-
+		background-color: $DirectoryBlurColorDark;
 	}
 
 	.side-tab {
@@ -1070,9 +1073,10 @@ footer {
 				margin-top: 2rem;
 			}
 		}
-		&:focus{
-			&::placeholder{
-				transform: scale(.8) translate(-1.5rem,-.5rem);
+
+		&:focus {
+			&::placeholder {
+				transform: scale(.8) translate(-1.5rem, -.5rem);
 				transition: transform .2s ease-in-out;
 			}
 		}
@@ -1082,4 +1086,13 @@ footer {
 		display: block;
 		margin-bottom: 1.5rem;
 	}
+}
+
+// CONTACT PAGE
+.custom-hero {
+	@include makeFullWidthBlock;
+	height: 35vmax;
+	min-height: 15rem;
+	object-fit: cover;
+	aspect-ratio: 3/2;
 }
