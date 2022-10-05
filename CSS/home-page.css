@@ -1224,6 +1224,7 @@ footer {
       z-index: 2;
       overflow: visible; }
       .home-wrapper .home-directory .directories .directories-title {
+        top: -2rem;
         left: 50%;
         transform: translateX(-50%); }
       @media screen and (max-width: 640px) {
@@ -1422,6 +1423,10 @@ footer {
       text-transform: uppercase;
       width: max-content;
       max-width: 20rem; }
+      @media screen and (min-width: 1010px) {
+        .home-wrapper .deal-of-the-week-div .DOW-title {
+          top: 5rem;
+          left: 75vw; } }
       .home-wrapper .deal-of-the-week-div .DOW-title span {
         width: 2rem;
         height: 2rem;
@@ -1439,6 +1444,11 @@ footer {
       top: 6rem;
       font-size: 1.5rem;
       font-family: nunito; }
+      @media screen and (min-width: 1010px) {
+        .home-wrapper .deal-of-the-week-div .DOW-product-title {
+          top: 8rem;
+          left: 75vw;
+          padding-right: 2.5vw; } }
     .home-wrapper .deal-of-the-week-div .DOW-time-div {
       position: absolute;
       content: "";
@@ -1447,6 +1457,11 @@ footer {
       color: var(--darkAccentColor);
       bottom: 4rem;
       left: 6rem; }
+      @media screen and (min-width: 1010px) {
+        .home-wrapper .deal-of-the-week-div .DOW-time-div {
+          left: 72vw;
+          transform: scale(0.8);
+          top: 15rem; } }
       .home-wrapper .deal-of-the-week-div .DOW-time-div .DOW-time-count-div {
         font-size: 1.4rem;
         display: flex;
@@ -1477,16 +1492,17 @@ footer {
       content: "";
       bottom: 0;
       left: 0;
-      right: auto;
-      left: 25%;
       bottom: -4rem;
+      right: -50%;
+      transform: translateX(50%);
       width: 10rem;
       height: 2.5rem;
       background-color: var(--darkAccentColor);
       color: var(--brightColor);
       font-weight: lighter;
       font-family: openSansLight;
-      font-size: .8rem; }
+      font-size: .8rem;
+      z-index: 3; }
   .home-wrapper .hot-sales-section {
     color: var(--darkAccentColor);
     display: block;
