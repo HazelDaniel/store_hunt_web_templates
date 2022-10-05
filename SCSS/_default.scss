@@ -368,8 +368,8 @@ body {
 	right: 0;
 	width: 3rem;
 	height: 70vh;
-	top: 15%;
-	bottom: 15%;
+	top: 50%;
+	transform: translateY(-40%);
 	z-index: 6;
 	border-top-left-radius: 1.5rem;
 	border-bottom-left-radius: 1.5rem;
@@ -386,12 +386,12 @@ body {
 
 		svg {
 			@include makeFullWidthBlock;
-			fill: $accentColor;
+			fill: $DirectoryBlurColorDark;
 			transform: scale(.9);
 			cursor: pointer;
 
 			path {
-				fill: $accentColor;
+				fill: $DirectoryBlurColorDark;
 			}
 		}
 

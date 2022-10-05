@@ -1,7 +1,7 @@
 :root {
 	// HOME PAGE
 	--homeFadingTextColor: #333436;
-	--homeGoldLikeColor: #B99670;
+	--homeGoldLikeColor: #AB893B;
 	--homeDarkColor: #000000;
 	--DirectoryCTATextColor: #272727;
 	--DirectoryBlurColor: #d4d4d4a8;
@@ -18,6 +18,8 @@
 	--darkAccentColor: #08090A;
 	--lightestShadowColor: #00000018;
 	--accentColorTrans: #bb9d8838;
+	--hotDealAccentColor: #2A2414;
+	--hotDealAccentColorTrans: #2a24144a;
 
 
 	// SHOP PAGE
@@ -75,6 +77,8 @@ $shopSizeChipColor: var(--shopSizeChipColor);
 $accentColorTrans: var(--accentColorTrans);
 $singleProductMainTextColor: var(--singleProductMainTextColor);
 $checkoutConnectorColor: var(--checkoutConnectorColor);
+$hotDealAccentColor: var(--hotDealAccentColor);
+$hotDealAccentColorTrans: var(--hotDealAccentColorTrans);
 
 
 // HATS PAGE

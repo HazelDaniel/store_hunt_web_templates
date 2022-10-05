@@ -3,7 +3,8 @@
 .home-wrapper {
 	background-color: $homeBodyColor;
 	height: max-content;
-	button{
+
+	button {
 		outline: none;
 		border: unset;
 	}
@@ -212,6 +213,7 @@
 				text-transform: uppercase;
 				font-size: .8rem;
 				font-weight: 700;
+				transition: transform .3s ease-in-out;
 				cursor: pointer;
 
 				cursor: pointer;
@@ -219,7 +221,9 @@
 				&::before {
 					all: unset;
 				}
-
+				&:hover{
+					transform: scale(.9);
+				}
 				span {
 					@include makeAbsoluteTopRightDiv;
 					transform: scale(3);
@@ -261,19 +265,46 @@
 			}
 		}
 	}
-
+	.section-title {
+		@include makeAbsoluteTopDiv;
+		@include makeRowFlexCenter;
+		width: max-content;
+		height: 2.5rem;
+		cursor: pointer;
+		align-items: center;
+		font-size: 1.5rem;
+		transform: translateY(-3.5rem);
+	
+		span {
+			background-color: $darkAccentColor;
+			color: $lessBrightColor;
+			padding: .2rem;
+			margin-left: .2rem;
+		}
+	}
 	.home-directory {
-		// margin-top: 1rem;
 		@include makeFullWidthBlock;
 		@include makeColFlexStart;
 		height: max-content;
 		min-height: 90vh;
 		background-color: $lessBrightColor;
 		overflow: hidden !important;
+		padding: 5rem 0;
+		position: relative;
+		padding-top: 10rem;
 
 		.directories {
+			color: $darkAccentColor;
 			max-width: 1800px;
 			padding: 3rem 0;
+			position: relative;
+			z-index: 2;
+			overflow: visible;
+			.directories-title{
+				@extend .section-title;
+				left: 50%;
+				transform: translateX(-50%);
+			}
 
 			.directory {
 				@media screen and (max-width: 640px) {
@@ -281,23 +312,32 @@
 					overflow: visible;
 					border-radius: .3rem;
 					margin: 2rem 0;
-					&:nth-of-type(even){
+
+					&:nth-of-type(even) {
 						transform: translateX(2rem);
 						margin-bottom: 0;
 					}
-					&:nth-of-type(odd){
+
+					&:nth-of-type(odd) {
 						transform: translateX(-2rem);
 					}
-					&::before{
+
+					&::before {
 						border-radius: inherit;
 
 					}
+
+					.directory-tag-div {
+						transform: scale(.8);
+						transform-origin: top;
+					}
 				}
+
 				&::before {
 					@include makeAbsoluteTopLeftDiv;
 					@include makeFullSizeBlock;
 					background-color: #03030246;
-					z-index: 1;
+					z-index: -1;
 					backdrop-filter: blur(2px);
 				}
 
@@ -312,7 +352,8 @@
 					color: $lessBrightColor;
 					padding: .5rem;
 					z-index: 3;
-					@media screen and (max-width: 640px){
+
+					@media screen and (max-width: 640px) {
 						top: -5%;
 
 					}
@@ -362,8 +403,10 @@
 						}
 					}
 				}
-				img{
-					@media screen and (max-width: 640px){
+
+
+				img {
+					@media screen and (max-width: 640px) {
 						width: 5rem;
 						border-radius: inherit;
 
@@ -378,6 +421,7 @@
 		@include makeFullWidthBlock;
 		background-color: $lessBrightColor;
 		height: 1rem;
+		transform: translateY(-2rem);
 
 		svg {
 			@include makeFullWidthBlock;
@@ -385,15 +429,21 @@
 		}
 	}
 
-	.deal-of-the-week-div {
-		padding: 4rem 0;
-		margin-top: 0;
+	@mixin makeHomeSection {
 		@include makeFullWidthBlock;
-		@include makeRowFlexStart;
 		background-color: $lessBrightColor;
 		height: fit-content;
 		position: relative;
 		padding-bottom: 10rem;
+	}
+
+	.deal-of-the-week-div {
+		padding: 4rem 0;
+		margin-top: 0;
+		@include makeHomeSection;
+		@include makeRowFlexStart;
+		outline: 1rem solid $lessBrightColor;
+		border-bottom: 10rem solid $lessBrightColor;
 
 		.DOW-side-tab {
 			@include makeColFlexCenter;
@@ -491,7 +541,7 @@
 				transform: translateY(.5rem);
 
 				svg {
-					height: 100%;
+					height: 80%;
 				}
 			}
 		}
@@ -556,6 +606,177 @@
 		}
 	}
 
+	.hot-sales-section {
+		@include makeUnSelectableTextDiv;
+
+		@mixin keepAnimating {
+			animation-iteration-count: infinite;
+			animation-duration: 1.618s;
+		}
+
+		color: $darkAccentColor;
+		@include makeHomeSection;
+		@include makeColFlexStart;
+		height: calc(100vw /1.2565);
+		padding: 0;
+		background-color: $brightColor;
+		overflow: visible;
+		animation-name: blinkDisplay;
+		@include keepAnimating;
+		margin-bottom: 5rem;
+		border-top: 5rem solid $lessBrightColor;
+
+		.hot-sales-section-title {
+			@extend .section-title;
+			top: -3rem;
+		}
+
+		.hot-sales-section-wrapper {
+			@include makeFullSizeBlock;
+			// @include debug;
+			@include makeColFlexCenter;
+			align-items: flex-end;
+
+			&>* {
+				@include makeAbsoluteBottomLeftDiv;
+			}
+
+			.HSS-side-text-div {
+				left: 5%;
+				@include makeFullHeightBlock;
+				width: 15%;
+
+				img {
+					@include makeFullHeightBlock;
+				}
+			}
+
+
+			.HSS-display {
+				height: 60%;
+				width: 60%;
+				position: relative;
+				margin-right: 2.5%;
+				border-top-left-radius: 8%;
+				border-bottom-left-radius: 8%;
+				background-color: $homeGoldLikeColor;
+				transform: translateY(-10%);
+				overflow: visible;
+				z-index: 2;
+
+
+				img {
+					@include makeAbsoluteTopLeftDiv;
+					width: 119%;
+					transform: rotateZ(-19.38deg);
+					left: -28%;
+					top: -25%;
+				}
+
+				p {
+					@include makeAbsoluteBottomRightDiv;
+					font-size: 2em;
+					right: 10%;
+					font-weight: bolder;
+					bottom: 15%;
+					color: $hotDealAccentColor;
+					animation-name: blinkDisplayText;
+					@include keepAnimating;
+				}
+
+				@keyframes blinkDisplayText {
+					from {
+						color: $hotDealAccentColor;
+					}
+
+					to {
+						color: $brightColor;
+					}
+				}
+
+				button {
+					@include makeAbsoluteTopRightDiv;
+					width: 35%;
+					height: 15%;
+					border-radius: 4vw;
+					top: -18%;
+					@include makeColFlexCenter;
+					align-items: center;
+					border: none;
+					outline: none;
+					background-color: transparent;
+					font-weight: bolder;
+					cursor: pointer;
+					border: .15rem solid $darkAccentColor;
+					z-index: 3;
+					animation-name: blinkDisplayCta;
+					@include keepAnimating;
+				}
+
+				@keyframes blinkDisplayCta {
+					from {
+						color: $darkAccentColor;
+						border: .15rem solid $darkAccentColor;
+					}
+
+					to {
+						color: $brightColor;
+						border: .15rem solid $brightColor;
+					}
+				}
+			}
+
+
+			.HSS-float {
+				width: 5vmax;
+				height: 5vmax;
+				border-radius: 50%;
+				z-index: 0;
+				background-color: $hotDealAccentColor;
+
+				&:first-of-type {
+					left: 35%;
+					bottom: 40%;
+				}
+
+				&:nth-of-type(2) {
+					left: 73%;
+					bottom: 18%;
+				}
+
+				&:nth-of-type(3) {
+					left: 77%;
+					bottom: 7%;
+				}
+
+				&:nth-of-type(4) {
+					left: 79.5%;
+					bottom: 6.5%;
+				}
+
+				&.big {
+					transform: scale(2);
+				}
+
+				&.small {
+					transform: scale(.5);
+				}
+			}
+
+		}
+
+	}
+
+	@keyframes blinkDisplay {
+		from {
+			background-color: #FFFFFF;
+		}
+
+		to {
+			background-color: #08090A;
+		}
+	}
+
 	.news-letter-div {
 		@include makeFullWidthBlock;
 		height: max-content;
@@ -564,6 +785,7 @@
 		overflow: visible;
 		color: $darkAccentColor;
 		position: relative;
+		outline: 5rem solid $lessBrightColor;
 
 		.NLD-section-title {
 			@include makeRowFlexCenter;
@@ -722,40 +944,44 @@
 @media screen and (min-width:641px) {
 
 	.directories {
-		// larger screens
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
 		grid-auto-flow: row;
 		grid-gap: .1rem;
-		// @include debug;
 		width: 95vw;
 		height: max-content;
 		margin: auto;
+		margin-top: 3rem;
+		.directories-title{
+			top: -5rem !important;
+		}
 
 		.directory {
-			// larger-screens
 			position: relative;
 			height: 20rem;
 			background: url("../IMAGES/e-commerce-entry-bg-2.jpg") no-repeat;
 			background-attachment: fixed;
 			background-size: cover;
 			transition: all .2s ease-in-out;
-			&>img{
+
+			&>img {
 				display: none;
 			}
-			&:hover{
+
+			&:hover {
 				background: $darkAccentColor;
 			}
 
-			&::before{
+			&::before {
 				backdrop-filter: blur(5px);
 			}
 
 			&.no-content {
 				&:hover {
-						background-color: unset;
-						transform: unset;
-					}
+					background-color: unset;
+					transform: unset;
+				}
+
 				@mixin imageAdjust {
 					background-repeat: no-repeat;
 					background-size: cover;
@@ -861,6 +1087,7 @@
 		}
 	}
 }
+
 @media screen and (min-width: 641px) and (max-width: 676px) {
 	.directory {
 		&.no-content {
