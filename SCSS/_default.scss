@@ -348,9 +348,9 @@ body {
 				.ST-link {
 					font-family: openSansLight;
 					font-weight: lighter !important;
-					border-bottom: .05rem solid $homeOutlineColor;
+					// border-bottom: .05rem solid $homeOutlineColor;
 					@include makeFullWidthBlock;
-					border-bottom-width: 120%;
+					// border-bottom-width: 120%;
 					text-align: center;
 					padding-bottom: .3rem;
 				}
@@ -377,12 +377,33 @@ body {
 	padding: 2rem 0.5rem;
 	background-color: $brightColor;
 	box-shadow: -.05rem -.1rem .5rem $DirectoryBlurColorDark;
+	overflow: visible;
 
 	&>div {
 		@include makeFullWidthBlock;
 		@include makeColFlexCenter;
 		align-items: center;
 		margin: auto;
+		overflow: visible;
+
+		.user-connected-cart-icon {
+			@include makeFullWidthBlock;
+			// @include debug;
+			position: relative;
+			overflow: visible;
+
+			span {
+				@include makeAbsoluteTopLeftDiv;
+				height: 1rem;
+				width: 1rem;
+				top: -5%;
+				left: -5%;
+				background-color: $DirectoryBlurColorDark;
+				color: $brightColor;
+				border-radius: 50%;
+				z-index: 3;
+			}
+		}
 
 		svg {
 			@include makeFullWidthBlock;
@@ -874,6 +895,7 @@ footer {
 		&:hover {
 			.SPD-top-cta-div {
 				opacity: 1;
+
 			}
 		}
 	}
@@ -884,6 +906,16 @@ footer {
 		align-items: flex-end;
 		position: relative;
 		height: 35%;
+
+		&:hover {
+			.SPD-top-cta-div {
+				opacity: 1;
+			}
+
+			.SPDC-name {
+				visibility: hidden !important;
+			}
+		}
 
 		* {
 			color: $darkAccentColor;
@@ -896,6 +928,18 @@ footer {
 			font-weight: 600;
 		}
 
+		&:hover {
+			.SPD-content-cta-div {
+				opacity: 1;
+			}
+
+			.SPDC-name {
+				opacity: 0;
+
+			}
+
+		}
+
 		.SPD-content-cta-div {
 			@include makeAbsoluteTopLeftDiv;
 			@include makeFullWidthBlock;
@@ -904,7 +948,8 @@ footer {
 			justify-content: space-between;
 			@include TAlignText;
 			cursor: pointer;
-			display: none;
+			opacity: 0;
+			transition: all .3s ease-in-out;
 			z-index: 3;
 
 			.SPD-content-colors-div {
@@ -979,6 +1024,8 @@ footer {
 			@include makeAbsoluteTopLeftDiv;
 			@include TAlignText;
 			@include makeFullWidthBlock;
+			opacity: 1;
+			transition: all .3s ease-in-out;
 		}
 
 		.SPDC-price {

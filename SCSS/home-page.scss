@@ -13,9 +13,9 @@
 		@include makeFullWidthBlock;
 		@include makeRowFlexStart;
 		position: relative;
-		height: fit-content;
-		min-height: 70vh;
+		height: calc(100vw / 2.165);
 		justify-self: flex-start;
+		padding: 0;
 
 		$numOfParts: 4;
 		$animTime: 1s;
@@ -74,9 +74,7 @@
 
 		&__slides {
 			position: relative;
-			height: fit-content;
-			min-height: 70vh;
-			width: 100%;
+			@include makeFullSizeBlock;
 		}
 
 		&__slide {
@@ -100,21 +98,15 @@
 
 
 			&-content {
-				position: absolute;
-				display: flex;
-				justify-content: flex-start;
-				align-items: center;
-				flex-direction: column;
-				height: fit-content;
-				min-height: 50%;
-				width: 30rem;
+				@include makeAbsoluteTopLeftDiv;
 				text-transform: uppercase;
-				line-height: 1;
-				justify-self: flex-start;
-				margin-left: 3rem;
-				transform: translateY(60%);
+				width: 35vw;
+				min-width: 30rem;
 				z-index: 4;
-				overflow: visible;
+				left: 5%;
+				top: 10%;
+				height: max-content;
+
 
 				* {
 					color: $darkAccentColor;
@@ -135,9 +127,9 @@
 
 
 			&-subheading {
-				margin-bottom: 20px;
+				margin-bottom: 2rem;
 				font-size: 1.3rem;
-				letter-spacing: 2px;
+				letter-spacing: .2rem;
 				transform: translateY(-2rem);
 				text-align: start;
 				@include makeFullWidthBlock;
@@ -147,15 +139,20 @@
 
 			&-heading {
 				$fontSize: 2rem;
+				z-index: 3;
 
 				display: flex;
 				margin-bottom: 20px;
 				font-size: $fontSize * 1.2;
-				letter-spacing: 12px;
 				font-family: nunito;
 				font-weight: 400;
 				text-transform: capitalize;
-				overflow: visible;
+				overflow: visible !important;
+
+				@media screen and (max-width: 640px){
+					font-size: 1.5rem;
+					width: 60%;
+				}
 
 
 				span {
@@ -164,9 +161,12 @@
 					transform: translateY($fontSize*-1);
 					transition: all $animTime/3;
 					text-align: start;
+					height: max-content;
+					overflow: visible !important;
+					font-family: nunito;
 
 					@include slidePrev {
-						transform: translateY($fontSize)
+						transform: translateY($fontSize);
 					}
 
 					@include slideActive {
@@ -199,7 +199,7 @@
 			}
 
 			&-shop-now-cta {
-				overflow: visible;
+				overflow: visible !important;
 				border: .1rem solid $darkAccentColor;
 				@include makeColFlexCenter;
 				margin-right: auto;
@@ -229,7 +229,7 @@
 				span {
 					@include makeAbsoluteTopRightDiv;
 					transform: scale(3);
-					top: 18%;
+					top: 2%;
 					right: -10%;
 				}
 
@@ -244,7 +244,7 @@
 			@include makeColFlexCenter;
 			@include makeAbsoluteBottomRightDiv;
 			right: 10%;
-			overflow: visible;
+			overflow: visible !important;
 
 			.slider-hero-image-circle {
 				@include makeAbsoluteBottomLeftDiv;
@@ -255,8 +255,8 @@
 				max-height: 30rem;
 				border-radius: 50%;
 				z-index: 0;
-				bottom: 20%;
-				left: -10%;
+				bottom: -10%;
+				left: 20%;
 				// left: 0;
 			}
 
