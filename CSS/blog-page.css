@@ -1,6 +1,6 @@
 :root {
   --homeFadingTextColor: #333436;
-  --homeGoldLikeColor: #B99670;
+  --homeGoldLikeColor: #AB893B;
   --homeDarkColor: #000000;
   --DirectoryCTATextColor: #272727;
   --DirectoryBlurColor: #d4d4d4a8;
@@ -17,6 +17,8 @@
   --darkAccentColor: #08090A;
   --lightestShadowColor: #00000018;
   --accentColorTrans: #bb9d8838;
+  --hotDealAccentColor: #2A2414;
+  --hotDealAccentColorTrans: #2a24144a;
   --shopSideTabListColor: #626262;
   --shopSideTabTitleColor: #000000a2;
   --redTextColor: #FC2222;
@@ -255,9 +257,13 @@ body {
   align-items: center;
   flex-direction: row;
   justify-content: flex-end;
-  z-index: -6 !important; }
+  transform: translateX(100vw);
+  z-index: 6 !important;
+  background-color: transparent; }
   .modal-overlay-opened {
-    z-index: 6 !important; }
+    transform: unset;
+    z-index: 6 !important;
+    background-color: var(--DirectoryBlurColorDark); }
   .modal-overlay .side-tab {
     border: unset;
     background-color: var(--darkAccentColor);
@@ -366,10 +372,8 @@ body {
         .modal-overlay .side-tab .ST-navs .ST-links .ST-link {
           font-family: openSansLight;
           font-weight: lighter !important;
-          border-bottom: 0.05rem solid var(--homeOutlineColor);
           display: block;
           width: 100%;
-          border-bottom-width: 120%;
           text-align: center;
           padding-bottom: .3rem; }
 
@@ -382,15 +386,16 @@ body {
   right: 0;
   width: 3rem;
   height: 70vh;
-  top: 15%;
-  bottom: 15%;
+  top: 50%;
+  transform: translateY(-40%);
   z-index: 6;
   border-top-left-radius: 1.5rem;
   border-bottom-left-radius: 1.5rem;
   align-items: center;
   padding: 2rem 0.5rem;
   background-color: var(--brightColor);
-  box-shadow: -0.05rem -0.1rem 0.5rem var(--DirectoryBlurColorDark); }
+  box-shadow: -0.05rem -0.1rem 0.5rem var(--DirectoryBlurColorDark);
+  overflow: visible; }
   .desktop-side-tab > div {
     display: block;
     width: 100%;
@@ -399,15 +404,34 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: auto; }
+    margin: auto;
+    overflow: visible; }
+    .desktop-side-tab > div .user-connected-cart-icon {
+      display: block;
+      width: 100%;
+      position: relative;
+      overflow: visible; }
+      .desktop-side-tab > div .user-connected-cart-icon span {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        height: 1rem;
+        width: 1rem;
+        top: -5%;
+        left: -5%;
+        background-color: var(--DirectoryBlurColorDark);
+        color: var(--brightColor);
+        border-radius: 50%;
+        z-index: 3; }
     .desktop-side-tab > div svg {
       display: block;
       width: 100%;
-      fill: var(--accentColor);
+      fill: var(--DirectoryBlurColorDark);
       transform: scale(0.9);
       cursor: pointer; }
       .desktop-side-tab > div svg path {
-        fill: var(--accentColor); }
+        fill: var(--DirectoryBlurColorDark); }
 
 .wrapper {
   margin-top: 5rem;
@@ -833,8 +857,16 @@ footer {
     align-items: flex-end;
     position: relative;
     height: 35%; }
+    .product-div .SPD-content:hover .SPD-top-cta-div {
+      opacity: 1; }
+    .product-div .SPD-content:hover .SPDC-name {
+      visibility: hidden !important; }
     .product-div .SPD-content * {
       color: var(--darkAccentColor); }
+    .product-div .SPD-content:hover .SPD-content-cta-div {
+      opacity: 1; }
+    .product-div .SPD-content:hover .SPDC-name {
+      opacity: 0; }
     .product-div .SPD-content .SPD-content-cta-div {
       position: absolute;
       content: "";
@@ -853,7 +885,8 @@ footer {
       font-family: latoLight !important;
       font-weight: 600;
       cursor: pointer;
-      display: none;
+      opacity: 0;
+      transition: all .3s ease-in-out;
       z-index: 3; }
       .product-div .SPD-content .SPD-content-cta-div .SPD-content-colors-div {
         width: 40%;
@@ -904,7 +937,9 @@ footer {
       font-family: latoLight !important;
       font-weight: 600;
       display: block;
-      width: 100%; }
+      width: 100%;
+      opacity: 1;
+      transition: all .3s ease-in-out; }
     .product-div .SPD-content .SPDC-price {
       position: absolute;
       content: "";
